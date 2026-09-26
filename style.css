@@ -123,3 +123,28 @@ dialog::backdrop { background: rgba(0,0,0,.45); }
 .tips { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .tips label { flex-direction: row; align-items: flex-start; gap: 8px; color: var(--ink); font-size: 15px; }
 .tips input { margin-top: 4px; flex: 0 0 auto; }
+
+/* v3: Videotips & Personligt */
+.pill.ad { background: var(--bad-soft); color: var(--bad); font-weight: 600; }
+.vgrid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin-bottom: 16px; }
+.vthumb { position: relative; display: block; background: var(--sunk); }
+.vthumb img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.vthumb .play { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.65); color: #fff; font-size: 12px; padding: 3px 8px; border-radius: 999px; }
+.vcard p { margin: 0; font-size: 14px; }
+.vcard.is-skip, .is-skip { opacity: .55; }
+.vctrl { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: auto; padding-top: 6px; }
+.vctrl select, .prow select { padding: 4px 6px; font-size: 14px; }
+label.chk { flex-direction: row; align-items: center; gap: 6px; flex: 0 1 auto; color: var(--ink); font-weight: 600; }
+.wrapurl { overflow-wrap: anywhere; font-size: 13px; }
+.vcheck li.is-done strong, .prow.is-done .grow { text-decoration: line-through; color: var(--ink-2); }
+.vcheck .prio { margin-right: 2px; }
+.psec h2 { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.prows { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.prow { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; background: var(--sunk); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 8px; }
+.prow .grow { flex: 1 1 200px; min-width: 0; overflow-wrap: anywhere; }
+.paddform { margin-bottom: 12px; }
+.paddform input { flex: 1 1 220px; }
+.psec details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
+.pgrid { margin-top: 10px; }
+.lic { font-size: 12px; color: var(--ink-3); }
+.steps { margin-bottom: 12px; }

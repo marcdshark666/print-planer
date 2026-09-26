@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Print-planeraren</title>
 <meta name="description" content="Planera 3D-prints från MakerWorld: bläddra, kanban, filamentlager, skrivarprofil och Etsy-/licenskoll.">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <header class="top">
@@ -20,6 +20,8 @@
     </div>
   </div>
   <nav class="tabs wrap" id="tabs" role="tablist">
+    <button type="button" data-tab="videos" role="tab">Videotips</button>
+    <button type="button" data-tab="personal" role="tab">Personligt</button>
     <button type="button" data-tab="favs" role="tab">Mina favoriter</button>
     <button type="button" data-tab="browse" role="tab">Bläddra</button>
     <button type="button" data-tab="board" role="tab">Tavla</button>
@@ -31,6 +33,41 @@
 
 <main class="wrap">
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- VIDEOTIPS -->
+  <section id="tab-videos" class="tab" hidden>
+    <div class="panel">
+      <h2>Checklista – att implementera</h2>
+      <p class="muted">Klipp du kryssat i "Implementera", sorterade på prioritet (P1 = högst). <span id="vCheckMeta"></span></p>
+      <ul class="tips vcheck" id="vChecklist"></ul>
+    </div>
+    <div class="filters panel">
+      <p class="muted">Instagram-klipp från Messenger-chatten "3d print". Klicka på bilden för att öppna klippet. Förslagen utgår från Centauri Carbon 2 Combo och ditt filament (PLA svart/vit, PLA Basic svart, TPU 95A svart, PLA Silk silvergrå).</p>
+      <div class="frow">
+        <label>Sortera<select id="vSort"><option value="prio">Prioritet</option><option value="chat">Ordning i chatten</option><option value="status">Status</option></select></label>
+        <label>Visa<select id="vFilter"><option value="all">Alla</option><option value="impl">Implementera</option><option value="new">Ny</option><option value="todo">Ska göras</option><option value="done">Gjort</option><option value="skip">Skippa</option></select></label>
+      </div>
+      <p class="count" id="vCount"></p>
+    </div>
+    <div class="grid vgrid" id="videoGrid"></div>
+    <div class="panel addvideo">
+      <h2>Lägg till video</h2>
+      <form id="videoForm" class="stack">
+        <input type="url" id="vUrl" placeholder="https://www.instagram.com/reel/…" aria-label="Länk till klippet" required>
+        <textarea id="vNote" rows="2" placeholder="Anteckning – vad handlar klippet om, vad vill du testa?"></textarea>
+        <button class="btn primary" type="submit">Lägg till klipp</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- PERSONLIGT -->
+  <section id="tab-personal" class="tab" hidden>
+    <div class="panel">
+      <h2>Personliga prints</h2>
+      <p class="muted">Personliga prints för eget bruk – inte för försäljning. Licensen visas bara som information. Allt sparas lokalt i webbläsaren (exportera JSON som backup).</p>
+    </div>
+    <div id="personalSecs"></div>
+  </section>
 
   <!-- MINA FAVORITER -->
   <section id="tab-favs" class="tab" hidden>
@@ -74,6 +111,7 @@
   <section id="tab-inbox" class="tab" hidden>
     <div class="panel">
       <h2>Koncept från Messenger/Instagram</h2>
+      <p class="muted">Instagram-klippen från chatten "3d print" finns nu med sammanfattning och förslag under fliken <strong>Videotips</strong>. Inkorgen är kvar för snabba idéer.</p>
       <form id="inboxForm" class="stack">
         <div class="frow">
           <select id="inSource" aria-label="Källa">
@@ -174,6 +212,6 @@
   </form>
 </dialog>
 
-<script src="app.js?v=2"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

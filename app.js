@@ -28,6 +28,30 @@
     { k: 'gradient', t: 'Gradient-/silk-filament som säljpunkt', d: 'Färgskiftande filament gör en enkel modell säljbar – lyft det i bilder och titel.', url: 'https://www.instagram.com/reel/Db_EJylx1XQ/' },
     { k: 'mold', t: 'Print som master för silikongjutning', d: 'Printa, efterbehandla ytan och gjut silikonform för serier i andra material.', url: 'https://www.instagram.com/reel/DdOIdH7Tiox/' },
   ];
+  const STATUS = [['new', 'Ny'], ['todo', 'Ska göras'], ['done', 'Gjort'], ['skip', 'Skippa']];
+  const STATUS_ORDER = { todo: 0, new: 1, done: 2, skip: 3 };
+  const PSECS = [
+    ['sensor', 'Sensorhållare', 'Dexcom G7 först, sedan övriga Dexcom/CGM. Libre-, Medtronic- och pumpbrus är bortfiltrerat.'],
+    ['infusion', 'Infusionsset & pump', 'Tandem (t:slim X2 / Mobi) först, sedan övriga hållare, fodral och organizers för pump, infusionsset och pennor.'],
+    ['dextro', 'Dextro & glukos', 'Tabletthållare, fodral och dispensrar först, sedan kit och organizers.'],
+    ['skafferi', 'Skafferiet – prydligt', 'Staplingsbara lådor och hyllor, plus dextro-dispensrar som passar i skafferiet.'],
+    ['hands', 'Handskulptur – Marc & Ada', 'Skulptur av Marcs och Adas händer som håller varandra. Modellerna nedan är inspiration.'],
+  ];
+  const PSEED = {
+    sensor: 'Skyddskåpa för Dexcom G7 – testa passform',
+    infusion: 'Organizer för infusionsset och reservoarer',
+    dextro: 'Dextro-fodral för fickan/väskan',
+    skafferi: 'Dextro-dispenser och staplingsbara lådor i skafferiet',
+    hands: 'Handskulptur Marc & Ada – skanna händerna',
+  };
+  const HAND_STEPS = [
+    ['scan', 'Skanna händerna ihop med en mobilapp för fotogrammetri (t.ex. gratisläge i Polycam, KIRI Engine eller Scaniverse – kontrollera villkor/pris). Alternativ: gjut i alginat/gips och skanna avgjutningen.'],
+    ['blender', 'Rensa och stäng meshen i Blender (installerat) – ta bort brus, fyll hål, gör den vattentät.'],
+    ['base', 'Lägg till en sockel med gravyr (namn/datum).'],
+    ['cut', 'Dela upp i ElegooSlicer om modellen är större än 256 mm (Cut med pluggar).'],
+    ['print', 'Printa i PLA Silk silvergrå – provprinta i liten skala först.'],
+    ['post', 'Efterbehandla: ta bort stöd, slipa, ev. spackel/lack.'],
+  ];
   const DEFAULT_FILAMENTS = [
     { brand: 'Elegoo', mat: 'PLA', name: 'Basic Black (refill)', hex: '#1a1a1a', qty: 1, note: 'Refill' },
     { brand: 'Elegoo', mat: 'PLA', name: 'RFID White', hex: '#f4f4f0', qty: 1, note: 'RFID' },
@@ -59,7 +83,10 @@
       filaments: DEFAULT_FILAMENTS.map((f) => ({ id: uid(), ...f })),
       seeded: [],
       tips: {},
-      ui: { tab: 'favs', cat: 'avp', favCol: 'Default Collection', sort: 'd', q: '', exact: true, etsySafe: false, hideNsfw: true },
+      videos: {},
+      customVideos: [],
+      personal: { rows: [], seeded: false, steps: {}, notes: '' },
+      ui: { tab: 'videos', vSort: 'prio', vFilter: 'all', cat: 'avp', favCol: 'Default Collection', sort: 'd', q: '', exact: true, etsySafe: false, hideNsfw: true },
     };
   }
   function normalize(s) {
@@ -72,11 +99,25 @@
       filaments: Array.isArray(s.filaments) ? s.filaments.filter((f) => f && f.id) : base.filaments,
       seeded: Array.isArray(s.seeded) ? s.seeded.filter((u) => typeof u === 'string') : [],
       tips: s.tips && typeof s.tips === 'object' ? s.tips : {},
+      videos: s.videos && typeof s.videos === 'object' ? s.videos : {},
+      customVideos: Array.isArray(s.customVideos) ? s.customVideos.filter((v) => v && v.id && safeUrl(v.url)) : [],
+      personal: normPersonal(s.personal),
       ui: { ...base.ui, ...(s.ui && typeof s.ui === 'object' ? s.ui : {}) },
+    };
+  }
+  function normPersonal(p) {
+    const o = p && typeof p === 'object' ? p : {};
+    return {
+      rows: Array.isArray(o.rows) ? o.rows.filter((r) => r && r.id && r.title && PSECS.some(([k]) => k === r.sec)) : [],
+      seeded: !!o.seeded,
+      steps: o.steps && typeof o.steps === 'object' ? o.steps : {},
+      notes: typeof o.notes === 'string' ? o.notes : '',
     };
   }
   let state;
   try { state = normalize(JSON.parse(localStorage.getItem(STORE_KEY))); } catch { state = freshState(); }
+  // v3: Videotips blir huvudvyn – byt flik en gång för befintliga användare.
+  if (!state.ui.v3) { state.ui.v3 = true; state.ui.tab = 'videos'; }
   function save() {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
     catch (e) { console.warn('Kunde inte spara i localStorage', e); toast('Kunde inte spara lokalt – exportera JSON som backup'); }
@@ -169,7 +210,7 @@
     state.ui.tab = tab; save();
     document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
     document.querySelectorAll('.tab').forEach((s) => { s.hidden = s.id !== `tab-${tab}`; });
-    ({ favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: renderTips })[tab]?.();
+    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: renderTips })[tab]?.();
   }
 
   /* ---------- Bläddra ---------- */
@@ -378,6 +419,134 @@
       <span><strong>${esc(t.t)}</strong> – ${esc(t.d)} <a href="${esc(t.url)}" target="_blank" rel="noopener noreferrer">Reel ↗</a></span></label></li>`).join('');
   }
 
+  /* ---------- Videotips ---------- */
+  let VIDEOS = null;
+  async function loadVideos() {
+    try {
+      const j = await getJson('data/videos.json');
+      VIDEOS = Array.isArray(j) ? j.filter((v) => v && v.id && safeUrl(v.url)) : [];
+    } catch (e) { console.warn('Kunde inte läsa videos.json', e); VIDEOS = []; VIDEOS.error = e.message; }
+  }
+  const vState = (id) => (state.videos[id] ||= { impl: false, prio: 3, status: 'new' });
+  function allVideos() {
+    const base = (VIDEOS || []).map((v, i) => ({ ...v, order: i, custom: false }));
+    const own = state.customVideos.map((v, i) => ({
+      id: v.id, url: v.url, creator: v.creator || 'Eget klipp', thumb: '', titel_sv: (v.note || v.url).split('\n')[0].slice(0, 90),
+      handlar_om: v.note || '', forslag: '', tag: '', reklam: false, anteckning: '', order: 1000 + i, custom: true,
+    }));
+    return [...base, ...own].map((v) => ({ ...v, st: vState(v.id) }));
+  }
+  const statusName = (k) => (STATUS.find(([s]) => s === k) || [, ''])[1];
+  const statusSel = (cur, attr) => `<select ${attr} aria-label="Status">${STATUS.map(([k, n]) => `<option value="${k}" ${cur === k ? 'selected' : ''}>${n}</option>`).join('')}</select>`;
+  const prioSel = (cur, attr) => `<select ${attr} aria-label="Prioritet">${[1, 2, 3, 4, 5].map((n) => `<option value="${n}" ${Number(cur) === n ? 'selected' : ''}>P${n}</option>`).join('')}</select>`;
+  const byPrio = (a, b) => (a.prio || 3) - (b.prio || 3) || (STATUS_ORDER[a.status] ?? 9) - (STATUS_ORDER[b.status] ?? 9);
+
+  function renderVideos() {
+    const grid = $('#videoGrid');
+    $('#vSort').value = state.ui.vSort; $('#vFilter').value = state.ui.vFilter;
+    const all = allVideos();
+    // Checklista: allt markerat Implementera, sorterat på prioritet (1 = högst).
+    const impl = all.filter((v) => v.st.impl).sort((a, b) => byPrio(a.st, b.st) || a.order - b.order);
+    const doneN = impl.filter((v) => v.st.status === 'done').length;
+    $('#vCheckMeta').textContent = impl.length ? `${doneN} av ${impl.length} klara.` : '';
+    $('#vChecklist').innerHTML = impl.length ? impl.map((v) => `<li class="${v.st.status === 'done' ? 'is-done' : ''}${v.st.status === 'skip' ? ' is-skip' : ''}">
+        <label><input type="checkbox" data-vdone="${esc(v.id)}" ${v.st.status === 'done' ? 'checked' : ''}>
+        <span><span class="prio p${esc(v.st.prio)}">P${esc(v.st.prio)}</span> <strong>${esc(v.titel_sv)}</strong>${v.forslag ? ` – ${esc(v.forslag)}` : ''}
+        <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener noreferrer">Klipp ↗</a> <span class="muted">(${esc(statusName(v.st.status))})</span></span></label></li>`).join('')
+      : '<li class="empty">Inget markerat ännu – kryssa i "Implementera" på ett klipp nedan.</li>';
+    if (VIDEOS && VIDEOS.error) { grid.innerHTML = `<div class="warn bad">Kunde inte läsa <code>data/videos.json</code> (${esc(VIDEOS.error)}).</div>`; return; }
+    const f = state.ui.vFilter;
+    const list = all.filter((v) => f === 'all' || (f === 'impl' ? v.st.impl : v.st.status === f));
+    if (state.ui.vSort === 'prio') list.sort((a, b) => byPrio(a.st, b.st) || a.order - b.order);
+    else if (state.ui.vSort === 'status') list.sort((a, b) => (STATUS_ORDER[a.st.status] ?? 9) - (STATUS_ORDER[b.st.status] ?? 9) || a.order - b.order);
+    else list.sort((a, b) => a.order - b.order);
+    $('#vCount').textContent = `${list.length} av ${all.length} klipp`;
+    if (!list.length) { grid.innerHTML = '<p class="empty">Inga klipp med nuvarande filter.</p>'; return; }
+    grid.innerHTML = list.map((v) => {
+      const u = safeUrl(v.url);
+      return `<article class="card vcard ${v.st.status === 'skip' ? 'is-skip' : ''}" data-vid="${esc(v.id)}">
+        ${v.thumb ? `<a class="vthumb" href="${esc(u)}" target="_blank" rel="noopener noreferrer" title="Öppna på Instagram"><img loading="lazy" src="${esc(v.thumb)}" alt="Stillbild från klippet av ${esc(v.creator)}"><span class="play">Instagram ↗</span></a>` : ''}
+        <div class="body">
+          <h3>${esc(v.titel_sv)}</h3>
+          <div class="muted">${esc(v.creator)} ${v.tag ? `<span class="pill tag ${esc(TAG_LEVEL[v.tag] || '')}">${esc(v.tag)}</span>` : ''} ${v.reklam ? '<span class="pill ad">Reklam</span>' : ''} ${v.needs_review ? '<span class="pill">ej granskad</span>' : ''}</div>
+          ${v.custom
+            ? `<p>${esc(v.handlar_om)}</p><a class="wrapurl" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>`
+            : `<p><strong>Handlar om:</strong> ${esc(v.handlar_om)}</p><p><strong>Förslag för dig:</strong> ${esc(v.forslag)}</p>`}
+          <div class="vctrl">
+            <label class="chk"><input type="checkbox" data-k="impl" ${v.st.impl ? 'checked' : ''}> Implementera</label>
+            ${prioSel(v.st.prio, 'data-k="prio"')}
+            ${statusSel(v.st.status, 'data-k="status"')}
+            ${v.custom ? '<button type="button" class="btn sm danger" data-vdel>Ta bort</button>' : ''}
+          </div>
+        </div></article>`;
+    }).join('');
+    grid.querySelectorAll('.vthumb img').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true }));
+  }
+
+  /* ---------- Marcs egna ---------- */
+  let PERS = null;
+  async function loadPersonal() {
+    try {
+      const j = await getJson('data/personal.json');
+      const sec = j && j.sections && typeof j.sections === 'object' ? j.sections : {};
+      PERS = Object.fromEntries(PSECS.map(([k]) => [k, Array.isArray(sec[k]) ? sec[k].filter((m) => m && m.id && m.t) : []]));
+    } catch (e) { console.warn('Kunde inte läsa personal.json', e); PERS = { error: e.message }; }
+  }
+  function seedPersonal() {
+    if (state.personal.seeded) return;
+    for (const [k] of PSECS) state.personal.rows.push({ id: uid(), sec: k, title: PSEED[k], prio: 3, status: 'new', created: new Date().toISOString() });
+    state.personal.seeded = true; save();
+  }
+  function personalCard(m, sec, listed) {
+    const cover = safeUrl(m.c); const added = listed.has(String(m.id));
+    const stats = [['⬇', m.d], ['♥', m.l], ['🖨', m.p]].filter(([, v]) => v != null).map(([i, v]) => `<span>${i} ${fmt(v)}</span>`).join('');
+    const pills = [m.g7 && 'Dexcom G7', m.tandem && 'Tandem', m.tab && 'tabletter', m.dextro && 'dextro-dispenser', m.featured && 'inspiration']
+      .filter(Boolean).map((p) => `<span class="pill exact">${esc(p)}</span>`).join(' ');
+    return `<article class="card">
+        ${cover ? `<img class="cover" loading="lazy" referrerpolicy="no-referrer" src="${esc(cover)}" alt="">` : '<div class="cover"></div>'}
+        <div class="body">
+          <h3>${esc(m.t)}</h3>
+          <div class="muted">av ${esc(m.by)} ${pills}</div>
+          <div class="stats">${stats}</div>
+          <div class="lic">Licens: ${esc(m.lic || 'okänd')}</div>
+          <div class="actions">
+            <a class="btn sm" href="${esc(mwUrl(m))}" target="_blank" rel="noopener noreferrer">MakerWorld ↗</a>
+            <button type="button" class="btn sm${added ? '' : ' primary'}" data-padd="${esc(m.id)}" data-sec="${esc(sec)}" ${added ? 'disabled' : ''}>${added ? 'I min lista' : '+ Lägg till i min lista'}</button>
+          </div>
+        </div></article>`;
+  }
+  function renderPersonal() {
+    const el = $('#personalSecs');
+    if (!PERS || PERS.error) { el.innerHTML = `<div class="warn bad">Kunde inte läsa <code>data/personal.json</code>${PERS ? ` (${esc(PERS.error)})` : ''}.</div>`; return; }
+    const openSecs = state.ui.pOpen || {};
+    el.innerHTML = PSECS.map(([k, name, intro]) => {
+      const rows = state.personal.rows.filter((r) => r.sec === k).sort(byPrio);
+      const listed = new Set(rows.filter((r) => r.mwId).map((r) => String(r.mwId)));
+      const models = PERS[k] || [];
+      const doneN = rows.filter((r) => r.status === 'done').length;
+      const steps = k !== 'hands' ? '' : `<h3>Steg för steg</h3><ol class="tips steps">${HAND_STEPS.map(([s, t]) =>
+        `<li><label><input type="checkbox" data-step="${s}" ${state.personal.steps[s] ? 'checked' : ''}><span>${esc(t)}</span></label></li>`).join('')}</ol>
+        <label>Egna anteckningar<textarea id="handNotes" rows="4" placeholder="Mått, vilken app som funkade, namn/datum till gravyren …">${esc(state.personal.notes)}</textarea></label>`;
+      const rowsHtml = rows.map((r) => `<li class="prow${r.status === 'done' ? ' is-done' : ''}${r.status === 'skip' ? ' is-skip' : ''}" data-rid="${esc(r.id)}">
+            <input type="checkbox" data-rk="done" ${r.status === 'done' ? 'checked' : ''} aria-label="Klar">
+            <span class="grow">${r.url ? `<a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener noreferrer">${esc(r.title)}</a>` : esc(r.title)}</span>
+            ${prioSel(r.prio, 'data-rk="prio"')} ${statusSel(r.status, 'data-rk="status"')}
+            <button type="button" class="btn sm danger" data-rk="del" aria-label="Ta bort rad">✕</button></li>`).join('');
+      return `<section class="panel psec" data-sec="${k}">
+        <h2>${esc(name)} <span class="muted">${rows.length ? `${doneN}/${rows.length} klara` : ''}</span></h2>
+        <p class="muted">${esc(intro)}</p>
+        ${steps}
+        <h3>Min lista</h3>
+        <ul class="prows">${rowsHtml || '<li class="empty">Tom lista.</li>'}</ul>
+        <form class="frow paddform" data-sec="${k}"><input name="t" placeholder="Ny rad – vad vill du printa?" aria-label="Ny rad" required><button class="btn" type="submit">Lägg till</button></form>
+        <details ${openSecs[k] ? 'open' : ''} data-psec="${k}"><summary>Modeller från MakerWorld (${models.length})</summary>
+          <div class="grid pgrid">${models.map((m) => personalCard(m, k, listed)).join('') || '<p class="empty">Inga modeller.</p>'}</div>
+        </details>
+      </section>`;
+    }).join('');
+    el.querySelectorAll('img.cover').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true }));
+  }
+
   /* ---------- Export / import ---------- */
   function exportJson() {
     try {
@@ -485,6 +654,80 @@
       }
     });
 
+    // Videotips
+    $('#vSort').addEventListener('change', (e) => { state.ui.vSort = e.target.value; save(); renderVideos(); });
+    $('#vFilter').addEventListener('change', (e) => { state.ui.vFilter = e.target.value; save(); renderVideos(); });
+    $('#videoGrid').addEventListener('change', (e) => {
+      const card = e.target.closest('[data-vid]'); const k = e.target.dataset.k; if (!card || !k) return;
+      const st = vState(card.dataset.vid);
+      if (k === 'impl') { st.impl = e.target.checked; if (st.impl && st.status === 'new') st.status = 'todo'; }
+      else if (k === 'prio') st.prio = Math.min(5, Math.max(1, parseInt(e.target.value, 10) || 3));
+      else if (k === 'status' && STATUS_ORDER[e.target.value] != null) st.status = e.target.value;
+      save(); renderVideos();
+    });
+    $('#videoGrid').addEventListener('click', (e) => {
+      if (!e.target.closest('[data-vdel]')) return;
+      const id = e.target.closest('[data-vid]')?.dataset.vid;
+      if (!id || !confirm('Ta bort klippet?')) return;
+      state.customVideos = state.customVideos.filter((v) => v.id !== id); delete state.videos[id]; save(); renderVideos();
+    });
+    $('#vChecklist').addEventListener('change', (e) => {
+      const id = e.target.dataset.vdone; if (!id) return;
+      vState(id).status = e.target.checked ? 'done' : 'todo'; save(); renderVideos();
+    });
+    $('#videoForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const url = safeUrl($('#vUrl').value.trim()); const note = $('#vNote').value.trim();
+      if (!url) { toast('Länken måste börja med http(s)://'); return; }
+      if (allVideos().some((v) => v.url === url)) { toast('Klippet finns redan'); return; }
+      const id = 'own-' + uid();
+      state.customVideos.push({ id, url, note: note.slice(0, 2000), created: new Date().toISOString() });
+      state.videos[id] = { impl: false, prio: 3, status: 'new' };
+      save(); e.target.reset(); renderVideos(); toast('Klipp tillagt');
+    });
+
+    // Marcs egna
+    const ps = $('#personalSecs');
+    ps.addEventListener('change', (e) => {
+      const t = e.target;
+      if (t.dataset.step) { state.personal.steps[t.dataset.step] = t.checked; save(); return; }
+      const li = t.closest('[data-rid]'); const k = t.dataset.rk; if (!li || !k) return;
+      const r = state.personal.rows.find((x) => x.id === li.dataset.rid); if (!r) return;
+      if (k === 'done') r.status = t.checked ? 'done' : 'todo';
+      else if (k === 'prio') r.prio = Math.min(5, Math.max(1, parseInt(t.value, 10) || 3));
+      else if (k === 'status' && STATUS_ORDER[t.value] != null) r.status = t.value;
+      save(); renderPersonal();
+    });
+    ps.addEventListener('click', (e) => {
+      const add = e.target.closest('button[data-padd]');
+      if (add) {
+        const sec = add.dataset.sec; const m = ((PERS && PERS[sec]) || []).find((x) => String(x.id) === add.dataset.padd); if (!m) return;
+        state.personal.rows.push({ id: uid(), sec, title: m.t.trim(), mwId: m.id, url: mwUrl(m), prio: 3, status: 'new', created: new Date().toISOString() });
+        save(); renderPersonal(); toast('Tillagd i din lista'); return;
+      }
+      const del = e.target.closest('[data-rk="del"]');
+      if (del) {
+        const id = del.closest('[data-rid]')?.dataset.rid;
+        if (id && confirm('Ta bort raden?')) { state.personal.rows = state.personal.rows.filter((x) => x.id !== id); save(); renderPersonal(); }
+      }
+    });
+    ps.addEventListener('toggle', (e) => {
+      const d = e.target.closest?.('details[data-psec]'); if (!d) return;
+      state.ui.pOpen = { ...(state.ui.pOpen || {}), [d.dataset.psec]: d.open }; save();
+    }, true);
+    ps.addEventListener('submit', (e) => {
+      const f = e.target.closest('form.paddform'); if (!f) return;
+      e.preventDefault();
+      const t = f.elements.t.value.trim(); if (!t) return;
+      state.personal.rows.push({ id: uid(), sec: f.dataset.sec, title: t.slice(0, 200), prio: 3, status: 'new', created: new Date().toISOString() });
+      save(); renderPersonal();
+    });
+    let nt;
+    ps.addEventListener('input', (e) => {
+      if (e.target.id !== 'handNotes') return;
+      clearTimeout(nt); nt = setTimeout(() => { state.personal.notes = e.target.value; save(); }, 300);
+    });
+
     $('#btnExport').addEventListener('click', exportJson);
     $('#fileImport').addEventListener('change', (e) => { const f = e.target.files[0]; if (f) importJson(f); e.target.value = ''; });
   }
@@ -492,7 +735,8 @@
   async function init() {
     bind();
     await loadFavorites();
-    await Promise.all([loadData(), seedInbox()]);
+    await Promise.all([loadData(), seedInbox(), loadVideos(), loadPersonal()]);
+    seedPersonal();
     setTab(state.ui.tab);
   }
   init().catch((e) => { console.error('Init misslyckades', e); toast('Något gick fel vid start'); });
