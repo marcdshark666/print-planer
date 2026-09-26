@@ -36,11 +36,25 @@
     ['dextro', 'Dextro & glukos', 'Tabletthållare, fodral och dispensrar först, sedan kit och organizers.'],
     ['skafferi', 'Skafferiet – prydligt', 'Staplingsbara lådor och hyllor, plus dextro-dispensrar som passar i skafferiet.'],
     ['hands', 'Handskulptur – Marc & Ada', 'Skulptur av Marcs och Adas händer som håller varandra. Modellerna nedan är inspiration.'],
+    ['uppfinn', 'Mina diabetesuppfinningar', 'Marcs egna idéer – brainstorm, inte färdiga modeller. MakerWorld-exemplen under varje idé är inspiration att remixa eller skala.'],
+  ];
+  // Sektioner som fanns innan seedningen blev per sektion – befintliga användare har redan fått dem.
+  const PSECS_V1 = ['sensor', 'infusion', 'dextro', 'skafferi', 'hands'];
+  const IDEAS = [
+    { k: 'automat', t: 'Bordsautomat för lösa Dextro-tabletter',
+      d: 'En liten godisautomat på bordet för överblivna lösa Dextro Energy-tabletter. Vrid eller tryck – en tablett i taget matas ut i en skål.',
+      mått: 'Tabletterna är platta rektangulära rutor, ca 3 × 2 cm (mät tjockleken på dina). Magasinet ca 32 × 22 mm invändigt så de staplas plant; utmatningsfack för exakt en tablett.',
+      fil: 'Stomme i PLA svart eller vit (Elegoo RFID), front/detaljer i PLA Silk silvergrå, TPU 95A svart till gummifötter och grepp på vredet.' },
+    { k: 'ficka', t: 'Fickdispenser à la PEZ för lösa Dextro-bitar',
+      d: 'Som en gammal PEZ-dispenser: ett huvud/ansikte på toppen som man trycker upp med tummen så en Dextro-bit sticker ut. Smal nog för fickan.',
+      mått: 'Invändig kanal ca 31 × 21 mm för 3 × 2 cm-rutor (lite spel), rymmer 4–6 tabletter. Ytterbredd runt 25 mm och längd ca 90–110 mm.',
+      fil: 'Kropp i PLA Basic svart, huvudet i PLA Silk silvergrå eller vit RFID, fjäder/matarbricka och gångjärn i TPU 95A svart.' },
   ];
   const PSEED = {
     sensor: 'Skyddskåpa för Dexcom G7 – testa passform',
     infusion: 'Organizer för infusionsset och reservoarer',
     dextro: 'Dextro-fodral för fickan/väskan',
+    uppfinn: ['Idé: bordsautomat för lösa Dextro-tabletter', 'Idé: PEZ-fickdispenser för Dextro-bitar'],
     skafferi: 'Dextro-dispenser och staplingsbara lådor i skafferiet',
     hands: 'Handskulptur Marc & Ada – skanna händerna',
   };
@@ -85,7 +99,7 @@
       tips: {},
       videos: {},
       customVideos: [],
-      personal: { rows: [], seeded: false, steps: {}, notes: '' },
+      personal: { rows: [], seeded: false, seededSecs: [], steps: {}, notes: '' },
       ui: { tab: 'videos', vSort: 'prio', vFilter: 'all', cat: 'avp', favCol: 'Default Collection', sort: 'd', q: '', exact: true, etsySafe: false, hideNsfw: true },
     };
   }
@@ -110,6 +124,7 @@
     return {
       rows: Array.isArray(o.rows) ? o.rows.filter((r) => r && r.id && r.title && PSECS.some(([k]) => k === r.sec)) : [],
       seeded: !!o.seeded,
+      seededSecs: Array.isArray(o.seededSecs) ? o.seededSecs.filter((k) => typeof k === 'string') : [],
       steps: o.steps && typeof o.steps === 'object' ? o.steps : {},
       notes: typeof o.notes === 'string' ? o.notes : '',
     };
@@ -492,10 +507,18 @@
       PERS = Object.fromEntries(PSECS.map(([k]) => [k, Array.isArray(sec[k]) ? sec[k].filter((m) => m && m.id && m.t) : []]));
     } catch (e) { console.warn('Kunde inte läsa personal.json', e); PERS = { error: e.message }; }
   }
+  // Seedas per sektion så att nya sektioner (t.ex. uppfinningarna) syns även för befintliga användare.
   function seedPersonal() {
-    if (state.personal.seeded) return;
-    for (const [k] of PSECS) state.personal.rows.push({ id: uid(), sec: k, title: PSEED[k], prio: 3, status: 'new', created: new Date().toISOString() });
-    state.personal.seeded = true; save();
+    const p = state.personal;
+    const done = new Set(p.seededSecs);
+    if (p.seeded) PSECS_V1.forEach((k) => done.add(k));
+    let changed = false;
+    for (const [k] of PSECS) {
+      if (done.has(k)) continue;
+      for (const title of [].concat(PSEED[k] || [])) p.rows.push({ id: uid(), sec: k, title, prio: 3, status: 'new', created: new Date().toISOString() });
+      done.add(k); changed = true;
+    }
+    if (changed || !p.seeded) { p.seeded = true; p.seededSecs = [...done]; save(); }
   }
   function personalCard(m, sec, listed) {
     const cover = safeUrl(m.c); const added = listed.has(String(m.id));
@@ -508,6 +531,7 @@
           <h3>${esc(m.t)}</h3>
           <div class="muted">av ${esc(m.by)} ${pills}</div>
           <div class="stats">${stats}</div>
+          ${m.fit ? `<div class="muted fit">${esc(m.fit)}</div>` : ''}
           <div class="lic">Licens: ${esc(m.lic || 'okänd')}</div>
           <div class="actions">
             <a class="btn sm" href="${esc(mwUrl(m))}" target="_blank" rel="noopener noreferrer">MakerWorld ↗</a>
@@ -539,9 +563,20 @@
         <h3>Min lista</h3>
         <ul class="prows">${rowsHtml || '<li class="empty">Tom lista.</li>'}</ul>
         <form class="frow paddform" data-sec="${k}"><input name="t" placeholder="Ny rad – vad vill du printa?" aria-label="Ny rad" required><button class="btn" type="submit">Lägg till</button></form>
-        <details ${openSecs[k] ? 'open' : ''} data-psec="${k}"><summary>Modeller från MakerWorld (${models.length})</summary>
+        ${k === 'uppfinn' ? IDEAS.map((i) => {
+          const ms = models.filter((m) => m.idea === i.k);
+          return `<article class="idea">
+          <span class="pill idea-tag">💡 Egen uppfinning · Idé</span>
+          <h3>${esc(i.t)}</h3>
+          <p>${esc(i.d)}</p>
+          <p class="muted"><strong>Mått:</strong> ${esc(i.mått)}</p>
+          <p class="muted"><strong>Filament ur lagret:</strong> ${esc(i.fil)}</p>
+          <details ${openSecs[k + ':' + i.k] ? 'open' : ''} data-psec="${k}:${i.k}"><summary>Liknande på MakerWorld (${ms.length})</summary>
+            <div class="grid pgrid">${ms.map((m) => personalCard(m, k, listed)).join('') || '<p class="empty">Inga modeller.</p>'}</div>
+          </details></article>`;
+        }).join('') : `<details ${openSecs[k] ? 'open' : ''} data-psec="${k}"><summary>Modeller från MakerWorld (${models.length})</summary>
           <div class="grid pgrid">${models.map((m) => personalCard(m, k, listed)).join('') || '<p class="empty">Inga modeller.</p>'}</div>
-        </details>
+        </details>`}
       </section>`;
     }).join('');
     el.querySelectorAll('img.cover').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true }));

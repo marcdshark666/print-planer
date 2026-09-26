@@ -146,5 +146,10 @@ label.chk { flex-direction: row; align-items: center; gap: 6px; flex: 0 1 auto; 
 .paddform input { flex: 1 1 220px; }
 .psec details summary { cursor: pointer; font-weight: 600; padding: 6px 0; }
 .pgrid { margin-top: 10px; }
+.idea { background: var(--sunk); border: 1px solid var(--rule); border-left: 4px solid var(--accent, #d4a017); border-radius: 10px; padding: 10px 12px; margin: 12px 0; }
+.idea h3 { margin: 6px 0 4px; }
+.idea p { margin: 4px 0; }
+.idea-tag { font-weight: 600; }
+.card .fit { font-size: 13px; margin: 4px 0; }
 .lic { font-size: 12px; color: var(--ink-3); }
 .steps { margin-bottom: 12px; }
