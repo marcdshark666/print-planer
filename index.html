@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print-planeraren</title>
+<meta name="description" content="Planera 3D-prints från MakerWorld: bläddra, kanban, filamentlager, skrivarprofil och Etsy-/licenskoll.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Print-planeraren</h1>
+      <p class="sub">MakerWorld-fynd → kanban → Centauri Carbon 2 → Etsy</p>
+    </div>
+    <div class="io">
+      <button type="button" id="btnExport" class="btn">Exportera JSON</button>
+      <label class="btn">Importera JSON<input type="file" id="fileImport" accept="application/json,.json" hidden></label>
+    </div>
+  </div>
+  <nav class="tabs wrap" id="tabs" role="tablist">
+    <button type="button" data-tab="browse" role="tab">Bläddra</button>
+    <button type="button" data-tab="board" role="tab">Tavla</button>
+    <button type="button" data-tab="inbox" role="tab">Inkorg</button>
+    <button type="button" data-tab="filament" role="tab">Filament</button>
+    <button type="button" data-tab="printer" role="tab">Skrivare</button>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- BLÄDDRA -->
+  <section id="tab-browse" class="tab" hidden>
+    <div class="filters panel">
+      <div class="catbar" id="catbar"></div>
+      <div class="frow">
+        <input type="search" id="q" placeholder="Sök titel, skapare, taggar…" aria-label="Sök">
+        <select id="sort" aria-label="Sortera">
+          <option value="d">Nedladdningar</option>
+          <option value="l">Likes</option>
+          <option value="p">Prints</option>
+          <option value="dt">Datum (nyast)</option>
+        </select>
+      </div>
+      <div class="frow checks">
+        <label id="exactWrap"><input type="checkbox" id="exact"> Bara exakta träffar</label>
+        <label><input type="checkbox" id="etsySafe"> Etsy-säkert (licens tillåter försäljning, inget varumärke)</label>
+        <label><input type="checkbox" id="hideNsfw" checked> Dölj NSFW</label>
+      </div>
+      <p class="count" id="count"></p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- TAVLA -->
+  <section id="tab-board" class="tab" hidden>
+    <p class="hint">Dra kort mellan kolumner, eller använd ◀ ▶ på mobil. Klicka på ett kort för att redigera.</p>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- INKORG -->
+  <section id="tab-inbox" class="tab" hidden>
+    <div class="panel">
+      <h2>Koncept från Messenger/Instagram</h2>
+      <form id="inboxForm" class="stack">
+        <div class="frow">
+          <select id="inSource" aria-label="Källa">
+            <option>Messenger</option><option>Instagram</option><option>Annat</option>
+          </select>
+          <input type="url" id="inLink" placeholder="Länk (valfri)">
+        </div>
+        <textarea id="inNote" rows="3" placeholder="Anteckning – vad var idén?" required></textarea>
+        <button class="btn primary" type="submit">Lägg i inkorgen</button>
+      </form>
+    </div>
+    <div id="inboxList" class="list"></div>
+  </section>
+
+  <!-- FILAMENT -->
+  <section id="tab-filament" class="tab" hidden>
+    <div class="panel">
+      <h2>Filamentlager</h2>
+      <div id="filList" class="list"></div>
+      <h3>Lägg till / redigera</h3>
+      <form id="filForm" class="stack">
+        <input type="hidden" id="fId">
+        <div class="frow">
+          <input id="fBrand" placeholder="Märke (t.ex. Elegoo)" required>
+          <select id="fMat" aria-label="Material">
+            <option>PLA</option><option>PLA Silk</option><option>PLA Matte</option><option>PETG</option><option>TPU</option><option>ABS</option><option>ASA</option><option>PLA-CF</option><option>PETG-CF</option><option>Annat</option>
+          </select>
+        </div>
+        <div class="frow">
+          <input id="fName" placeholder="Färgnamn / variant" required>
+          <input id="fHex" type="color" value="#222222" aria-label="Färg">
+          <input id="fQty" type="number" min="0" step="1" placeholder="Rullar" aria-label="Antal rullar">
+        </div>
+        <input id="fNote" placeholder="Anteckning (refill, RFID …)">
+        <div class="frow">
+          <button class="btn primary" type="submit">Spara</button>
+          <button class="btn" type="reset" id="fReset">Rensa</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- SKRIVARE -->
+  <section id="tab-printer" class="tab" hidden>
+    <div class="panel prose">
+      <h2>Elegoo Centauri Carbon 2 Combo</h2>
+      <dl class="specs">
+        <dt>Kinematik</dt><dd>CoreXY</dd>
+        <dt>Byggvolym</dt><dd>256 × 256 × 256 mm</dd>
+        <dt>Flerfärg</dt><dd>CANVAS-system, 4 färger</dd>
+        <dt>Material</dt><dd>PLA, PETG, TPU, ABS, ASA, kolfiberfyllt</dd>
+      </dl>
+      <div class="warn info"><strong>Max 4 färger per print.</strong> Kort som anger fler än 4 färger/filament flaggas på tavlan. Fler färger kräver manuella filamentbyten (pausa på lagerhöjd) eller omdesign.</div>
+      <div class="warn tm"><strong>TPU:</strong> flexibelt filament matas normalt via extern spole/bypass, inte genom flerfärgssystemet – kontrollera i Elegoos manual innan du kör TPU genom CANVAS.</div>
+      <div class="warn info"><strong>ABS/ASA/kolfiber:</strong> kontrollera ventilation, kammartemperatur och att munstycket tål slipande material (se Elegoos manual).</div>
+    </div>
+  </section>
+</main>
+
+<dialog id="cardDlg">
+  <form method="dialog" id="cardForm" class="stack">
+    <div class="dlg-head">
+      <h2 id="dTitleH">Redigera kort</h2>
+      <button class="btn icon" value="cancel" formnovalidate aria-label="Stäng">✕</button>
+    </div>
+    <label>Titel<input id="dTitle" required></label>
+    <div id="dLinks" class="muted"></div>
+    <div id="dLic"></div>
+    <div class="frow">
+      <label>Kolumn<select id="dCol"></select></label>
+      <label>Prioritet<select id="dPrio"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    </div>
+    <fieldset>
+      <legend>Filament ur lagret</legend>
+      <div id="dFils" class="filpick"></div>
+    </fieldset>
+    <div class="frow">
+      <label>Antal färger<input id="dColors" type="number" min="1" max="16" step="1"></label>
+      <label>Tid (h)<input id="dHours" type="number" min="0" step="0.1"></label>
+      <label>Gram<input id="dGrams" type="number" min="0" step="1"></label>
+    </div>
+    <div class="frow">
+      <label>Etsy-pris (kr)<input id="dPrice" type="number" min="0" step="1"></label>
+      <label>Kostnad (kr)<input id="dCost" type="number" min="0" step="1"></label>
+    </div>
+    <div id="dCalc" class="muted"></div>
+    <div id="dWarn"></div>
+    <label>Anteckningar<textarea id="dNotes" rows="4"></textarea></label>
+    <div class="frow">
+      <button class="btn primary" value="save" id="dSave">Spara</button>
+      <button class="btn danger" value="delete" id="dDel" formnovalidate>Ta bort kort</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
