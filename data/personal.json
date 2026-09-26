@@ -2758,6 +2758,98 @@
     "idea": "ficka",
     "fit": "PEZ i 400 % skala – visar hur huvud/fjäder byggs upp i större format."
    }
+  ],
+  "hemmet": [
+   {
+    "id": 3174235,
+    "t": "Kühlschrank Abstandshalter 75mm (3\") & 50mm (2\")",
+    "s": "refrigerator-spacer-75mm-3-50mm-2",
+    "c": "https://makerworld.bblmw.com/makerworld/model/USb0bc5cd1950b0d/design/28fbc040acbe375e.jpg",
+    "l": 0,
+    "d": 1,
+    "p": 3,
+    "col": 2,
+    "lic": "MakerWorld Exclusive License",
+    "by": "Glenn",
+    "dt": "2026-08-15",
+    "idea": "kylstopp",
+    "fit": "Färdiga avståndshållare 75 mm och 50 mm för kylskåp mot vägg – närmast den bakre varianten."
+   },
+   {
+    "id": 709941,
+    "t": "Furniture/Cabinet wall spacer 50mm",
+    "s": "furniture-cabinet-wall-spacer-50mm",
+    "c": "https://makerworld.bblmw.com/makerworld/model/US916915137541f/design/2024-10-17_a746731d4c862.jpg",
+    "l": 64,
+    "d": 171,
+    "p": 83,
+    "col": 165,
+    "lic": "Standard Digital File License",
+    "by": "monkeyfinger",
+    "dt": "2024-10-17",
+    "idea": "kylstopp",
+    "fit": "Enkel 50 mm-distans mellan möbel/skåp och vägg – skala tjockleken efter ditt uppmätta avstånd."
+   },
+   {
+    "id": 3166489,
+    "t": "LG Fridge wall distance corner replacement",
+    "s": "lg-fridge-wall-distance-corner-replacement",
+    "c": "https://makerworld.bblmw.com/makerworld/model/USbdba0d352ccbc1/design/f8cf05b1d3abff87.jpg",
+    "l": 0,
+    "d": 0,
+    "p": 0,
+    "col": 0,
+    "lic": "BY-NC-SA",
+    "by": "Django01",
+    "dt": "2026-08-13",
+    "idea": "kylstopp",
+    "fit": "Ersättningshörn för väggavstånd på LG-kylskåp – visar hur en bakre hörndistans kan se ut."
+   },
+   {
+    "id": 231814,
+    "t": "Door Stop Bumper TPU",
+    "s": "door-stop-bumper-tpu",
+    "c": "https://makerworld.bblmw.com/makerworld/model/US9904af2016e480/design/2024-03-06_cc89018594b8e.jpg",
+    "l": 467,
+    "d": 1139,
+    "p": 772,
+    "col": 1341,
+    "lic": "MakerWorld Exclusive License",
+    "by": "halil_d",
+    "dt": "2024-03-06",
+    "idea": "kylstopp",
+    "fit": "Dörrstopp/bumper i TPU – bra grund för dämpningen där dörren slår i väggen."
+   },
+   {
+    "id": 1599494,
+    "t": "Parametric TPU Door Handle Bumper - Wall protector",
+    "s": "parametric-tpu-door-handle-bumper-wall-protector",
+    "c": "https://makerworld.bblmw.com/makerworld/model/US540d8f2c9afda/design/2025-07-12_22defa27f4ab18.png",
+    "l": 143,
+    "d": 244,
+    "p": 167,
+    "col": 362,
+    "lic": "CC0",
+    "by": "Gekko",
+    "dt": "2025-07-12",
+    "idea": "kylstopp",
+    "fit": "Parametrisk väggskydds-bumper i TPU (CC0) – anpassa storleken till kylskåpsdörrens kant."
+   },
+   {
+    "id": 2155012,
+    "t": "Wall protector/patch/door bumper",
+    "s": "wall-protector-patch-door-bumper",
+    "c": "https://makerworld.bblmw.com/makerworld/model/US5177f2a04d7871/design/2025-12-24_52c739a6e6757.jpg",
+    "l": 13,
+    "d": 40,
+    "p": 34,
+    "col": 29,
+    "lic": "BY",
+    "by": "D.M.printing⚡️",
+    "dt": "2025-12-24",
+    "idea": "kylstopp",
+    "fit": "Väggskydd/lapp som sitter på väggen där dörren slår – passar 3M-tejp-varianten."
+   }
   ]
  }
 }

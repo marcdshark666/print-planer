@@ -37,24 +37,32 @@
     ['skafferi', 'Skafferiet – prydligt', 'Staplingsbara lådor och hyllor, plus dextro-dispensrar som passar i skafferiet.'],
     ['hands', 'Handskulptur – Marc & Ada', 'Skulptur av Marcs och Adas händer som håller varandra. Modellerna nedan är inspiration.'],
     ['uppfinn', 'Mina diabetesuppfinningar', 'Marcs egna idéer – brainstorm, inte färdiga modeller. MakerWorld-exemplen under varje idé är inspiration att remixa eller skala.'],
+    ['hemmet', '🏠 Hemmet – egna prints', 'Privata saker till hemmet. Egna idéer – MakerWorld-exemplen under varje idé är inspiration att remixa eller skala.'],
   ];
   // Sektioner som fanns innan seedningen blev per sektion – befintliga användare har redan fått dem.
   const PSECS_V1 = ['sensor', 'infusion', 'dextro', 'skafferi', 'hands'];
   const IDEAS = [
-    { k: 'automat', t: 'Bordsautomat för lösa Dextro-tabletter',
+    { k: 'automat', sec: 'uppfinn', t: 'Bordsautomat för lösa Dextro-tabletter',
       d: 'En liten godisautomat på bordet för överblivna lösa Dextro Energy-tabletter. Vrid eller tryck – en tablett i taget matas ut i en skål.',
       mått: 'Tabletterna är platta rektangulära rutor, ca 3 × 2 cm (mät tjockleken på dina). Magasinet ca 32 × 22 mm invändigt så de staplas plant; utmatningsfack för exakt en tablett.',
       fil: 'Stomme i PLA svart eller vit (Elegoo RFID), front/detaljer i PLA Silk silvergrå, TPU 95A svart till gummifötter och grepp på vredet.' },
-    { k: 'ficka', t: 'Fickdispenser à la PEZ för lösa Dextro-bitar',
+    { k: 'ficka', sec: 'uppfinn', t: 'Fickdispenser à la PEZ för lösa Dextro-bitar',
       d: 'Som en gammal PEZ-dispenser: ett huvud/ansikte på toppen som man trycker upp med tummen så en Dextro-bit sticker ut. Smal nog för fickan.',
       mått: 'Invändig kanal ca 31 × 21 mm för 3 × 2 cm-rutor (lite spel), rymmer 4–6 tabletter. Ytterbredd runt 25 mm och längd ca 90–110 mm.',
       fil: 'Kropp i PLA Basic svart, huvudet i PLA Silk silvergrå eller vit RFID, fjäder/matarbricka och gångjärn i TPU 95A svart.' },
+    { k: 'kylstopp', sec: 'hemmet', tag: '💡 Egen idé · Hemmet', t: 'Kylskåpsstopp / avståndshållare',
+      d: 'Ett stöd/buffert så att kylskåpet – dörren och/eller själva skåpet – inte slår i väggen. Skyddar både väggen och kylskåpet och håller luftspalten bak fri för ventilationen.',
+      var: 'Dörrstopp som fästs med dubbelhäftande tejp på väggen eller dörrkanten där dörren slår i. Bakre avståndshållare mellan skåp och vägg (håller fast avstånd för ventilation). Stötdämpare/bumper i TPU som tar smällen mjukt.',
+      mått: 'Dörrstopp/bumper: ca 30–40 mm diameter, 10–20 mm tjock. Bakre avståndshållare: 50–75 mm djup (följ kylskåpets manual för luftspalt), ca 40 × 40 mm anläggningsyta. Tejpyta minst 25 × 25 mm.',
+      fil: 'TPU 95A svart för dämpning/bumper, PLA svart eller vit (Elegoo RFID) för stela distanser, PLA Basic svart som alternativ, PLA Silk silvergrå för en snyggare synlig variant.',
+      tips: 'Mät avståndet mellan kylskåp/dörr och vägg innan du printar – och där dörren faktiskt träffar. Använd 3M-tejp (VHB/dubbelhäftande) och rengör ytan med sprit först. Printa TPU långsamt och med 100 % infill i kontaktytan för bästa dämpning.' },
   ];
   const PSEED = {
     sensor: 'Skyddskåpa för Dexcom G7 – testa passform',
     infusion: 'Organizer för infusionsset och reservoarer',
     dextro: 'Dextro-fodral för fickan/väskan',
     uppfinn: ['Idé: bordsautomat för lösa Dextro-tabletter', 'Idé: PEZ-fickdispenser för Dextro-bitar'],
+    hemmet: 'Idé: kylskåpsstopp/avståndshållare – mät avståndet till väggen',
     skafferi: 'Dextro-dispenser och staplingsbara lådor i skafferiet',
     hands: 'Handskulptur Marc & Ada – skanna händerna',
   };
@@ -563,14 +571,16 @@
         <h3>Min lista</h3>
         <ul class="prows">${rowsHtml || '<li class="empty">Tom lista.</li>'}</ul>
         <form class="frow paddform" data-sec="${k}"><input name="t" placeholder="Ny rad – vad vill du printa?" aria-label="Ny rad" required><button class="btn" type="submit">Lägg till</button></form>
-        ${k === 'uppfinn' ? IDEAS.map((i) => {
+        ${IDEAS.some((i) => i.sec === k) ? IDEAS.filter((i) => i.sec === k).map((i) => {
           const ms = models.filter((m) => m.idea === i.k);
           return `<article class="idea">
-          <span class="pill idea-tag">💡 Egen uppfinning · Idé</span>
+          <span class="pill idea-tag">${esc(i.tag || '💡 Egen uppfinning · Idé')}</span>
           <h3>${esc(i.t)}</h3>
           <p>${esc(i.d)}</p>
+          ${i.var ? `<p class="muted"><strong>Varianter:</strong> ${esc(i.var)}</p>` : ''}
           <p class="muted"><strong>Mått:</strong> ${esc(i.mått)}</p>
           <p class="muted"><strong>Filament ur lagret:</strong> ${esc(i.fil)}</p>
+          ${i.tips ? `<p class="muted"><strong>Tips:</strong> ${esc(i.tips)}</p>` : ''}
           <details ${openSecs[k + ':' + i.k] ? 'open' : ''} data-psec="${k}:${i.k}"><summary>Liknande på MakerWorld (${ms.length})</summary>
             <div class="grid pgrid">${ms.map((m) => personalCard(m, k, listed)).join('') || '<p class="empty">Inga modeller.</p>'}</div>
           </details></article>`;
