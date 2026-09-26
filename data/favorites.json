@@ -1,0 +1,135 @@
+{
+ "user": "Marcdshark",
+ "fetched": "2026-09-26",
+ "collections": {
+  "Default Collection": [
+   558792,
+   559158,
+   1603391,
+   1212447,
+   750392,
+   1229146,
+   440987,
+   999139,
+   1773701,
+   1702979
+  ],
+  "PC accessories": [
+   558792,
+   559158
+  ],
+  "HEADPHONE": [
+   1212447,
+   750392
+  ],
+  "SHOES": [],
+  "Kitchen": [],
+  "Predator": [],
+  "Samsung fold": [
+   1773701,
+   1702979
+  ]
+ },
+ "models": [
+  {
+   "id": 558792,
+   "t": "8 Bay External Hard Drive Rack for NAS",
+   "s": "8-bay-external-hard-drive-rack-for-nas",
+   "c": "https://makerworld.bblmw.com/makerworld/model/DSM00000000558792/design/2024-07-27_wlwnladmsw6h.jpg",
+   "l": 108,
+   "d": 428,
+   "by": "foxpotat0",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 559158,
+   "t": "Stackable External Hard Drive Holders",
+   "s": "stackable-external-hard-drive-holders",
+   "c": "https://makerworld.bblmw.com/makerworld/model/USa7b3b8c28330f5/design/2024-07-26_4ce24c1af5b27.jpg",
+   "l": 591,
+   "d": 1886,
+   "by": "Steadi_MacK",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 1603391,
+   "t": "External HD Rack",
+   "s": "external-hd-rack",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US206dfa5295bfd4/design/2025-07-13_50b7b6bd551df.png",
+   "l": 393,
+   "d": 969,
+   "by": "Tolugo",
+   "lic": "MakerWorld Exclusive License"
+  },
+  {
+   "id": 1212447,
+   "t": "Industrial Headphone Stand - Topology Optimized",
+   "s": "industrial-headphone-stand-topology-optimized",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US5ccf30c1f6773e/design/2025-03-15_d1741eec162de8.jpg",
+   "l": 1101,
+   "d": 2018,
+   "by": "Franken 3D",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 750392,
+   "t": "Headphone Charging Stand",
+   "s": "headphone-charging-stand",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US90fb4990b4aecc/design/2024-11-01_93f8dcc75c868.jpeg",
+   "l": 214,
+   "d": 298,
+   "by": "bradpaiva",
+   "lic": "BY-NC-SA"
+  },
+  {
+   "id": 1229146,
+   "t": "Whaleberry - a 3D printed thick-soled casual shoe",
+   "s": "whaleberry-a-3d-printed-thick-soled-casual-shoe",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US317c07af7b912a/design/2025-03-19_5570d52043f6e.png",
+   "l": 17564,
+   "d": 36303,
+   "by": "CloudBerry",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 440987,
+   "t": "(Parametric) Tea Storage Box Organizer",
+   "s": "parametric-tea-storage-box-organizer",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US6c429e75c9dc89/design/2024-04-23_1f0c9e119123a.jpg",
+   "l": 5431,
+   "d": 12585,
+   "by": "Marc Elbichon",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 999139,
+   "t": "Predator Bust",
+   "s": "predator-bust",
+   "c": "https://makerworld.bblmw.com/makerworld/model/DSM00000000999139/design/2024-12-15_04dwri36m1i1.jpg",
+   "l": 3870,
+   "d": 8009,
+   "by": "FotisMint",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 1773701,
+   "t": "Foldmate, a portable tablet stand",
+   "s": "foldmate-a-portable-tablet-stand",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US102048c0ef268a/design/2025-09-09_2ecc456b7e0fd.jpg",
+   "l": 1369,
+   "d": 1384,
+   "by": "Cholo",
+   "lic": "Standard Digital File License"
+  },
+  {
+   "id": 1702979,
+   "t": "Samsung Galaxy Z Fold 7/8 Ultra Charging Dock",
+   "s": "samsung-galaxy-z-fold-78-ultra-charging-dock",
+   "c": "https://makerworld.bblmw.com/makerworld/model/US3305c6f2e90be8/design/2025-09-12_4757d63068d2e.jpg",
+   "l": 496,
+   "d": 1222,
+   "by": "The Printing Pilot",
+   "lic": "Standard Digital File License"
+  }
+ ]
+}

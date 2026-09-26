@@ -4,6 +4,7 @@
 
   const STORE_KEY = 'print-planer:v1';
   const CATS = {
+    fav: 'Mina favoriter',
     avp: 'Alien vs Predator',
     re: 'Resident Evil',
     fold7: 'Samsung Galaxy Z Fold 7',
@@ -17,6 +18,16 @@
     ['printing', 'Printas nu'], ['done', 'Klar'], ['etsy', 'Säljs på Etsy'],
   ];
   const MAX_COLORS = 4;
+  const TAG_LEVEL = { teknik: 'info', 'affär': 'ok', koncept: 'exact', sneakers: 'mid', verktyg: 'tm' };
+  const TIPS = [
+    { k: 'dry', t: 'Torka filamentet', d: 'Stringing/trådar = fuktigt filament. Förvara och printa ur torkbox.', url: 'https://www.instagram.com/reel/DcwpenkxBej/' },
+    { k: 'cut', t: 'Dela upp stora modeller', d: 'Större än 256 mm (byggvolymen)? Använd Cut i slicern och limma/plugga ihop delarna.', url: 'https://www.instagram.com/reel/DdkE7QKvcjJ/' },
+    { k: 'supports', t: 'Placera supports medvetet', d: 'Orientera modellen så stöden hamnar där efterarbetet syns minst.', url: 'https://www.instagram.com/reel/DctXk9XACqu/' },
+    { k: 'snap', t: 'Snäppfästen', d: 'Klick-fäste mellan modell och bas ger kvalitetskänsla och enklare frakt.', url: 'https://www.instagram.com/reel/DbybKTpMKnd/' },
+    { k: 'variants', t: 'Färgvarianter som säljstrategi', d: 'Samma modell i flera färgställningar = fler annonser utan ny design.', url: 'https://www.instagram.com/reel/DcRsFM5Bc1b/' },
+    { k: 'gradient', t: 'Gradient-/silk-filament som säljpunkt', d: 'Färgskiftande filament gör en enkel modell säljbar – lyft det i bilder och titel.', url: 'https://www.instagram.com/reel/Db_EJylx1XQ/' },
+    { k: 'mold', t: 'Print som master för silikongjutning', d: 'Printa, efterbehandla ytan och gjut silikonform för serier i andra material.', url: 'https://www.instagram.com/reel/DdOIdH7Tiox/' },
+  ];
   const DEFAULT_FILAMENTS = [
     { brand: 'Elegoo', mat: 'PLA', name: 'Basic Black (refill)', hex: '#1a1a1a', qty: 1, note: 'Refill' },
     { brand: 'Elegoo', mat: 'PLA', name: 'RFID White', hex: '#f4f4f0', qty: 1, note: 'RFID' },
@@ -46,7 +57,9 @@
       board: [],
       inbox: [],
       filaments: DEFAULT_FILAMENTS.map((f) => ({ id: uid(), ...f })),
-      ui: { tab: 'browse', cat: 'avp', sort: 'd', q: '', exact: true, etsySafe: false, hideNsfw: true },
+      seeded: [],
+      tips: {},
+      ui: { tab: 'favs', cat: 'avp', favCol: 'Default Collection', sort: 'd', q: '', exact: true, etsySafe: false, hideNsfw: true },
     };
   }
   function normalize(s) {
@@ -57,6 +70,8 @@
       board: Array.isArray(s.board) ? s.board.filter((c) => c && c.id && c.title) : [],
       inbox: Array.isArray(s.inbox) ? s.inbox.filter((i) => i && i.id) : [],
       filaments: Array.isArray(s.filaments) ? s.filaments.filter((f) => f && f.id) : base.filaments,
+      seeded: Array.isArray(s.seeded) ? s.seeded.filter((u) => typeof u === 'string') : [],
+      tips: s.tips && typeof s.tips === 'object' ? s.tips : {},
       ui: { ...base.ui, ...(s.ui && typeof s.ui === 'object' ? s.ui : {}) },
     };
   }
@@ -78,7 +93,17 @@
     if (/STANDARD DIGITAL FILE|EXCLUSIVE/.test(u)) return { level: 'bad', commercial: false, text: `${l} – personligt bruk, sälj inte prints. Kan kräva kommersiell licens via MakerWorlds program – kontrollera modellsidan.` };
     return { level: 'mid', commercial: false, text: `Okänd licens (${l || 'saknas'}) – kontrollera modellsidan.` };
   }
+  // Favoriter saknar franchise-kategori – härled den från titeln så varumärkesvarningen följer med.
+  function tmCat(cat, m) {
+    if (cat !== 'fav') return cat;
+    const t = `${m.t || ''} ${(m.tags || []).join(' ')}`;
+    if (/predator|alien|xenomorph|zenomorph/i.test(t)) return 'avp';
+    if (/resident\s?evil|umbrella corp/i.test(t)) return 're';
+    if (/shoe|sneaker|slipper/i.test(t)) return 'sneakers';
+    return cat;
+  }
   function tmInfo(cat, m) {
+    cat = tmCat(cat, m);
     if (TM_CATS[cat]) return `Upphovsrätt/varumärke (${TM_CATS[cat]}): fan-art-försäljning kan leda till Etsy-borttagning.`;
     if (cat === 'sneakers' && SNEAKER_BRANDS.test(`${m.t} ${(m.tags || []).join(' ')}`)) return 'Varumärke: skomärke i titel/taggar – försäljning kan leda till Etsy-borttagning.';
     return '';
@@ -93,13 +118,45 @@
 
   /* ---------- Data ---------- */
   let DATA = null;
+  let FAV = null;
+  async function getJson(path) {
+    const r = await fetch(path, { cache: 'no-cache' });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }
+  async function loadFavorites() {
+    try {
+      const j = await getJson('data/favorites.json');
+      const models = Array.isArray(j.models) ? j.models.filter((m) => m && m.id && m.t) : [];
+      const cols = j.collections && typeof j.collections === 'object' ? j.collections : {};
+      FAV = { user: String(j.user || ''), fetched: String(j.fetched || ''), models, cols: Object.fromEntries(Object.entries(cols).map(([k, v]) => [k, Array.isArray(v) ? v : []])) };
+    } catch (e) {
+      console.warn('Kunde inte läsa favorites.json', e);
+      FAV = { user: '', fetched: '', models: [], cols: {}, error: e.message };
+    }
+  }
+  // Seeda Messenger-tipsen en gång per url – borttagna/befordrade tips kommer inte tillbaka (state.seeded).
+  async function seedInbox() {
+    try {
+      const tips = await getJson('data/messenger-tips.json');
+      if (!Array.isArray(tips)) return;
+      const known = new Set([...state.seeded, ...state.inbox.map((i) => i.link), ...state.board.map((c) => c.url)].filter(Boolean));
+      let added = 0;
+      for (const t of tips) {
+        const url = safeUrl(t && t.url);
+        if (!url || known.has(url) || known.has(t.url)) continue;
+        state.inbox.push({ id: uid(), source: String(t.source || 'Messenger'), link: url, note: String(t.note || ''), by: String(t.by || ''), tag: String(t.tag || ''), created: new Date().toISOString() });
+        state.seeded.push(url); known.add(url); added++;
+      }
+      if (added) save();
+    } catch (e) { console.warn('Kunde inte läsa messenger-tips.json', e); }
+  }
   async function loadData() {
     try {
-      const r = await fetch('data/makerworld.json', { cache: 'no-cache' });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const j = await r.json();
+      const j = await getJson('data/makerworld.json');
       DATA = {};
       for (const k of Object.keys(CATS)) DATA[k] = Array.isArray(j[k]) ? j[k] : [];
+      DATA.fav = FAV ? FAV.models : [];
     } catch (e) {
       console.warn('Kunde inte läsa makerworld.json', e);
       DATA = null;
@@ -112,7 +169,7 @@
     state.ui.tab = tab; save();
     document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
     document.querySelectorAll('.tab').forEach((s) => { s.hidden = s.id !== `tab-${tab}`; });
-    ({ browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: () => {} })[tab]?.();
+    ({ favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: renderTips })[tab]?.();
   }
 
   /* ---------- Bläddra ---------- */
@@ -128,7 +185,7 @@
     $('#exactWrap').hidden = !hasExactFilter(ui.cat);
     if (!DATA) return;
     const q = ui.q.trim().toLowerCase();
-    const onBoard = new Set(state.board.filter((c) => c.mwId).map((c) => String(c.mwId)));
+    const onBoard = boardIds();
     let list = DATA[ui.cat].filter((m) => {
       if (ui.hideNsfw && m.nsfw) return false;
       if (hasExactFilter(ui.cat) && ui.exact && !isExact(ui.cat, m)) return false;
@@ -140,35 +197,64 @@
     list.sort((a, b) => (k === 'dt' ? String(b.dt).localeCompare(String(a.dt)) : (b[k] || 0) - (a[k] || 0)));
     $('#count').textContent = `${list.length} av ${DATA[ui.cat].length} modeller i ${CATS[ui.cat]}`;
     if (!list.length) { $('#grid').innerHTML = '<p class="empty">Inga träffar med nuvarande filter.</p>'; return; }
-    $('#grid').innerHTML = list.map((m) => {
-      const li = licInfo(m.lic); const tm = tmInfo(ui.cat, m); const cover = safeUrl(m.c);
-      const exact = hasExactFilter(ui.cat) && isExact(ui.cat, m);
-      const added = onBoard.has(String(m.id));
-      return `<article class="card">
+    fillGrid($('#grid'), list, ui.cat, onBoard);
+  }
+  const boardIds = () => new Set(state.board.filter((c) => c.mwId).map((c) => String(c.mwId)));
+  function modelCard(m, cat, onBoard) {
+    const li = licInfo(m.lic); const tm = tmInfo(cat, m); const cover = safeUrl(m.c);
+    const exact = hasExactFilter(cat) && isExact(cat, m);
+    const added = onBoard.has(String(m.id));
+    const stats = [['⬇', m.d], ['♥', m.l], ['🖨', m.p], ['★', m.col]].filter(([, v]) => v != null).map(([i, v]) => `<span>${i} ${fmt(v)}</span>`).join('');
+    return `<article class="card">
         ${cover ? `<img class="cover" loading="lazy" referrerpolicy="no-referrer" src="${esc(cover)}" alt="">` : '<div class="cover"></div>'}
         <div class="body">
           <h3>${esc(m.t)}</h3>
-          <div class="muted">av ${esc(m.by)} · ${esc(m.dt)} ${exact ? '<span class="pill exact">exakt träff</span>' : ''} ${m.nsfw ? '<span class="pill">NSFW</span>' : ''}</div>
-          <div class="stats"><span>⬇ ${fmt(m.d)}</span><span>♥ ${fmt(m.l)}</span><span>🖨 ${fmt(m.p)}</span><span>★ ${fmt(m.col)}</span></div>
+          <div class="muted">av ${esc(m.by)}${m.dt ? ` · ${esc(m.dt)}` : ''} ${exact ? '<span class="pill exact">exakt träff</span>' : ''} ${m.nsfw ? '<span class="pill">NSFW</span>' : ''}</div>
+          <div class="stats">${stats}</div>
           <div class="warn ${li.level}">${esc(li.text)}</div>
           ${tm ? `<div class="warn tm">${esc(tm)}</div>` : ''}
           <div class="actions">
             <a class="btn sm" href="${esc(mwUrl(m))}" target="_blank" rel="noopener noreferrer">MakerWorld ↗</a>
-            <button type="button" class="btn sm ${added ? '' : 'primary'}" data-add="${esc(m.id)}" ${added ? 'disabled' : ''}>${added ? 'På tavlan' : '+ Till tavlan'}</button>
+            <button type="button" class="btn sm ${added ? '' : 'primary'}" data-add="${esc(m.id)}" data-src="${esc(cat)}" ${added ? 'disabled' : ''}>${added ? 'På tavlan' : '+ Lägg på tavlan'}</button>
           </div>
         </div></article>`;
-    }).join('');
-    $('#grid').querySelectorAll('img.cover').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true }));
   }
-  function addModelToBoard(id) {
-    if (!DATA) return;
-    const m = DATA[state.ui.cat].find((x) => String(x.id) === String(id));
+  function fillGrid(el, list, cat, onBoard) {
+    el.innerHTML = list.map((m) => modelCard(m, cat, onBoard)).join('');
+    el.querySelectorAll('img.cover').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true }));
+  }
+
+  /* ---------- Mina favoriter ---------- */
+  function renderFavs() {
+    const el = $('#favGrid');
+    if (!FAV || FAV.error) { el.innerHTML = `<div class="warn bad">Kunde inte läsa <code>data/favorites.json</code>${FAV ? ` (${esc(FAV.error)})` : ''}.</div>`; $('#favbar').innerHTML = ''; return; }
+    const names = Object.keys(FAV.cols);
+    if (!names.includes(state.ui.favCol)) state.ui.favCol = names[0] || '';
+    $('#favMeta').textContent = `MakerWorld-mappar för ${FAV.user}${FAV.fetched ? ` · hämtade ${FAV.fetched}` : ''}`;
+    $('#favbar').innerHTML = names.map((n) => {
+      const c = FAV.cols[n].length;
+      return `<button type="button" data-fav="${esc(n)}" aria-pressed="${state.ui.favCol === n}">${esc(n)} <span class="muted">${c || 'tom – lägg till på MakerWorld'}</span></button>`;
+    }).join('');
+    const byId = new Map(FAV.models.map((m) => [String(m.id), m]));
+    const list = (FAV.cols[state.ui.favCol] || []).map((id) => byId.get(String(id))).filter(Boolean);
+    if (!list.length) {
+      el.innerHTML = `<p class="empty">Mappen "${esc(state.ui.favCol)}" är tom – lägg till modeller i mappen på <a href="https://makerworld.com/" target="_blank" rel="noopener noreferrer">MakerWorld ↗</a> så dyker de upp här vid nästa hämtning.</p>`;
+      return;
+    }
+    fillGrid(el, list, 'fav', boardIds());
+  }
+
+  function addModelToBoard(id, src) {
+    const cat = src || state.ui.cat;
+    const pool = cat === 'fav' ? (FAV ? FAV.models : []) : (DATA ? DATA[cat] || [] : []);
+    const m = pool.find((x) => String(x.id) === String(id));
     if (!m) return;
+    if (boardIds().has(String(m.id))) { toast('Redan på tavlan'); return; }
     state.board.push({
-      id: uid(), mwId: m.id, cat: state.ui.cat, title: m.t.trim(), cover: safeUrl(m.c), url: mwUrl(m), lic: m.lic, by: m.by,
+      id: uid(), mwId: m.id, cat: tmCat(cat, m), title: m.t.trim(), cover: safeUrl(m.c), url: mwUrl(m), lic: m.lic, by: m.by,
       col: 'idea', prio: 3, notes: '', fils: [], colors: null, hours: null, grams: null, price: null, cost: null, created: new Date().toISOString(),
     });
-    save(); renderBrowse(); toast('Lagd på tavlan under Idéer');
+    save(); if (state.ui.tab === 'favs') renderFavs(); else renderBrowse(); toast('Lagd på tavlan under Idéer');
   }
 
   /* ---------- Tavla ---------- */
@@ -266,7 +352,7 @@
     el.innerHTML = [...state.inbox].reverse().map((i) => {
       const u = safeUrl(i.link);
       return `<div class="item" data-id="${esc(i.id)}"><div class="grow">
-        <span class="pill">${esc(i.source)}</span> <span class="muted">${esc((i.created || '').slice(0, 10))}</span>
+        <span class="pill">${esc(i.source)}</span>${i.tag ? ` <span class="pill tag ${esc(TAG_LEVEL[i.tag] || '')}">${esc(i.tag)}</span>` : ''}${i.by ? ` <span class="muted">${esc(i.by)}</span>` : ''} <span class="muted">${esc((i.created || '').slice(0, 10))}</span>
         <div>${esc(i.note)}</div>${u ? `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(u)}</a>` : ''}</div>
         <div class="actions"><button type="button" class="btn sm primary" data-promote>Gör till kort</button>
         <button type="button" class="btn sm danger" data-del>Ta bort</button></div></div>`;
@@ -282,6 +368,14 @@
       ${/tpu/i.test(f.mat) ? '<div class="muted">TPU – extern spole/bypass, kontrollera i Elegoos manual.</div>' : ''}</div>
       <div class="actions"><button type="button" class="btn sm" data-fedit>Redigera</button><button type="button" class="btn sm danger" data-fdel>Ta bort</button></div></div>`).join('')
       : '<p class="empty">Inget filament i lagret.</p>';
+  }
+
+  /* ---------- Tips att tillämpa ---------- */
+  function renderTips() {
+    const done = TIPS.filter((t) => state.tips[t.k]).length;
+    $('#tipsCount').textContent = `${done} av ${TIPS.length} tillämpade.`;
+    $('#tipsList').innerHTML = TIPS.map((t) => `<li><label><input type="checkbox" data-tip="${esc(t.k)}" ${state.tips[t.k] ? 'checked' : ''}>
+      <span><strong>${esc(t.t)}</strong> – ${esc(t.d)} <a href="${esc(t.url)}" target="_blank" rel="noopener noreferrer">Reel ↗</a></span></label></li>`).join('');
   }
 
   /* ---------- Export / import ---------- */
@@ -312,7 +406,9 @@
     $('#q').addEventListener('input', (e) => { clearTimeout(qt); qt = setTimeout(() => { state.ui.q = e.target.value; save(); renderBrowse(); }, 150); });
     $('#sort').addEventListener('change', (e) => { state.ui.sort = e.target.value; save(); renderBrowse(); });
     for (const k of ['exact', 'etsySafe', 'hideNsfw']) $('#' + k).addEventListener('change', (e) => { state.ui[k] = e.target.checked; save(); renderBrowse(); });
-    $('#grid').addEventListener('click', (e) => { const b = e.target.closest('button[data-add]'); if (b) addModelToBoard(b.dataset.add); });
+    for (const g of ['#grid', '#favGrid']) $(g).addEventListener('click', (e) => { const b = e.target.closest('button[data-add]'); if (b) addModelToBoard(b.dataset.add, b.dataset.src); });
+    $('#favbar').addEventListener('click', (e) => { const b = e.target.closest('button[data-fav]'); if (b) { state.ui.favCol = b.dataset.fav; save(); renderFavs(); } });
+    $('#tipsList').addEventListener('change', (e) => { const k = e.target.dataset.tip; if (!k) return; state.tips[k] = e.target.checked; save(); renderTips(); });
 
     const board = $('#board');
     board.addEventListener('click', (e) => {
@@ -359,7 +455,7 @@
       const idx = state.inbox.findIndex((x) => x.id === it.dataset.id); if (idx < 0) return;
       const i = state.inbox[idx];
       if (e.target.closest('[data-promote]')) {
-        state.board.push({ id: uid(), cat: null, title: i.note.split('\n')[0].slice(0, 80), cover: '', url: safeUrl(i.link), source: i.source, lic: null,
+        state.board.push({ id: uid(), cat: null, title: i.note.split('\n')[0].slice(0, 80), cover: '', url: safeUrl(i.link), source: [i.source, i.by].filter(Boolean).join(' · '), lic: null,
           col: 'idea', prio: 3, notes: i.note, fils: [], colors: null, hours: null, grams: null, price: null, cost: null, created: new Date().toISOString() });
         state.inbox.splice(idx, 1); save(); renderInbox(); toast('Kort skapat under Idéer');
       } else if (e.target.closest('[data-del]') && confirm('Ta bort posten?')) { state.inbox.splice(idx, 1); save(); renderInbox(); }
@@ -395,7 +491,8 @@
 
   async function init() {
     bind();
-    await loadData();
+    await loadFavorites();
+    await Promise.all([loadData(), seedInbox()]);
     setTab(state.ui.tab);
   }
   init().catch((e) => { console.error('Init misslyckades', e); toast('Något gick fel vid start'); });

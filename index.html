@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Print-planeraren</title>
 <meta name="description" content="Planera 3D-prints från MakerWorld: bläddra, kanban, filamentlager, skrivarprofil och Etsy-/licenskoll.">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <header class="top">
@@ -20,6 +20,7 @@
     </div>
   </div>
   <nav class="tabs wrap" id="tabs" role="tablist">
+    <button type="button" data-tab="favs" role="tab">Mina favoriter</button>
     <button type="button" data-tab="browse" role="tab">Bläddra</button>
     <button type="button" data-tab="board" role="tab">Tavla</button>
     <button type="button" data-tab="inbox" role="tab">Inkorg</button>
@@ -30,6 +31,15 @@
 
 <main class="wrap">
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- MINA FAVORITER -->
+  <section id="tab-favs" class="tab" hidden>
+    <div class="filters panel">
+      <div class="catbar" id="favbar"></div>
+      <p class="count" id="favMeta"></p>
+    </div>
+    <div class="grid" id="favGrid"></div>
+  </section>
 
   <!-- BLÄDDRA -->
   <section id="tab-browse" class="tab" hidden>
@@ -120,6 +130,11 @@
       <div class="warn tm"><strong>TPU:</strong> flexibelt filament matas normalt via extern spole/bypass, inte genom flerfärgssystemet – kontrollera i Elegoos manual innan du kör TPU genom CANVAS.</div>
       <div class="warn info"><strong>ABS/ASA/kolfiber:</strong> kontrollera ventilation, kammartemperatur och att munstycket tål slipande material (se Elegoos manual).</div>
     </div>
+    <div class="panel">
+      <h2>Tips att tillämpa</h2>
+      <p class="muted">Från reels i Messenger-chatten "3d print". <span id="tipsCount"></span></p>
+      <ul class="tips" id="tipsList"></ul>
+    </div>
   </section>
 </main>
 
@@ -159,6 +174,6 @@
   </form>
 </dialog>
 
-<script src="app.js"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>

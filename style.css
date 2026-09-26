@@ -115,3 +115,11 @@ dialog::backdrop { background: rgba(0,0,0,.45); }
 .toast.show { opacity: 1; }
 .empty { color: var(--ink-3); font-size: 14px; padding: 8px; }
 @media (max-width: 700px) { .top { position: static; } }
+
+.pill.tag.info { background: var(--accent-soft); color: var(--accent); }
+.pill.tag.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.tag.mid, .pill.tag.tm { background: var(--mid-soft); color: var(--mid); }
+.pill.tag.exact { background: var(--bad-soft); color: var(--bad); }
+.tips { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.tips label { flex-direction: row; align-items: flex-start; gap: 8px; color: var(--ink); font-size: 15px; }
+.tips input { margin-top: 4px; flex: 0 0 auto; }
