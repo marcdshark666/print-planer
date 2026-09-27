@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Print-planeraren</title>
 <meta name="description" content="Planera 3D-prints från MakerWorld: bläddra, kanban, filamentlager, skrivarprofil och Etsy-/licenskoll.">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <header class="top">
@@ -20,6 +20,7 @@
     </div>
   </div>
   <nav class="tabs wrap" id="tabs" role="tablist">
+    <button type="button" data-tab="setup" role="tab">Montering</button>
     <button type="button" data-tab="videos" role="tab">Videotips</button>
     <button type="button" data-tab="personal" role="tab">Personligt</button>
     <button type="button" data-tab="favs" role="tab">Mina favoriter</button>
@@ -33,6 +34,20 @@
 
 <main class="wrap">
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- MONTERING -->
+  <section id="tab-setup" class="tab" hidden>
+    <div class="panel">
+      <h2>Montera Centauri Carbon 2 Combo</h2>
+      <p class="muted">Från kartong till första print. Bocka av stegen – sparas lokalt i webbläsaren. <span id="setupMeta"></span></p>
+      <ol class="tips vcheck" id="setupSteps"></ol>
+    </div>
+    <div class="panel">
+      <h2>Videoguider</h2>
+      <p class="muted">Bara YouTube. Officiella Elegoo-videor först, sedan community.</p>
+    </div>
+    <div class="grid vgrid" id="setupVideos"></div>
+  </section>
 
   <!-- VIDEOTIPS -->
   <section id="tab-videos" class="tab" hidden>
@@ -212,6 +227,6 @@
   </form>
 </dialog>
 
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>

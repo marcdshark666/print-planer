@@ -105,6 +105,7 @@
       filaments: DEFAULT_FILAMENTS.map((f) => ({ id: uid(), ...f })),
       seeded: [],
       tips: {},
+      setup: {},
       videos: {},
       customVideos: [],
       personal: { rows: [], seeded: false, seededSecs: [], steps: {}, notes: '' },
@@ -121,6 +122,7 @@
       filaments: Array.isArray(s.filaments) ? s.filaments.filter((f) => f && f.id) : base.filaments,
       seeded: Array.isArray(s.seeded) ? s.seeded.filter((u) => typeof u === 'string') : [],
       tips: s.tips && typeof s.tips === 'object' ? s.tips : {},
+      setup: s.setup && typeof s.setup === 'object' ? s.setup : {},
       videos: s.videos && typeof s.videos === 'object' ? s.videos : {},
       customVideos: Array.isArray(s.customVideos) ? s.customVideos.filter((v) => v && v.id && safeUrl(v.url)) : [],
       personal: normPersonal(s.personal),
@@ -233,7 +235,7 @@
     state.ui.tab = tab; save();
     document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
     document.querySelectorAll('.tab').forEach((s) => { s.hidden = s.id !== `tab-${tab}`; });
-    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: renderTips })[tab]?.();
+    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: renderTips, setup: renderSetup })[tab]?.();
   }
 
   /* ---------- Bläddra ---------- */
@@ -442,6 +444,49 @@
       <span><strong>${esc(t.t)}</strong> – ${esc(t.d)} <a href="${esc(t.url)}" target="_blank" rel="noopener noreferrer">Reel ↗</a></span></label></li>`).join('');
   }
 
+  /* ---------- Montering ---------- */
+  let SETUP = null;
+  async function loadSetup() {
+    try {
+      const j = await getJson('data/montering.json');
+      SETUP = {
+        videos: Array.isArray(j.videos) ? j.videos.filter((v) => v && v.id && safeUrl(v.url)) : [],
+        steps: Array.isArray(j.steps) ? j.steps.filter((s) => s && s.k && s.t) : [],
+      };
+    } catch (e) { console.warn('Kunde inte läsa montering.json', e); SETUP = { videos: [], steps: [], error: e.message }; }
+  }
+  function renderSetup() {
+    if (!SETUP || SETUP.error) {
+      $('#setupSteps').innerHTML = `<li class="warn bad">Kunde inte läsa <code>data/montering.json</code> (${esc(SETUP ? SETUP.error : 'ej laddad')}).</li>`;
+      $('#setupVideos').innerHTML = '';
+      return;
+    }
+    const byId = Object.fromEntries(SETUP.videos.map((v) => [v.id, v]));
+    const done = SETUP.steps.filter((s) => state.setup[s.k]).length;
+    $('#setupMeta').textContent = `${done} av ${SETUP.steps.length} klara.`;
+    $('#setupSteps').innerHTML = SETUP.steps.map((s) => {
+      const v = byId[s.video];
+      const link = v ? ` <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener noreferrer">${esc(v.channel)} ↗</a>` : '';
+      return `<li class="${state.setup[s.k] ? 'is-done' : ''}"><label><input type="checkbox" data-setup="${esc(s.k)}" ${state.setup[s.k] ? 'checked' : ''}>
+        <span><strong>${esc(s.t)}</strong> – ${esc(s.d)}${link}</span></label></li>`;
+    }).join('');
+    const vids = [...SETUP.videos].sort((a, b) => !!b.recommended - !!a.recommended || (a.type === 'officiell' ? 0 : 1) - (b.type === 'officiell' ? 0 : 1));
+    $('#setupVideos').innerHTML = vids.map((v) => {
+      const u = safeUrl(v.url);
+      return `<article class="card vcard">
+        <a class="vthumb" href="${esc(u)}" target="_blank" rel="noopener noreferrer" title="Öppna på YouTube"><img loading="lazy" src="https://i.ytimg.com/vi/${encodeURIComponent(v.id)}/hqdefault.jpg" alt="Stillbild från ${esc(v.title)}"><span class="play">YouTube ↗</span></a>
+        <div class="body">
+          <h3>${esc(v.title)}</h3>
+          <div class="muted">${esc(v.channel)} · ${esc(v.length || '')} · ${esc(v.lang || '')}
+            ${v.recommended ? '<span class="pill tag ok">Rekommenderad</span>' : ''}
+            <span class="pill tag ${v.type === 'officiell' ? 'info' : ''}">${esc(v.type)}</span>
+            <span class="pill ${v.model === 'CC2' ? '' : 'ad'}">${esc(v.model)}</span></div>
+          <p>${esc(v.about || '')}</p>
+        </div></article>`;
+    }).join('');
+    $('#setupVideos').querySelectorAll('.vthumb img').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }, { once: true }));
+  }
+
   /* ---------- Videotips ---------- */
   let VIDEOS = null;
   async function loadVideos() {
@@ -622,6 +667,7 @@
     for (const k of ['exact', 'etsySafe', 'hideNsfw']) $('#' + k).addEventListener('change', (e) => { state.ui[k] = e.target.checked; save(); renderBrowse(); });
     for (const g of ['#grid', '#favGrid']) $(g).addEventListener('click', (e) => { const b = e.target.closest('button[data-add]'); if (b) addModelToBoard(b.dataset.add, b.dataset.src); });
     $('#favbar').addEventListener('click', (e) => { const b = e.target.closest('button[data-fav]'); if (b) { state.ui.favCol = b.dataset.fav; save(); renderFavs(); } });
+    $('#setupSteps').addEventListener('change', (e) => { const k = e.target.dataset.setup; if (!k) return; state.setup[k] = e.target.checked; save(); renderSetup(); });
     $('#tipsList').addEventListener('change', (e) => { const k = e.target.dataset.tip; if (!k) return; state.tips[k] = e.target.checked; save(); renderTips(); });
 
     const board = $('#board');
@@ -780,7 +826,7 @@
   async function init() {
     bind();
     await loadFavorites();
-    await Promise.all([loadData(), seedInbox(), loadVideos(), loadPersonal()]);
+    await Promise.all([loadData(), seedInbox(), loadVideos(), loadPersonal(), loadSetup()]);
     seedPersonal();
     setTab(state.ui.tab);
   }

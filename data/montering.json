@@ -1,0 +1,27 @@
+{
+  "printer": "Elegoo Centauri Carbon 2 Combo (med CANVAS 4-färgsenhet)",
+  "verified": "2026-09-27",
+  "note": "Bara YouTube-videor. Alla länkar kontrollerade (YouTube oEmbed: titel, kanal, längd). Tidsstämplar är inte verifierade – videorna saknar kapitel.",
+  "videos": [
+    { "id": "laneijUBKKA", "url": "https://www.youtube.com/watch?v=laneijUBKKA", "title": "Unboxing Elegoo Centauri Carbon 2 Combo! | Unboxing & Set Up", "channel": "Elegoo Official", "type": "officiell", "lang": "engelska", "length": "3:41", "model": "CC2", "recommended": true, "about": "Elegoos egen genomgång från kartong till färdig uppsättning av CC2 Combo inkl. CANVAS. Länkas som uppackningsvideo i Elegoos wiki." },
+    { "id": "yrReGpIjol0", "url": "https://www.youtube.com/watch?v=yrReGpIjol0", "title": "How to do Multicolor Printing on Centauri Carbon 2 Combo | Step-by-Step Tutorial", "channel": "Elegoo Official", "type": "officiell", "lang": "engelska", "length": "1:59", "model": "CC2", "about": "Ladda filament i CANVAS och starta en flerfärgsprint (app eller USB)." },
+    { "id": "A4TZz4BJaEY", "url": "https://www.youtube.com/watch?v=A4TZz4BJaEY", "title": "Scan Load Print | Multicolor Printing Centauri Carbon 2 Combo", "channel": "Elegoo Official", "type": "officiell", "lang": "engelska", "length": "0:17", "model": "CC2", "about": "Kort klipp: skanna, ladda, printa." },
+    { "id": "gcWlWSTWAlA", "url": "https://www.youtube.com/watch?v=gcWlWSTWAlA", "title": "ELEGOO Centauri Carbon 2 Combo: Unboxing, Setup & First Impressions", "channel": "Main Cave", "type": "community", "lang": "engelska", "length": "9:34", "model": "CC2", "about": "Längre och lugnare uppackning och uppsättning av Combo-versionen." },
+    { "id": "OTde7GRZXrg", "url": "https://www.youtube.com/watch?v=OTde7GRZXrg", "title": "ELEGOO CC2 Unboxing Setup & First Print", "channel": "I Love 3D Printing", "type": "community", "lang": "engelska", "length": "14:26", "model": "CC2", "about": "Uppackning, uppsättning och första print." },
+    { "id": "4xFDoDjpbK0", "url": "https://www.youtube.com/watch?v=4xFDoDjpbK0", "title": "Setting up the Elegoo Centauri Carbon 2 + First Prints", "channel": "The Mountain Maker", "type": "community", "lang": "engelska", "length": "15:12", "model": "CC2", "about": "Uppsättning och första prints." },
+    { "id": "FWwrznYaQcE", "url": "https://www.youtube.com/watch?v=FWwrznYaQcE", "title": "Elegoo Centauri Carbon 2 - Honest Review and Impressions", "channel": "Luke Unger", "type": "community", "lang": "engelska", "length": "30:34", "model": "CC2", "about": "Uppackning och första uppsättning med CANVAS, plus recension." },
+    { "id": "GZwzJcyGgSc", "url": "https://www.youtube.com/watch?v=GZwzJcyGgSc", "title": "Unboxing & Installing Canvas On My Elegoo Centauri Carbon!", "channel": "Razze Tech", "type": "community", "lang": "engelska", "length": "17:26", "model": "CC1", "about": "Gäller första Centauri Carbon (CC1) med CANVAS som tillägg – bara relevant som bakgrund." }
+  ],
+  "steps": [
+    { "k": "unbox", "t": "Packa upp", "d": "Lyft ut skumblocken, pekskärmen och verktygslådan ovanpå skrivaren. Spara kartongen och skummet ifall du behöver skicka den.", "video": "laneijUBKKA" },
+    { "k": "inside", "t": "Töm kammaren", "d": "Öppna glasdörren och ta ut värmeskyddet, skum, munstyckstorkaren och CANVAS-modulen som ligger inne i skrivaren.", "video": "laneijUBKKA" },
+    { "k": "transport", "t": "Ta bort transportspärrar", "d": "Lossa buntband/skruvar/tejp som låser skrivhuvudet och bädden under frakt. Kolla att huvudet och bädden går att röra fritt för hand.", "video": "gcWlWSTWAlA" },
+    { "k": "screen", "t": "Montera skärm och smådelar", "d": "Sätt fast pekskärmen och munstyckstorkaren/avfallsrännan enligt snabbguiden i lådan.", "video": "laneijUBKKA" },
+    { "k": "canvas", "t": "Montera CANVAS (4-färgsenheten)", "d": "Placera CANVAS, koppla in kabel och PTFE-slangar till skrivhuvudet. Lägg i upp till fyra rullar.", "video": "laneijUBKKA" },
+    { "k": "power", "t": "Ström och första start", "d": "Kontrollera spänningsomkopplaren (230 V), koppla in strömmen och slå på. Följ guiden på skärmen (språk, tidszon).", "video": "gcWlWSTWAlA" },
+    { "k": "wifi", "t": "Wifi och app", "d": "Anslut till wifi på skärmen och koppla skrivaren i Elegoo-appen och Elegoo Slicer.", "video": "OTde7GRZXrg" },
+    { "k": "calib", "t": "Auto-kalibrering", "d": "Kör självtestet/auto-kalibreringen (nivellering, vibrationskompensation) med tom bädd. Rör inte skrivaren under tiden.", "video": "gcWlWSTWAlA" },
+    { "k": "load", "t": "Ladda filament", "d": "Mata in filamentet i CANVAS-facken och låt skrivaren dra fram det. TPU matas via extern spole, inte CANVAS.", "video": "yrReGpIjol0" },
+    { "k": "first", "t": "Första testprint", "d": "Printa en testmodell från skärmen, sedan en flerfärgsprint via appen eller USB.", "video": "yrReGpIjol0" }
+  ]
+}
