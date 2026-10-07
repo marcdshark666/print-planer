@@ -235,7 +235,7 @@
     state.ui.tab = tab; save();
     document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
     document.querySelectorAll('.tab').forEach((s) => { s.hidden = s.id !== `tab-${tab}`; });
-    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: () => { renderTips(); startPrinterLive(); }, setup: renderSetup })[tab]?.();
+    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: () => { renderTips(); renderPrinterLog(); startPrinterLive(); }, setup: renderSetup })[tab]?.();
   }
 
   /* ---------- Bläddra ---------- */
@@ -487,6 +487,33 @@
     if (!was) { prnTimer = true; refreshPrinter(); }
   }
 
+  /* ---------- Skrivare: tidslinje + att göra (data/printer-tidslinje.json, avbockning i localStorage) ---------- */
+  const PRN_TODO_KEY = 'print-planer:printer-todo:v1';
+  let PRN_LOG = null;
+  function prnTodoLoad() { try { return JSON.parse(localStorage.getItem(PRN_TODO_KEY)) || {}; } catch { return {}; } }
+  function prnTodoSave(m) { try { localStorage.setItem(PRN_TODO_KEY, JSON.stringify(m)); } catch (e) { console.warn('Kunde inte spara avbockning', e); } }
+  async function renderPrinterLog() {
+    try {
+      if (!PRN_LOG) PRN_LOG = await getJson('data/printer-tidslinje.json');
+    } catch (e) {
+      $('#prnTimelineList').innerHTML = '<li class="muted">Kunde inte läsa tidslinjen.</li>';
+      return;
+    }
+    const tl = [...(PRN_LOG.tidslinje || [])].sort((x, y) => String(y.datum).localeCompare(String(x.datum)));
+    $('#prnTimelineList').innerHTML = tl.map((e) => `<li><strong>${esc(e.datum)}</strong> – ${esc(e.titel)}${e.text ? `<div class="muted">${esc(e.text)}</div>` : ''}</li>`).join('');
+    const todo = PRN_LOG.attgora || [], done = prnTodoLoad();
+    $('#prnTodoCount').textContent = `${todo.filter((t) => done[t.id]).length} av ${todo.length} klara.`;
+    $('#prnTodoList').innerHTML = todo.map((t) => `<li><label><input type="checkbox" data-ptodo="${esc(t.id)}" ${done[t.id] ? 'checked' : ''}> <span>${esc(t.text)}</span></label></li>`).join('');
+  }
+  document.addEventListener('change', (ev) => {
+    const id = ev.target?.dataset?.ptodo;
+    if (!id) return;
+    const m = prnTodoLoad();
+    if (ev.target.checked) m[id] = true; else delete m[id];
+    prnTodoSave(m);
+    const todo = PRN_LOG?.attgora || [];
+    $('#prnTodoCount').textContent = `${todo.filter((t) => m[t.id]).length} av ${todo.length} klara.`;
+  });
   /* ---------- Tips att tillämpa ---------- */
   function renderTips() {
     const done = TIPS.filter((t) => state.tips[t.k]).length;

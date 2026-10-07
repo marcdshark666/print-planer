@@ -1,0 +1,23 @@
+{
+  "tidslinje": [
+    { "datum": "2026-10-07", "titel": "Matrix-bindning misslyckades (region/PIN-fel)" },
+    { "datum": "2026-10-07", "titel": "Hotspot, LAN-toggle och manuellt tillägg i slicer misslyckades" },
+    { "datum": "2026-10-07", "titel": "LAN Only aktiverades på skrivaren" },
+    { "datum": "2026-10-07", "titel": "Skrivaren hittad på LAN 192.168.1.74", "text": "Discovery via UDP 52700. CC2 använder MQTT, inte SDCP." },
+    { "datum": "2026-10-07", "titel": "MQTT-inloggning lyckades, livestatus bekräftad" },
+    { "datum": "2026-10-07", "titel": "Kamera (MJPEG) nåbar lokalt" },
+    { "datum": "2026-10-07", "titel": "ElegooSlicer v1.5.3.5 (senaste) installerad portabelt", "text": "Startar utan fel." },
+    { "datum": "2026-10-07", "titel": "Lokal skrivar-dashboard byggd", "text": "Status, kamera, snapshots varje timme och timelapse." },
+    { "datum": "2026-10-07", "titel": "Rapport mejlad (CK-20261007-cc2lan)" },
+    { "datum": "2026-09-27", "titel": "Monteringsguide med verifierade videor lades in i print-planer", "text": "26–27 september 2026." }
+  ],
+  "attgora": [
+    { "id": "slicer-add", "text": "Lägg skrivaren i ElegooSlicer (Device > Add Printer > Add Manually, IP 192.168.1.74 + access code). Marc skriver in koden själv eller Hund 9 gör det." },
+    { "id": "filament", "text": "Sätt in filament (PLA svart/vit) – Marc, fysiskt." },
+    { "id": "kalibrering", "text": "Kalibrering och första provutskrift (kräver Marcs ja)." },
+    { "id": "detektering", "text": "Testa pågående-utskrift-detektering och timelapse under första riktiga jobbet." },
+    { "id": "tailscale", "text": "Besluta om Tailscale-åtkomst till dashboarden via Husvakt-inloggning." },
+    { "id": "autostart", "text": "Autostart av dashboard-servern vid Windows-start (fråga Marc)." },
+    { "id": "forsta-utskrift", "text": "Första utskrift startas bara efter Marcs uttryckliga ja." }
+  ]
+}
