@@ -4,15 +4,15 @@
 Lyssnar bara pa 127.0.0.1 (standardport 5196). Hamtar config fran server/.printer.json
 (utanfor git). Exponerar /api/status, /api/snapshot, /api/snapshots, /api/timelapses
 och serverar print-planer-sajten sa dashboarden ar same-origin (ingen CORS, ingen
-auth-losning - bara loopback).
+inloggning: samma som Husvakten/Spelkontroll). Lyssnar bara pa loopback; utat\nnas den via tailscale serve --set-path /skrivare (tailnet, aldrig Funnel).
 
 Anvandning:  python server/printer_server.py [--port 5196]
 """
-import argparse, glob, http.client, json, mimetypes, os, re, shutil, subprocess, sys
-import threading, time, urllib.request
+import argparse, glob, hashlib, hmac, html, http.client, json, mimetypes, os, re, shutil, subprocess, sys
+import secrets, threading, time, urllib.request
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlparse, unquote
+from urllib.parse import urlparse, unquote, parse_qs
 
 import paho.mqtt.client as mqtt
 
@@ -320,6 +320,131 @@ def watcher():
             log('watcher fel:', type(e).__name__, e)
 
 
+# ---------------- inloggning (kopia av spelkontroll/server.py - samma hashfil som Husvakten) ----------------
+PREFIX = '/skrivare'                               # sokvagen utat bakom tailscale serve
+INLOGG = os.path.join(os.path.dirname(ROOT), 'manadsavrakning', 'data', 'inloggning.json')
+SESSIONER = os.path.join(DATA, 'sessioner.json')
+COOKIE = 'skrivare_session'
+SESSION_SEK = 30 * 24 * 3600
+SPARR_FONSTER, SPARR_MAX = 15 * 60, 5
+PROXYHUVUDEN = ('X-Forwarded-For', 'X-Forwarded-Host', 'X-Forwarded-Proto', 'X-Real-IP',
+                'Forwarded', 'Tailscale-User-Login')
+TS_HOST = '.tailf9ee87.ts.net'
+AUTH_LOCK = threading.Lock()
+_fel = {}
+
+
+def las_inlogg():
+    try:
+        with open(INLOGG, encoding='utf-8') as fh:
+            d = json.load(fh)
+        return d if d.get('losen_hash') and d.get('epost_hash') else None
+    except (OSError, ValueError, AttributeError):
+        return None
+
+
+def _pbkdf2(varde, salt_hex, it):
+    return hashlib.pbkdf2_hmac('sha256', varde.encode('utf-8'), bytes.fromhex(salt_hex), it)
+
+
+def kontrollera(epost, losen):
+    d = las_inlogg()
+    if not d:
+        return False                                # ingen inloggningsfil = ingen kommer in utifran
+    it = int(d.get('iterationer') or 310_000)
+    ok_e = hmac.compare_digest(_pbkdf2(epost.strip().lower(), d['epost_salt'], it), bytes.fromhex(d['epost_hash']))
+    ok_l = hmac.compare_digest(_pbkdf2(losen, d['losen_salt'], it), bytes.fromhex(d['losen_hash']))
+    return ok_e and ok_l
+
+
+def _th(token):
+    return hashlib.sha256(token.encode('utf-8')).hexdigest()
+
+
+def _las_sessioner():
+    try:
+        with open(SESSIONER, encoding='utf-8') as fh:
+            d = json.load(fh)
+        return d if isinstance(d, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def _skriv_sessioner(d):
+    nu = time.time()
+    d = {k: v for k, v in d.items() if isinstance(v, (int, float)) and v > nu}
+    tmp = SESSIONER + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as fh:
+        json.dump(d, fh)
+    os.replace(tmp, SESSIONER)
+
+
+def ny_session():
+    token = secrets.token_urlsafe(32)
+    with AUTH_LOCK:
+        d = _las_sessioner()
+        d[_th(token)] = time.time() + SESSION_SEK
+        _skriv_sessioner(d)
+    return token
+
+
+def giltig_session(token):
+    if not token or len(token) > 200:
+        return False
+    with AUTH_LOCK:
+        utgar = _las_sessioner().get(_th(token))
+    return isinstance(utgar, (int, float)) and utgar > time.time()
+
+
+def ta_bort_session(token):
+    if not token:
+        return
+    with AUTH_LOCK:
+        d = _las_sessioner()
+        if d.pop(_th(token), None) is not None:
+            _skriv_sessioner(d)
+
+
+def sparrad(ip):
+    nu = time.time()
+    with AUTH_LOCK:
+        lista = [t for t in _fel.get(ip, []) if nu - t < SPARR_FONSTER]
+        _fel[ip] = lista
+        return len(lista) >= SPARR_MAX
+
+
+def notera_fel(ip):
+    with AUTH_LOCK:
+        _fel.setdefault(ip, []).append(time.time())
+
+
+INLOGG_SIDA = """<!DOCTYPE html>
+<html lang="sv"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logga in - Skrivaren</title>
+<style nonce="{NONCE}">
+:root{--bg:#0b0f17;--panel:#121826;--line:#2a3550;--text:#e6edf7;--muted:#8b9ab5;--acc:#4fd1ff;--red:#ff6b6b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.kort{width:100%;max-width:380px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px 24px}
+h1{font-size:20px;margin:0 0 4px}p{color:var(--muted);margin:0 0 18px;font-size:14px}
+label{display:block;font-size:13px;color:var(--muted);margin:12px 0 6px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#0c1220;color:var(--text);font-size:16px}
+input:focus{outline:none;border-color:var(--acc)}
+button{margin-top:20px;width:100%;padding:12px;border:0;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;background:var(--acc);color:#03121a}
+.fel{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.4);color:var(--red);padding:10px 12px;border-radius:10px;font-size:14px;margin-bottom:6px}
+</style></head><body>
+<form class="kort" method="post" action="{PREFIX}/logga-in">
+<h1>Skrivaren</h1>
+<p>Logga in med samma uppgifter som Husvakten.</p>
+{FEL}
+<label for="e">E-post</label>
+<input id="e" name="epost" type="email" autocomplete="username" required autofocus>
+<label for="l">Losenord</label>
+<input id="l" name="losen" type="password" autocomplete="current-password" required>
+<button type="submit">Logga in</button>
+</form></body></html>"""
+
 # ---------------- HTTP ----------------
 PUBLIC_FILES = re.compile(r'^/(index\.html|app\.js|style\.css|data/[A-Za-z0-9_.-]+\.json|images/.+)?$')
 
@@ -351,11 +476,118 @@ class H(BaseHTTPRequestHandler):
         with open(path, 'rb') as f:
             self.send(200, f.read(), ctype)
 
+    # ---- inloggning/vakt (samma monster som spelkontroll) ----
+    def _proxad(self):
+        return any(self.headers.get(h) for h in PROXYHUVUDEN)
+
+    def _ar_lokal(self):
+        return self.client_address[0] in ('127.0.0.1', '::1') and not self._proxad()
+
+    def _klient_ip(self):
+        xff = (self.headers.get('X-Forwarded-For') or '').split(',')[0].strip()
+        return xff[:64] or self.client_address[0]
+
+    def _https(self):
+        if (self.headers.get('X-Forwarded-Proto') or '').lower() == 'https':
+            return True
+        return (self.headers.get('Host') or '').split(':')[0].lower().endswith('.ts.net')
+
+    def _cookie(self):
+        for bit in (self.headers.get('Cookie') or '').split(';'):
+            k, _, v = bit.strip().partition('=')
+            if k == COOKIE:
+                return v
+        return None
+
+    def _cookie_rad(self, varde, max_age, prefix):
+        sek = '; Secure' if self._https() else ''
+        return f"{COOKIE}={varde}; Path={prefix or '/'}; Max-Age={max_age}; HttpOnly; SameSite=Strict{sek}"
+
+    def _vag(self):
+        """(intern vag utan /skrivare, prefix utat). tailscale serve skalar av prefixet, men var tolerant."""
+        p = unquote(urlparse(self.path).path) or '/'
+        if p == PREFIX or p.startswith(PREFIX + '/'):
+            return (p[len(PREFIX):] or '/'), PREFIX
+        return p, (PREFIX if self._proxad() else '')
+
+    def _host_ok(self):
+        host = (self.headers.get('Host') or '').split(':')[0].lower()
+        return host in ('127.0.0.1', 'localhost') or host.endswith(TS_HOST)   # skydd mot DNS-rebinding
+
+    def _sec(self):
+        return {'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'Referrer-Policy': 'no-referrer'}
+
+    def _redirect(self, dit, extra=None):
+        self.send(303, b'', 'text/plain', dict(self._sec(), Location=dit, **(extra or {})))
+
+    def _visa_inlogg(self, prefix, fel='', kod=200):
+        nonce = secrets.token_urlsafe(16)
+        felhtml = f'<div class="fel">{html.escape(fel)}</div>' if fel else ''
+        sida = INLOGG_SIDA.replace('{FEL}', felhtml).replace('{PREFIX}', prefix).replace('{NONCE}', nonce)
+        self.send(kod, sida, 'text/html; charset=utf-8', dict(self._sec(), **{
+            'Content-Security-Policy': f"default-src 'none'; style-src 'nonce-{nonce}'; form-action 'self'; base-uri 'none'"}))
+
+    def _post_inlogg(self, prefix):
+        ip = self._klient_ip()
+        try:
+            n = min(int(self.headers.get('Content-Length') or 0), 10_000)
+            f = parse_qs(self.rfile.read(n).decode('utf-8', 'replace'))
+        except (ValueError, OSError):
+            f = {}
+        if sparrad(ip):
+            log('inloggning SPARRAD', ip)
+            return self._visa_inlogg(prefix, 'For manga felaktiga forsok. Vanta 15 minuter.', 429)
+        epost = (f.get('epost') or [''])[0][:200]
+        losen = (f.get('losen') or [''])[0][:500]
+        if not kontrollera(epost, losen):
+            notera_fel(ip)
+            log('inloggning NEKAD', ip)
+            return self._visa_inlogg(prefix, 'Fel e-post eller losenord.', 401)
+        with AUTH_LOCK:
+            _fel.pop(ip, None)
+        token = ny_session()
+        log('inloggning OK', ip)
+        self._redirect(prefix + '/', {'Set-Cookie': self._cookie_rad(token, SESSION_SEK, prefix)})
+
+    def _vakt(self, vag, prefix):
+        """True = forfragan far fortsatta. Annars ar svaret redan skickat."""
+        if not self._host_ok():
+            self.send(403, {'error': 'host'})
+            return False
+        if vag == '/api/halsa':
+            self.send(200, {'ok': True})
+            return False
+        if vag == '/logga-in':
+            if self.command == 'POST':
+                self._post_inlogg(prefix)
+            else:
+                self._visa_inlogg(prefix)
+            return False
+        if vag == '/logga-ut':
+            ta_bort_session(self._cookie())
+            self._redirect(prefix + '/logga-in', {'Set-Cookie': self._cookie_rad('', 0, prefix)})
+            return False
+        if self._ar_lokal() or giltig_session(self._cookie()):
+            return True
+        if vag.startswith('/api/') or vag.startswith(('/snap/', '/timelapse/')):
+            self.send(401, {'error': 'inloggning kravs'})
+        else:
+            self._redirect(prefix + '/logga-in')
+        return False
+
+    def do_POST(self):
+        vag, prefix = self._vag()
+        if not self._vakt(vag, prefix):
+            return
+        self.send(404, {'error': 'saknas'})
+
     def do_GET(self):
-        host = (self.headers.get('Host') or '').split(':')[0]
-        if host not in ('127.0.0.1', 'localhost'):          # skydd mot DNS-rebinding
-            return self.send(403, {'error': 'host'})
-        p = unquote(urlparse(self.path).path)
+        vag, prefix = self._vag()
+        if not self._vakt(vag, prefix):
+            return
+        if unquote(urlparse(self.path).path) == PREFIX:      # relativa lankar kraver avslutande /
+            return self._redirect(PREFIX + '/')
+        p = vag
         if p == '/api/status':
             return self.send(200, summary())
         if p == '/api/snapshot':
