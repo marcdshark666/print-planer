@@ -171,6 +171,20 @@
 
   <!-- SKRIVARE -->
   <section id="tab-printer" class="tab" hidden>
+    <div class="panel" id="prnLive">
+      <h2>Live – Centauri Carbon 2</h2>
+      <p id="prnState" class="muted">Hämtar status …</p>
+      <div class="prn-bar"><div id="prnBar"></div></div>
+      <div class="prn-main">
+        <img id="prnCam" class="prn-cam" alt="Live-kamera från skrivaren">
+        <div class="prn-stats" id="prnStats"></div>
+      </div>
+      <h3>Senaste snapshots</h3>
+      <div class="prn-snaps" id="prnSnaps"></div>
+      <h3>Timelapse</h3>
+      <ul class="tips" id="prnTl"></ul>
+      <p class="muted">Endast lokalt (127.0.0.1) – bilder från hemmet lagras i <code>data/printer/</code> och pushas aldrig.</p>
+    </div>
     <div class="panel prose">
       <h2>Elegoo Centauri Carbon 2 Combo</h2>
       <dl class="specs">

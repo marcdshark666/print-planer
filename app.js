@@ -235,7 +235,7 @@
     state.ui.tab = tab; save();
     document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
     document.querySelectorAll('.tab').forEach((s) => { s.hidden = s.id !== `tab-${tab}`; });
-    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: renderTips, setup: renderSetup })[tab]?.();
+    ({ videos: renderVideos, personal: renderPersonal, favs: renderFavs, browse: renderBrowse, board: renderBoard, inbox: renderInbox, filament: renderFilaments, printer: () => { renderTips(); startPrinterLive(); }, setup: renderSetup })[tab]?.();
   }
 
   /* ---------- Bläddra ---------- */
@@ -434,6 +434,57 @@
       ${/tpu/i.test(f.mat) ? '<div class="muted">TPU – extern spole/bypass, kontrollera i Elegoos manual.</div>' : ''}</div>
       <div class="actions"><button type="button" class="btn sm" data-fedit>Redigera</button><button type="button" class="btn sm danger" data-fdel>Ta bort</button></div></div>`).join('')
       : '<p class="empty">Inget filament i lagret.</p>';
+  }
+
+  /* ---------- Skrivare live (lokal server, endast läsning) ---------- */
+  // Servern (print-planer/server/printer_server.py) kör på 127.0.0.1:5196 och serverar även sajten,
+  // så live-vyn fungerar bara när sidan öppnas därifrån. Den publika sajten visar bara en hint.
+  const PRN_LOCAL = ['127.0.0.1', 'localhost'].includes(location.hostname);
+  let prnTimer = null;
+  const fmtDur = (s) => (s == null ? '–' : `${Math.floor(s / 3600)} h ${String(Math.floor((s % 3600) / 60)).padStart(2, '0')} min`);
+  const fmtTemp = (v, t) => (v == null ? '–' : `${Math.round(v)}°C${t ? ` → ${Math.round(t)}°C` : ''}`);
+
+  async function refreshPrinter() {
+    if (state.ui.tab !== 'printer') { prnTimer = null; return; }
+    const box = $('#prnLive');
+    if (!PRN_LOCAL) {
+      box.innerHTML = '<p class="muted">Live-vyn är bara lokal (kamerabilder från hemmet publiceras aldrig). Starta <code>server/start-printer-server.ps1</code> och öppna <a href="http://127.0.0.1:5196/">http://127.0.0.1:5196/</a>.</p>';
+      return;
+    }
+    try {
+      const s = await getJson('/api/status');
+      const pct = s.progress == null ? 0 : Math.round(s.progress);
+      $('#prnState').innerHTML = `<span class="pill ${s.online ? 'ok' : 'ad'}">${s.online ? 'Online' : 'Offline'}</span> ` +
+        (s.printing ? `<strong>Skriver ut:</strong> ${esc(s.filename)}` : (s.online ? 'Ledig' : 'Ingen kontakt med skrivaren'));
+      $('#prnStats').innerHTML = [
+        ['Framsteg', s.printing ? `${pct} %` : '–'], ['Återstår', s.printing ? fmtDur(s.remaining_sec) : '–'],
+        ['Lager', s.total_layers ? `${s.layer ?? 0} / ${s.total_layers}` : (s.printing ? esc(s.layer ?? '–') : '–')],
+        ['Munstycke', fmtTemp(s.nozzle, s.nozzle_target)], ['Bädd', fmtTemp(s.bed, s.bed_target)], ['Kammare', fmtTemp(s.chamber)],
+        ['Filament', s.filament_detected ? 'Detekterat' : 'Ej detekterat'],
+        ['Fläktar', Object.entries(s.fans || {}).map(([k, v]) => `${k.replace('_fan', '').replace('fan', 'del')} ${Math.round((v || 0) * 100)}%`).join(' · ') || '–'],
+      ].map(([k, v]) => `<div class="stat"><span class="muted">${k}</span><strong>${v}</strong></div>`).join('');
+      $('#prnBar').style.width = `${s.printing ? pct : 0}%`;
+      $('#prnCam').src = `/api/snapshot?t=${Date.now()}`;
+    } catch (e) {
+      $('#prnState').innerHTML = '<span class="pill ad">Servern svarar inte</span> Starta <code>server/start-printer-server.ps1</code>.';
+    }
+    if (!prnTimer) prnTimer = true;
+    setTimeout(refreshPrinter, 3000);
+  }
+
+  async function refreshPrinterFiles() {
+    if (!PRN_LOCAL) return;
+    try {
+      const [snaps, tls] = await Promise.all([getJson('/api/snapshots'), getJson('/api/timelapses')]);
+      $('#prnSnaps').innerHTML = snaps.length ? snaps.slice(0, 12).map((n) => `<a href="/snap/${encodeURIComponent(n)}" target="_blank" rel="noopener"><img loading="lazy" src="/snap/${encodeURIComponent(n)}" alt="${esc(n)}" title="${esc(n)}"></a>`).join('') : '<p class="empty">Inga snapshots än – tas vid start, varje timme och vid slut av utskrift.</p>';
+      $('#prnTl').innerHTML = tls.length ? tls.map((n) => `<li><a href="/timelapse/${encodeURIComponent(n)}" target="_blank" rel="noopener">${esc(n)}</a></li>`).join('') : '<li class="muted">Inga timelapse än.</li>';
+    } catch (e) { /* servern ej igång */ }
+  }
+
+  function startPrinterLive() {
+    const was = prnTimer;
+    refreshPrinterFiles();
+    if (!was) { prnTimer = true; refreshPrinter(); }
   }
 
   /* ---------- Tips att tillämpa ---------- */
