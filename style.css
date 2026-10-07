@@ -163,6 +163,19 @@ label.chk { flex-direction: row; align-items: center; gap: 6px; flex: 0 1 auto; 
 .prn-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
 .prn-stats .stat { background: var(--sunk); border-radius: 8px; padding: 6px 9px; display: flex; flex-direction: column; font-size: 14px; }
 .prn-snaps { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-top: 8px; }
+.mdl-live img { width: 100%; max-height: 80vh; object-fit: contain; border-radius: 8px; background: #20242c; display: block; }
+.mdl-live p { margin: 4px 0 10px; }
+.mdl-gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin-top: 8px; }
+.mdl-gal figure { margin: 0; position: relative; }
+.mdl-gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; display: block; background: var(--sunk); }
+.mdl-gal figcaption { font-size: 11px; opacity: .75; word-break: break-all; }
+.mdl-new { position: absolute; top: 4px; left: 4px; background: #e5484d; color: #fff; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 8px; }
+.mdl-cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+.mdl-cmp img { width: 100%; border-radius: 6px; display: block; background: var(--sunk); }
+.mdl-3d { width: 100%; height: 360px; border-radius: 8px; background: #20242c; position: relative; overflow: hidden; }
+.mdl-pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; max-height: 260px; overflow: auto; background: var(--sunk); padding: 8px; border-radius: 6px; margin: 0; }
+.mdl-steps { list-style: none; padding: 0; margin: 6px 0; font-size: 13px; }
+.mdl-steps li { padding: 2px 0; }
 .prn-snaps img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; }
 .prn-tl li { padding: 4px 0; }
 #prnTodoList label { display: flex; gap: 8px; align-items: flex-start; }

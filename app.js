@@ -481,8 +481,158 @@
     } catch (e) { /* servern ej igång */ }
   }
 
+  /* ---------- Modellering live (api/modeller, uppdateras var 5:e s) ---------- */
+  const MDL_NEW_SEK = 120, MDL_STL_MAX = 30 * 1024 * 1024;
+  let mdlRunning = false, mdlPicked = null, mdlSig = {}, mdlView = null;
+  const mdlUrl = (m, f, t) => `modeller-fil/${encodeURIComponent(m)}/${encodeURIComponent(f)}?t=${Math.floor(t)}`;
+  const mdlTid = (t) => new Date(t * 1000).toLocaleTimeString('sv-SE');
+  // Original (_orig_X.png) -> mojliga namn pa nya versionen
+  const mdlNyKandidater = (x) => [x, `forhandsvisning_${x}`, `ny_${x}`, `new_${x}`, `_ny_${x}`, `_new_${x}`, `v2_${x}`];
+
+  function mdlSet(id, html) { // skriv bara om innehallet andrats (inget flimmer)
+    if (mdlSig[id] === html) return;
+    mdlSig[id] = html;
+    $(id).innerHTML = html;
+  }
+
+  async function mdlThree() {
+    if (!window.__mdlThree) {
+      const B = 'https://cdn.jsdelivr.net/npm/three@0.160.0';
+      const [T, S, O] = await Promise.all([import(`${B}/+esm`), import(`${B}/examples/jsm/loaders/STLLoader.js/+esm`), import(`${B}/examples/jsm/controls/OrbitControls.js/+esm`)]);
+      window.__mdlThree = { T, STLLoader: S.STLLoader, OrbitControls: O.OrbitControls };
+    }
+    return window.__mdlThree;
+  }
+
+  async function mdlShowStl(mapp, f) {
+    const key = `${mapp}/${f.namn}/${f.mtime}`;
+    const info = $('#mdl3dInfo'), box = $('#mdl3d');
+    if (mdlView && mdlView.key === key) return;
+    if (mdlView) { mdlView.stop = true; mdlView.renderer.dispose(); mdlView = null; }
+    box.innerHTML = '';
+    if (f.storlek > MDL_STL_MAX) { info.textContent = `${f.namn} är ${(f.storlek / 1048576).toFixed(0)} MB (över 30 MB) – 3D-visning hoppas över. Använd förhandsbilderna.`; return; }
+    info.textContent = `Laddar ${f.namn} (${(f.storlek / 1048576).toFixed(1)} MB, ändrad ${mdlTid(f.mtime)}) …`;
+    try {
+      const { T, STLLoader, OrbitControls } = await mdlThree();
+      const buf = await (await fetch(mdlUrl(mapp, f.namn, f.mtime), { cache: 'no-cache' })).arrayBuffer();
+      const geo = new STLLoader().parse(buf);
+      geo.computeVertexNormals(); geo.center();
+      geo.computeBoundingSphere();
+      const r = geo.boundingSphere.radius || 1;
+      const w = box.clientWidth || 600, h = box.clientHeight || 360;
+      const renderer = new T.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(w, h);
+      box.appendChild(renderer.domElement);
+      const scene = new T.Scene(); scene.background = new T.Color(0x20242c);
+      const cam = new T.PerspectiveCamera(40, w / h, r / 100, r * 100);
+      cam.position.set(r * 1.8, -r * 2.2, r * 1.4); cam.up.set(0, 0, 1);
+      scene.add(new T.HemisphereLight(0xffffff, 0x555566, 1.1));
+      const dl = new T.DirectionalLight(0xffffff, 1.6); dl.position.set(r, -r, r * 2); scene.add(dl);
+      scene.add(new T.Mesh(geo, new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0.05 })));
+      const ctl = new OrbitControls(cam, renderer.domElement); ctl.enableDamping = true;
+      const v = { key, renderer, stop: false };
+      mdlView = v;
+      const loop = () => {
+        if (v.stop) return;
+        if (state.ui.tab === 'printer') { ctl.update(); renderer.render(scene, cam); }
+        requestAnimationFrame(loop);
+      };
+      loop();
+      info.textContent = `${f.namn} · ${(f.storlek / 1048576).toFixed(1)} MB · ändrad ${mdlTid(f.mtime)} · dra för att rotera, scrolla för att zooma.`;
+    } catch (e) {
+      console.warn('3D-visare', e);
+      info.textContent = `Kunde inte visa ${f.namn} i 3D (${e.message || e}). Använd förhandsbilderna.`;
+    }
+  }
+
+  function mdlRender(data, picked) {
+    const now = data.ts, files = picked.filer;
+    const pngs = files.filter((f) => f.typ === 'png' || f.typ === 'jpg' || f.typ === 'jpeg');
+    $('#mdlMeta').textContent = `Senast ändrad ${mdlTid(picked.mtime)} (${Math.max(0, Math.round(now - picked.mtime))} s sedan).`;
+    mdlSet('#mdlPick', `<label>Mapp<select id="mdlSel">${data.mappar.map((m) => `<option value="${esc(m.mapp)}"${m.mapp === picked.mapp ? ' selected' : ''}>${esc(m.mapp)} – ${mdlTid(m.mtime)}</option>`).join('')}</select></label>`);
+    // status/tidslinje
+    const rader = (picked.status || '').split('\n').filter(Boolean).slice(-30).reverse();
+    mdlSet('#mdlStatus', (rader.length ? `<ul class="mdl-steps">${rader.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : '<p class="muted">Ingen status.txt än. Skriv steg med <code>python modeller/LOGGA_STEG.py ' + esc(picked.mapp) + ' "text"</code>.</p>') +
+      (picked.logg ? `<details><summary class="muted">Logg (${esc(picked.loggnamn)})</summary><pre class="mdl-pre">${esc(picked.logg)}</pre></details>` : ''));
+    // galleri: senast andrade forst
+    mdlSet('#mdlGal', pngs.length ? pngs.slice(0, 24).map((f) => {
+      const ny = now - f.mtime < MDL_NEW_SEK;
+      return `<figure><a href="${mdlUrl(picked.mapp, f.namn, f.mtime)}" target="_blank" rel="noopener"><img loading="lazy" src="${mdlUrl(picked.mapp, f.namn, f.mtime)}" alt="${esc(f.namn)}"></a>${ny ? '<span class="mdl-new">NY</span>' : ''}<figcaption>${esc(f.namn)}<br>${mdlTid(f.mtime)}</figcaption></figure>`;
+    }).join('') : '<p class="empty">Inga bilder i mappen än.</p>');
+    // jamforelse original vs ny
+    const byName = new Map(pngs.map((f) => [f.namn, f]));
+    const par = [];
+    for (const f of pngs) {
+      const m = /^_orig_(.+\.(?:png|jpe?g))$/i.exec(f.namn);
+      if (!m) continue;
+      const kand = mdlNyKandidater(m[1]).map((n) => byName.get(n)).find(Boolean);
+      if (kand) par.push([f, kand]);
+    }
+    mdlSet('#mdlCmp', par.length ? par.map(([o, n]) => `<div class="mdl-cmp"><figure><img src="${mdlUrl(picked.mapp, o.namn, o.mtime)}" alt="original"><figcaption>Original: ${esc(o.namn)}</figcaption></figure><figure><img src="${mdlUrl(picked.mapp, n.namn, n.mtime)}" alt="ny"><figcaption>Ny: ${esc(n.namn)} (${mdlTid(n.mtime)})${now - n.mtime < MDL_NEW_SEK ? ' <b>NY</b>' : ''}</figcaption></figure></div>`).join('') : '<p class="empty">Inga par än – visas när både <code>_orig_*.png</code> och motsvarande ny bild finns.</p>');
+    mdlSet('#mdlRapport', picked.rapport ? esc(picked.rapport) : '(ingen rapport.txt än)');
+    // 3D: senaste stl
+    const stl = files.filter((f) => f.typ === 'stl')[0];
+    if (stl) mdlShowStl(picked.mapp, stl);
+    else if (!mdlView || !mdlView.key.startsWith(picked.mapp + '/')) {
+      if (mdlView) { mdlView.stop = true; mdlView.renderer.dispose(); mdlView = null; $('#mdl3d').innerHTML = ''; }
+      $('#mdl3dInfo').textContent = 'Ingen STL i mappen än – 3D-visaren aktiveras när en STL skrivs dit.';
+    }
+  }
+
+  // Blender live: live/live.png, ny bild var 2:a sekund (egen loop), status fran api/modeller
+  let mdlLiveRunning = false;
+  async function refreshLive() {
+    if (!PRN_LOCAL || mdlLiveRunning) return;
+    mdlLiveRunning = true;
+    try {
+      while (state.ui.tab === 'printer') {
+        const img = $('#mdlLiveImg'), txt = $('#mdlLiveTxt');
+        try {
+          const r = await fetch(`modeller-fil/live/live.png?t=${Date.now()}`, { cache: 'no-store' });
+          if (!r.ok) throw new Error(r.status);
+          const mt = Number(r.headers.get('X-Mtime')) || 0;
+          const age = mt ? Date.now() / 1000 - mt : 0;
+          if (mt && age > 60) throw new Error('gammal');
+          const blob = await r.blob();
+          const old = img.src;
+          img.src = URL.createObjectURL(blob);
+          if (old.startsWith('blob:')) URL.revokeObjectURL(old);
+          img.hidden = false;
+          txt.textContent = `Live – filen ändrades ${new Date(mt * 1000).toLocaleTimeString('sv-SE')} (${Math.max(0, Math.round(age))} s sedan)`;
+        } catch (e) {
+          img.hidden = true;
+          txt.textContent = 'Ingen live-session just nu';
+        }
+        await new Promise((r) => setTimeout(r, 2000));
+      }
+    } finally { mdlLiveRunning = false; }
+  }
+
+  async function refreshModeller() {
+    if (!PRN_LOCAL || mdlRunning) return;
+    mdlRunning = true;
+    try {
+      while (state.ui.tab === 'printer') {
+        try {
+          const data = await getJson('api/modeller');
+          if (!data.mappar.length) { mdlSet('#mdlStatus', '<p class="empty">Inga modellmappar än.</p>'); }
+          else {
+            const picked = data.mappar.find((m) => m.mapp === mdlPicked) || data.mappar[0];
+            mdlRender(data, picked);
+          }
+        } catch (e) { mdlSet('#mdlStatus', '<p class="muted">Kunde inte läsa api/modeller (inloggning krävs eller servern ligger nere).</p>'); }
+        await new Promise((r) => setTimeout(r, 5000));
+      }
+    } finally { mdlRunning = false; }
+  }
+  document.addEventListener('change', (e) => {
+    if (e.target && e.target.id === 'mdlSel') { mdlPicked = e.target.value; mdlSig = {}; refreshModeller(); }
+  });
+
   function startPrinterLive() {
     const was = prnTimer;
+    refreshModeller();
+    refreshLive();
     refreshPrinterFiles();
     if (!was) { prnTimer = true; refreshPrinter(); }
   }

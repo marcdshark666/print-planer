@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Print-planeraren</title>
 <meta name="description" content="Planera 3D-prints från MakerWorld: bläddra, kanban, filamentlager, skrivarprofil och Etsy-/licenskoll.">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <header class="top">
@@ -185,6 +185,26 @@
       <ul class="tips" id="prnTl"></ul>
       <p class="muted">Bakom inloggning (lokalt eller via Tailscale) – bilder från hemmet lagras i <code>data/printer/</code> och pushas aldrig.</p>
     </div>
+    <div class="panel" id="prnModel">
+      <h2>Modellering live</h2>
+      <p class="muted">Pågående Blender-arbete, uppdateras var 5:e sekund. <span id="mdlMeta"></span></p>
+      <h3>Blender live</h3>
+      <div class="mdl-live">
+        <img id="mdlLiveImg" alt="Blender live" hidden>
+        <p id="mdlLiveTxt" class="muted">Ingen live-session just nu</p>
+      </div>
+      <div id="mdlPick" class="frow"></div>
+      <div id="mdlStatus"></div>
+      <h3>Förhandsbilder</h3>
+      <div class="mdl-gal" id="mdlGal"></div>
+      <h3>Original mot ny</h3>
+      <div id="mdlCmp"></div>
+      <h3>3D-visare</h3>
+      <p class="muted" id="mdl3dInfo"></p>
+      <div id="mdl3d" class="mdl-3d"></div>
+      <h3>Rapport</h3>
+      <pre class="mdl-pre" id="mdlRapport"></pre>
+    </div>
     <div class="panel" id="prnTimeline">
       <h2>Tidslinje</h2>
       <ul class="tips prn-tl" id="prnTimelineList"><li class="muted">Hämtar …</li></ul>
@@ -250,6 +270,6 @@
   </form>
 </dialog>
 
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>

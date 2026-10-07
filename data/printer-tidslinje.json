@@ -1,5 +1,6 @@
 {
   "tidslinje": [
+    { "datum": "2026-10-07", "titel": "Live-modelleringssida", "text": "Sektionen Modellering live under Skrivare: Blender live-bild, galleri, original mot ny, 3D-visare, status/rapport. Steg loggas med modeller/LOGGA_STEG.py." },
     { "datum": "2026-10-07", "titel": "Matrix-bindning misslyckades (region/PIN-fel)" },
     { "datum": "2026-10-07", "titel": "Hotspot, LAN-toggle och manuellt tillägg i slicer misslyckades" },
     { "datum": "2026-10-07", "titel": "LAN Only aktiverades på skrivaren" },

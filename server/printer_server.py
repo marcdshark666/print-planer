@@ -445,6 +445,94 @@ button{margin-top:20px;width:100%;padding:12px;border:0;border-radius:12px;font-
 <button type="submit">Logga in</button>
 </form></body></html>"""
 
+# ---------------- Modellering live (endast lasning under print-planer/modeller/) ----------------
+MODELLER = os.path.realpath(os.path.join(ROOT, 'modeller'))
+MODELL_EXT = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+              '.stl': 'model/stl', '.3mf': 'model/3mf'}
+
+
+def _las_text(path, max_bytes=20000):
+    """Sista max_bytes av en textfil (tom strang vid fel)."""
+    try:
+        sz = os.path.getsize(path)
+        with open(path, 'rb') as fh:
+            if sz > max_bytes:
+                fh.seek(sz - max_bytes)
+            return fh.read().decode('utf-8', 'replace')
+    except OSError:
+        return ''
+
+
+def modeller_sokvag(rel):
+    """Returnerar sakrad filsokvag under MODELLER (mapp/fil, tillatna filtyper) eller None."""
+    parts = rel.split('/')
+    if len(parts) != 2 or not all(parts) or any(p in ('.', '..') or '\\' in p or ':' in p or '\x00' in p for p in parts):
+        return None
+    if os.path.splitext(parts[1])[1].lower() not in MODELL_EXT:
+        return None
+    fp = os.path.realpath(os.path.join(MODELLER, parts[0], parts[1]))
+    try:
+        if os.path.commonpath([fp, MODELLER]) != MODELLER or os.path.dirname(os.path.dirname(fp)) != MODELLER:
+            return None
+    except ValueError:
+        return None
+    return fp if os.path.isfile(fp) else None
+
+
+def live_status():
+    """Status for modeller/live/live.png (skrivs av annan process; vi ror den aldrig)."""
+    fp = modeller_sokvag('live/live.png')
+    if not fp:
+        return {'finns': False, 'mtime': None, 'alder': None, 'aktiv': False}
+    try:
+        mt = os.path.getmtime(fp)
+    except OSError:
+        return {'finns': False, 'mtime': None, 'alder': None, 'aktiv': False}
+    age = time.time() - mt
+    return {'finns': True, 'mtime': mt, 'alder': age, 'aktiv': age <= 60}
+
+
+def modeller_oversikt():
+    out = []
+    try:
+        names = os.listdir(MODELLER)
+    except OSError:
+        return {'ts': time.time(), 'mappar': [], 'live': live_status()}
+    for n in names:
+        d = os.path.join(MODELLER, n)
+        if not os.path.isdir(d) or os.path.islink(d) or n == 'live':
+            continue
+        files, newest, logs = [], 0.0, []
+        try:
+            entries = list(os.scandir(d))
+        except OSError:
+            continue
+        for e in entries:
+            if not e.is_file():
+                continue
+            try:
+                st = e.stat()
+            except OSError:
+                continue
+            newest = max(newest, st.st_mtime)
+            ext = os.path.splitext(e.name)[1].lower()
+            if ext in MODELL_EXT:
+                files.append({'namn': e.name, 'typ': ext[1:], 'storlek': st.st_size, 'mtime': st.st_mtime})
+            elif ext == '.log':
+                logs.append((st.st_mtime, e.path, e.name))
+        files.sort(key=lambda f: f['mtime'], reverse=True)
+        logs.sort(reverse=True)
+        out.append({
+            'mapp': n, 'mtime': newest, 'filer': files,
+            'rapport': _las_text(os.path.join(d, 'rapport.txt')),
+            'status': _las_text(os.path.join(d, 'status.txt')),
+            'logg': _las_text(logs[0][1], 4000) if logs else '',
+            'loggnamn': logs[0][2] if logs else '',
+        })
+    out.sort(key=lambda m: m['mtime'], reverse=True)
+    return {'ts': time.time(), 'mappar': out, 'live': live_status()}
+
+
 # ---------------- HTTP ----------------
 PUBLIC_FILES = re.compile(r'^/(index\.html|app\.js|style\.css|data/[A-Za-z0-9_.-]+\.json|images/.+)?$')
 
@@ -569,7 +657,7 @@ class H(BaseHTTPRequestHandler):
             return False
         if self._ar_lokal() or giltig_session(self._cookie()):
             return True
-        if vag.startswith('/api/') or vag.startswith(('/snap/', '/timelapse/')):
+        if vag.startswith('/api/') or vag.startswith(('/snap/', '/timelapse/', '/modeller-fil/')):
             self.send(401, {'error': 'inloggning kravs'})
         else:
             self._redirect(prefix + '/logga-in')
@@ -604,6 +692,20 @@ class H(BaseHTTPRequestHandler):
             except OSError:
                 rows = []
             return self.send(200, [json.loads(r) for r in rows if r])
+        if p == '/api/modeller':
+            return self.send(200, modeller_oversikt())
+        if p.startswith('/modeller-fil/'):
+            fp = modeller_sokvag(p[len('/modeller-fil/'):])
+            if not fp:
+                return self.send(404, {'error': 'saknas'})
+            try:
+                mt = os.path.getmtime(fp)
+                with open(fp, 'rb') as fh:
+                    data = fh.read()
+            except OSError:
+                return self.send(503, {'error': 'filen skrivs just nu'})
+            return self.send(200, data, MODELL_EXT[os.path.splitext(fp)[1].lower()],
+                             {'X-Mtime': f'{mt:.3f}', 'Access-Control-Expose-Headers': 'X-Mtime'})
         m = re.match(r'^/(snap|timelapse)/([A-Za-z0-9._-]+)$', p)
         if m:
             return self.file(os.path.join(SNAPS if m.group(1) == 'snap' else TLAPSE, m.group(2)))
