@@ -28,6 +28,7 @@
     <button type="button" data-tab="board" role="tab">Tavla</button>
     <button type="button" data-tab="inbox" role="tab">Inkorg</button>
     <button type="button" data-tab="filament" role="tab">Filament</button>
+    <button type="button" data-tab="jakt" role="tab">Filamentjakt</button>
     <button type="button" data-tab="printer" role="tab">Skrivare</button>
   </nav>
 </header>
@@ -177,6 +178,16 @@
       <div class="prn-bar"><div id="prnBar"></div></div>
       <div class="prn-main">
         <img id="prnCam" class="prn-cam" alt="Live-kamera från skrivaren">
+  <!-- FILAMENTJAKT -->
+  <section id="tab-jakt" class="tab" hidden>
+    <div class="panel">
+      <h2>Filamentjakt – Centauri Carbon 2</h2>
+      <p><a href="./">&larr; Tillbaka till Print-planerarens startsida</a></p>
+      <p class="muted">Filament jag jagar: lägsta pris, printat exempel och video. Data i <code>data/filament.json</code>.</p>
+    </div>
+    <div id="jaktList"></div>
+  </section>
+
         <div class="prn-stats" id="prnStats"></div>
       </div>
       <h3>Senaste snapshots</h3>
@@ -270,6 +281,7 @@
   </form>
 </dialog>
 
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
+<script src="filamentjakt.js?v=1"></script>
 </body>
 </html>

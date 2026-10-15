@@ -179,3 +179,18 @@ label.chk { flex-direction: row; align-items: center; gap: 6px; flex: 0 1 auto; 
 .prn-snaps img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; }
 .prn-tl li { padding: 4px 0; }
 #prnTodoList label { display: flex; gap: 8px; align-items: flex-start; }
+
+/* Filamentjakt */
+.jakt-card h3 { margin: 0 0 4px; }
+.jakt-head { display: flex; gap: 14px; align-items: flex-start; }
+.jakt-img { width: 140px; height: 140px; object-fit: cover; border-radius: 10px; border: 1px solid var(--rule); flex: 0 0 auto; background: var(--sunk); }
+.jakt-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--rule); margin-right: 6px; vertical-align: -1px; }
+.jakt-price { margin: 6px 0 2px; font-size: 17px; }
+.jakt-media { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+.jakt-fig { margin: 0; }
+.jakt-fig img { width: 100%; border-radius: 10px; border: 1px solid var(--rule); display: block; }
+.jakt-vid iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: var(--sunk); }
+.jakt-tbl { overflow-x: auto; }
+.jakt-tbl table { border-collapse: collapse; font-size: 14px; min-width: 520px; width: 100%; }
+.jakt-tbl th, .jakt-tbl td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+@media (max-width: 700px) { .jakt-media { grid-template-columns: 1fr; } .jakt-img { width: 96px; height: 96px; } }

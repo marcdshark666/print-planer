@@ -1,0 +1,118 @@
+{
+ "uppdaterad": "2026-10-15",
+ "valutakurs_anm": "SEK-omräkning ungefärlig (1 EUR ≈ 11 SEK); kontrollera i butiken.",
+ "filament": [
+  {
+   "id": "elegoo-pla-white-175-1kg",
+   "namn": "ELEGOO PLA Filament 1.75mm White 1kg",
+   "material": "PLA",
+   "farg": "Vit",
+   "farg_hex": "#f4f4f2",
+   "notering": "Det normala PLA-filamentet (inte PLA+, Basic, Rapid, Pro, CF eller Silk). Elegoos EU-butik säljer nu vit PLA bara som RFID-version (samma PLA med RFID-chip); varianten utan RFID är slutsåld där.",
+   "bild": "images/filament/elegoo-pla-white-amazon.jpg",
+   "bild_kalla": "Produktbild från Amazon.se (ELEGOO Store), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 12.99,
+     "valuta": "EUR",
+     "sek_ca": 143,
+     "butik": "ELEGOO EU (officiell)",
+     "url": "https://eu.elegoo.com/en-se/products/pla-filament-1-75mm-colored-1kg",
+     "kollat": "2026-10-15",
+     "anm": "Variant PLA (RFID) / White, i lager. Frakt till Sverige ej verifierad (visas i kassan). Moms ej bekräftad i listpriset."
+    },
+    "lagsta_inkl_frakt_sek": {
+     "belopp": 266,
+     "butik": "3DJake",
+     "anm": "151 kr + 115 kr frakt; fri frakt över 1 099 kr (då 151 kr/st)"
+    },
+    "butiker": [
+     {
+      "butik": "Amazon.se (ELEGOO SE)",
+      "pris": "ej läsbart utan inloggning/varukorg (priset renderas inte i sidans text)",
+      "frakt": "okänd",
+      "lager": "beställningsbar",
+      "url": "https://www.amazon.se/dp/B0CD7B7ZKK",
+      "kollat": "2026-10-15",
+      "anm": "Kontrollera priset själv på länken"
+     },
+     {
+      "butik": "ELEGOO EU",
+      "pris": "12,99 EUR (≈143 kr)",
+      "frakt": "okänd",
+      "lager": "ja (RFID), nej (utan RFID)",
+      "url": "https://eu.elegoo.com/en-se/products/pla-filament-1-75mm-colored-1kg",
+      "kollat": "2026-10-15"
+     },
+     {
+      "butik": "3DJake (SE)",
+      "pris": "151 kr inkl. moms",
+      "frakt": "115 kr, fri över 1 099 kr",
+      "lager": "ja",
+      "url": "https://3djake.com/elegoo/pla-white-10",
+      "kollat": "2026-10-15"
+     },
+     {
+      "butik": "3DShoppen (SE)",
+      "pris": "159 kr (rea från 169)",
+      "frakt": "i kassan, fri över 1 000 kr",
+      "lager": "vit slutsåld",
+      "url": "https://3dshoppen.se/products/elegoo-pla-filament",
+      "kollat": "2026-10-15"
+     },
+     {
+      "butik": "ELEGOO US",
+      "pris": "13,99 USD",
+      "frakt": "tull/frakt tillkommer",
+      "lager": "RFID ja, utan RFID nej",
+      "url": "https://us.elegoo.com/products/pla-filament-1-75mm-colored-1kg",
+      "kollat": "2026-10-15"
+     },
+     {
+      "butik": "OpenELAB (EU)",
+      "pris": "27,04 EUR (rea från 37,64)",
+      "frakt": "7,95 EUR under 100 EUR",
+      "lager": "oklart",
+      "url": "https://openelab.io/sv/products/elegoo-pla-white-filaments-3d",
+      "kollat": "2026-10-15"
+     },
+     {
+      "butik": "3DPrima (SE)",
+      "pris": "429 kr/kg (jämförpris)",
+      "frakt": "fri över 1 000 kr",
+      "lager": "0 (beställd)",
+      "url": "https://www.3dprima.com/se/filament-resin/filament/pla/elegoo-pla-filament_34263_20196",
+      "kollat": "2026-10-15"
+     },
+     {
+      "butik": "Botland (EU)",
+      "pris": "10,90 EUR",
+      "frakt": "-",
+      "lager": "-",
+      "url": "https://botland.store/pla-filaments/28412-filament-elegoo-pla-175mm-1kg-rfid-white-6932704920428.html",
+      "kollat": "2026-10-15",
+      "anm": "Endast B2B-kunder, ej räknad som lägsta"
+     }
+    ],
+    "multipack": "Inget multipack-pris för vit PLA verifierat (Amazon.se/.de gick inte att läsa via sökning). Elegoo annonserar 'Filament Bulk Sale' från 8,96 EUR/kg, men utan uppgift om produkt eller antal."
+   },
+   "printat_objekt": {
+    "bild": "images/filament/elegoo-pla-white-video.jpg",
+    "text": "Miniatyr från testvideon bredvid. Ingen riktig bild på ett utskrivet objekt i just vit PLA hittades; inget påhittat.",
+    "kalla": "YouTube-miniatyr, The Star Forge",
+    "kalla_url": "https://www.youtube.com/watch?v=cp2ezU9t714"
+   },
+   "video": {
+    "youtube_id": "cp2ezU9t714",
+    "titel": "We tested EVERY version of ELEGOO PLA Filament!",
+    "kanal": "The Star Forge",
+    "anm": "Går att bädda in (oEmbed OK). Testar alla Elegoo-PLA-varianter, inte bara vit."
+   },
+   "produktlank": {
+    "url": "https://www.amazon.se/dp/B0CD7B7ZKK",
+    "butik": "Amazon.se (ELEGOO SE)",
+    "anm": "Marcs länk, ASIN B0CD7B7ZKK. Titel: ELEGOO PLA-filament, 1.75 mm, PLA, vit, 1 kg (vanlig PLA, inte PLA+/Basic). Betyg 4,6/5 (1 046 omdömen)."
+   }
+  }
+ ]
+}
