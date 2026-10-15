@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 // Lägg till filament från en produkt-URL i data/filament.json.
 //   node tools/add-filament.mjs <produkt-url> [--material PLA] [--farg Vit] [--hex #ffffff] [--dry-run]
+//   node tools/add-filament.mjs --batch spec.json [--cache probe1.json,probe2.json]   (Amazon.se-ASIN:er -> sektioner duo-tri/silk/karaktar, se batch-läget)
 // Läser titel, og:image och pris (og/JSON-LD) ur sidan, laddar ner bilden (max 600 px, kräver python+Pillow)
 // och lägger posten sist. Köper aldrig något, ingen inloggning. Fyll i printat objekt/video/butiker för hand i JSON-filen.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { probe } from './amazon-probe.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'data', 'filament.json');
@@ -14,6 +16,55 @@ const args = process.argv.slice(2);
 const url = args.find((a) => /^https?:\/\//.test(a));
 const opt = (n, d = '') => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : d; };
 const dry = args.includes('--dry-run');
+// Batch-läge: spec.json = lista { asin, namn, sektioner:["duo-tri"|"silk"|"karaktar"], grupper?:["hud"|"har"|"klader"|"ogon"],
+//   kombo, material, farg, hexar:["#.."], vikt?, notering? }. Titel/pris/bild läses ur Amazon.se-sidan (publik GET,
+//   ingen inloggning). Misslyckas läsningen sparas inget (inga påhittade priser/bilder). Befintligt id hoppas över.
+const batchFile = opt('batch');
+if (batchFile) {
+  const spec = JSON.parse(fs.readFileSync(batchFile, 'utf8'));
+  const db = JSON.parse(fs.readFileSync(DATA, 'utf8'));
+  const idag = new Date().toISOString().slice(0, 10);
+  const dir = path.join(ROOT, 'images', 'filament');
+  fs.mkdirSync(dir, { recursive: true });
+  const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+  const cache = {};
+  for (const c of (opt('cache') || '').split(',').filter(Boolean)) for (const x of JSON.parse(fs.readFileSync(c, 'utf8'))) if (x.titel) cache[x.asin] = x;
+  let lade = 0, miss = 0;
+  for (const e of spec) {
+    const id = `az-${e.asin.toLowerCase()}`;
+    if (db.filament.some((f) => f.id === id)) { console.log('finns redan', id); continue; }
+    let r = await probe(e.asin);
+    if (r.fel && cache[e.asin]) { console.log('använder cachad probe från samma dag', e.asin); r = cache[e.asin]; }
+    if (r.fel || !r.titel) { console.log('MISSLYCKADES', e.asin, r.fel || 'ingen titel'); miss++; await new Promise((x) => setTimeout(x, 4000)); continue; }
+    let bild = '';
+    if (r.bild) {
+      try {
+        const tmp = path.join(dir, `_${id}.tmp`), out = path.join(dir, `${id}.jpg`);
+        execFileSync('curl', ['-sL', '--max-time', '40', '-A', UA, '-o', tmp, r.bild]);
+        execFileSync('python', ['-c', 'import sys;from PIL import Image;i=Image.open(sys.argv[1]).convert("RGB");i.thumbnail((480,480));i.save(sys.argv[2],quality=75,optimize=True)', tmp, out]);
+        fs.unlinkSync(tmp);
+        bild = `images/filament/${id}.jpg`;
+      } catch (err) { console.log('bild misslyckades', e.asin, err.message.split('\n')[0]); }
+    }
+    const url = `https://www.amazon.se/dp/${e.asin}`;
+    db.filament.push({
+      id, namn: e.namn, material: e.material || 'PLA', farg: e.farg || '', kombo: e.kombo || e.farg || '', farg_hex: (e.hexar || ['#cccccc'])[0], farg_hexar: e.hexar || [],
+      sektioner: e.sektioner, ...(e.grupper ? { grupper: e.grupper } : {}), vikt: e.vikt || r.vikt || '', notering: e.notering || '',
+      amazon_titel: r.titel, bild, bild_kalla: bild ? 'Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad' : '',
+      pris: { lagsta: { belopp: r.pris_sek && r.pris_sek < 700 ? r.pris_sek : 0, valuta: 'SEK', sek_ca: null, butik: 'Amazon.se', url, kollat: idag, anm: r.pris_sek && r.pris_sek < 700 ? '' : 'pris oläsbart' }, butiker: [], multipack: '' },
+      produktlank: { butik: 'Amazon.se', url, anm: 'Ren produktlänk (ASIN), inga spårningsparametrar.' },
+      printat_objekt: null, video: null
+    });
+    lade++;
+    console.log('+', id, r.pris_sek, '|', e.namn);
+    fs.writeFileSync(DATA, JSON.stringify(db, null, 1) + '\n');
+    await new Promise((x) => setTimeout(x, 4000));
+  }
+  db.uppdaterad = idag;
+  fs.writeFileSync(DATA, JSON.stringify(db, null, 1) + '\n');
+  console.log(`Klart: ${lade} tillagda, ${miss} misslyckade`);
+  process.exit(0);
+}
 if (!url) { console.error('Ange en http(s)-URL.'); process.exit(1); }
 
 const slug = (s) => s.toLowerCase().normalize('NFD').replace(/[^\w]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);

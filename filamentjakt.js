@@ -37,12 +37,83 @@
     </article>`;
   }
 
+  // Sektioner (underflikar). Poster utan "sektioner" hör till Allmänt (lagret/prisjakt).
+  const TABS = [
+    { id: 'allmant', namn: 'Allmänt' },
+    { id: 'duo-tri', namn: 'Duo- och tri-color' },
+    { id: 'silk', namn: 'Silk' },
+    { id: 'karaktar', namn: 'Printa karaktärer' }
+  ];
+  const GRUPPER = ['hud', 'har', 'klader', 'ogon'];
+  const fmtPris = (p) => (p && p.belopp ? `${String(p.belopp).replace('.', ',')} kr` : 'pris oläsbart');
+  function swatch(f) {
+    const h = (f.farg_hexar && f.farg_hexar.length ? f.farg_hexar : [f.farg_hex || '#ccc']).filter((x) => /^#[0-9a-fA-F]{3,8}$/.test(x));
+    const bg = h.length > 1 ? `linear-gradient(90deg,${h.map((c, i) => `${c} ${Math.round(i * 100 / h.length)}% ${Math.round((i + 1) * 100 / h.length)}%`).join(',')})` : (h[0] || '#ccc');
+    return `<span class="jakt-swatch" style="background:${bg}" title="Färgprov (ungefärligt)"></span>`;
+  }
+  function amazonCard(f) {
+    const l = (f.pris && f.pris.lagsta) || {};
+    const url = f.produktlank && f.produktlank.url;
+    return `<article class="panel jakt-card jakt-az">
+      <div class="jakt-head">
+        ${f.bild ? `<img class="jakt-img" src="${esc(f.bild)}" alt="${esc(f.namn)}" loading="lazy" width="140" height="140">` : swatch(f)}
+        <div>
+          <h3>${esc(f.namn)}</h3>
+          <p class="muted">${swatch(f)} ${esc(f.kombo || f.farg)} · ${esc(f.material)}${f.vikt ? ` · ${esc(f.vikt)}` : ''}</p>
+          <p class="jakt-price"><strong>${esc(fmtPris(l))}</strong> <span class="muted">${l.belopp ? `Amazon.se ${esc(l.kollat)}, kan ändras` : ''}</span></p>
+          ${f.notering ? `<p class="muted">${esc(f.notering)}</p>` : ''}
+        </div>
+      </div>
+      <p class="jakt-link"><a class="btn primary" href="${esc(safeUrl(url))}" target="_blank" rel="noopener noreferrer">Öppna på Amazon.se</a> <span class="muted">${esc(url)}</span></p>
+      ${f.bild ? `<p class="muted jakt-src">Bildkälla: ${esc(f.bild_kalla)}</p>` : ''}
+    </article>`;
+  }
+  const inSek = (f, id) => (f.sektioner || []).includes(id);
+
+  function renderTab(d, id) {
+    const all = d.filament || [];
+    const intro = (d.sektioner_info || {})[id];
+    const introHtml = intro ? `<div class="panel"><h3>${esc(intro.titel)}</h3><p>${esc(intro.text)}</p>${intro.antal ? `<p class="muted">${esc(intro.antal)}</p>` : ''}</div>` : '';
+    if (id === 'allmant') {
+      return `<p class="muted">Priser senast uppdaterade ${esc(d.uppdaterad)}. ${esc(d.valutakurs_anm)}</p>` + all.filter((f) => !(f.sektioner || []).length).map(card).join('');
+    }
+    if (id === 'karaktar') {
+      const gi = d.karaktar_info || {};
+      return introHtml + GRUPPER.map((g) => {
+        const items = all.filter((f) => inSek(f, 'karaktar') && (f.grupper || []).includes(g));
+        const info = gi[g] || {};
+        return `<section class="jakt-grupp"><h3>${esc(info.titel || g)} <span class="muted">(${items.length})</span></h3><p class="muted">${esc(info.text)}</p><div class="jakt-grid">${items.map(amazonCard).join('') || '<p class="empty">Inga hittade.</p>'}</div></section>`;
+      }).join('');
+    }
+    const items = all.filter((f) => inSek(f, id));
+    return introHtml + `<div class="jakt-grid">${items.map(amazonCard).join('') || '<p class="empty">Inga hittade.</p>'}</div>`;
+  }
+
   async function load() {
     try {
       const r = await fetch('data/filament.json', { cache: 'no-cache' });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const d = await r.json();
-      root.innerHTML = `<p class="muted">Priser senast uppdaterade ${esc(d.uppdaterad)}. ${esc(d.valutakurs_anm)}</p>` + (d.filament || []).map(card).join('');
+      let cur = 'allmant';
+      try { cur = sessionStorage.getItem('jaktTab') || cur; } catch { /* privat läge */ }
+      if (!TABS.some((t) => t.id === cur)) cur = 'allmant';
+      const bar = document.createElement('div');
+      bar.className = 'jakt-subtabs';
+      bar.setAttribute('role', 'tablist');
+      root.parentNode.insertBefore(bar, root);
+      const count = (id) => (d.filament || []).filter((f) => (id === 'allmant' ? !(f.sektioner || []).length : inSek(f, id))).length;
+      const draw = () => {
+        bar.innerHTML = TABS.map((t) => `<button type="button" role="tab" data-sub="${t.id}" aria-selected="${t.id === cur}">${esc(t.namn)} (${count(t.id)})</button>`).join('');
+        root.innerHTML = renderTab(d, cur);
+      };
+      bar.addEventListener('click', (e) => {
+        const b = e.target.closest('button[data-sub]');
+        if (!b) return;
+        cur = b.dataset.sub;
+        try { sessionStorage.setItem('jaktTab', cur); } catch { /* ignoreras */ }
+        draw();
+      });
+      draw();
     } catch (e) {
       root.innerHTML = `<div class="warn bad">Kunde inte läsa data/filament.json (${esc(e.message)}). Öppna via webbserver.</div>`;
     }

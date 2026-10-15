@@ -113,6 +113,3029 @@
     "butik": "Amazon.se (ELEGOO SE)",
     "anm": "Marcs länk, ASIN B0CD7B7ZKK. Titel: ELEGOO PLA-filament, 1.75 mm, PLA, vit, 1 kg (vanlig PLA, inte PLA+/Basic). Betyg 4,6/5 (1 046 omdömen)."
    }
+  },
+  {
+   "id": "az-b0d6gct6jc",
+   "namn": "eSUN Matte PLA Dual Color Röd/Svart",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Röd/Svart",
+   "kombo": "Duo: Röd/Svart",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#1a1a1a"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Röd/Svart 1KG",
+   "bild": "images/filament/az-b0d6gct6jc.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 171.46,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GCT6JC",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GCT6JC",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6g9k6qv",
+   "namn": "eSUN Matte PLA Dual Color Röd/Blå",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Röd/Blå",
+   "kombo": "Duo: Röd/Blå",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Röd/Blå 1KG",
+   "bild": "images/filament/az-b0d6g9k6qv.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6G9K6QV",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6G9K6QV",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6ggkzxq",
+   "namn": "eSUN Matte PLA Dual Color Röd/Gul",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Röd/Gul",
+   "kombo": "Duo: Röd/Gul",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Röd/Gul 1KG",
+   "bild": "images/filament/az-b0d6ggkzxq.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GGKZXQ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GGKZXQ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6gfyspy",
+   "namn": "eSUN Matte PLA Dual Color Svart/Vit",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Svart/Vit",
+   "kombo": "Duo: Svart/Vit",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#f4f4f2"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Svart/Vit 1KG",
+   "bild": "images/filament/az-b0d6gfyspy.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GFYSPY",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GFYSPY",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6gd42kv",
+   "namn": "eSUN Matte PLA Dual Color Grön/Blå",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Grön/Blå",
+   "kombo": "Duo: Grön/Blå",
+   "farg_hex": "#2e9e4f",
+   "farg_hexar": [
+    "#2e9e4f",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Grön/Blå 1KG",
+   "bild": "images/filament/az-b0d6gd42kv.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GD42KV",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GD42KV",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6gbtmgc",
+   "namn": "eSUN Matte PLA Dual Color Grön/Rosa",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Grön/Rosa",
+   "kombo": "Duo: Grön/Rosa",
+   "farg_hex": "#2e9e4f",
+   "farg_hexar": [
+    "#2e9e4f",
+    "#f06fa8"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Grön/Rosa 1KG",
+   "bild": "images/filament/az-b0d6gbtmgc.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GBTMGC",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GBTMGC",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6g9r93s",
+   "namn": "eSUN Matte PLA Dual Color Lila/Blå",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Lila/Blå",
+   "kombo": "Duo: Lila/Blå",
+   "farg_hex": "#8e44ad",
+   "farg_hexar": [
+    "#8e44ad",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Lila/Blå 1KG",
+   "bild": "images/filament/az-b0d6g9r93s.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6G9R93S",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6G9R93S",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6gf9546",
+   "namn": "eSUN Matte PLA Dual Color Lila/Gul",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Lila/Gul",
+   "kombo": "Duo: Lila/Gul",
+   "farg_hex": "#8e44ad",
+   "farg_hexar": [
+    "#8e44ad",
+    "#f2c200"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Lila/Gul 1KG",
+   "bild": "images/filament/az-b0d6gf9546.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GF9546",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GF9546",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d6gfx7dv",
+   "namn": "eSUN Matte PLA Dual Color Grön/Lila",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: Grön/Lila",
+   "kombo": "Duo: Grön/Lila",
+   "farg_hex": "#2e9e4f",
+   "farg_hexar": [
+    "#2e9e4f",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Två färger i samma sträng, matt yta.",
+   "amazon_titel": "eSUN Matte PLA Dual Color 1.75mm Grön/Lila 1KG",
+   "bild": "images/filament/az-b0d6gfx7dv.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D6GFX7DV",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D6GFX7DV",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjj9sy1y",
+   "namn": "SUNLU Silk PLA+ Dual Color Röd/Blå",
+   "material": "Silk PLA+",
+   "farg": "Duo: Röd/Blå",
+   "kombo": "Duo: Röd/Blå",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silk Dual Color PLA PLUS Filament, Shiny Pla+ Filament 1,75 Mm, Shiny Silk Texture, 360° Spin Avslöjar Olika Färger, 1 KG Spole(2,2Lbs), Silk Dual Color (Rött Och Blått)",
+   "bild": "images/filament/az-b0cjj9sy1y.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJ9SY1Y",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJ9SY1Y",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjblzlj",
+   "namn": "SUNLU Silk PLA+ Dual Color Röd/Guld",
+   "material": "Silk PLA+",
+   "farg": "Duo: Röd/Guld",
+   "kombo": "Duo: Röd/Guld",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#d4af37"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkes-PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande filament, 1,75 mm, silkesstruktur, 360°-spinn, avslöjar olika färger, dimensionell noggrannhet +/- 0,02 mm, spole på 1 kg, röd, guld",
+   "bild": "images/filament/az-b0cjjblzlj.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJBLZLJ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJBLZLJ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjb9yj2",
+   "namn": "SUNLU Silk PLA+ Tri Color Blå/Grön/Lila",
+   "material": "Silk PLA+",
+   "farg": "Tri: Blå/Grön/Lila",
+   "kombo": "Tri: Blå/Grön/Lila",
+   "farg_hex": "#1e5bd8",
+   "farg_hexar": [
+    "#1e5bd8",
+    "#2e9e4f",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkes-PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande, 1,75 mm, silkesstruktur, 360°-spinn, avslöjar olika färger, dimensionell noggrannhet +/- 0,02 mm, spole på 1 kg, blå, grön, lila",
+   "bild": "images/filament/az-b0cjjb9yj2.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJB9YJ2",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJB9YJ2",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjblj1z",
+   "namn": "SUNLU Silk PLA+ Dual Color Svart/Lila",
+   "material": "Silk PLA+",
+   "farg": "Duo: Svart/Lila",
+   "kombo": "Duo: Svart/Lila",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkes-PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande, 1,75 mm, silkesstruktur, 360°-spinn, avslöjar olika färger, dimensionell noggrannhet +/- 0,02 mm, spole på 1 kg, svart, lila",
+   "bild": "images/filament/az-b0cjjblj1z.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJBLJ1Z",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJBLJ1Z",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjblzmx",
+   "namn": "SUNLU Silk PLA+ Dual Color Rosa/Guld",
+   "material": "Silk PLA+",
+   "farg": "Duo: Rosa/Guld",
+   "kombo": "Duo: Rosa/Guld",
+   "farg_hex": "#f06fa8",
+   "farg_hexar": [
+    "#f06fa8",
+    "#d4af37"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU glänsande PLA+-filament, 1,75 mm, silke dubbelfärgat rosa guld, 360° centrifugering olika färger, 1 kg spole",
+   "bild": "images/filament/az-b0cjjblzmx.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJBLZMX",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJBLZMX",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjc7zz4",
+   "namn": "SUNLU Silk PLA+ Dual Color Mörkblå",
+   "material": "Silk PLA+",
+   "farg": "Duo: Mörkblå",
+   "kombo": "Duo: Mörkblå",
+   "farg_hex": "#14307a",
+   "farg_hexar": [
+    "#14307a",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkes-PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande filament, 1,75 mm, silkesstruktur, 360°-spinn, avslöjar olika färger, dimensionell noggrannhet +/- 0,02 mm, spole på 1 kg, svart, blå",
+   "bild": "images/filament/az-b0cjjc7zz4.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJC7ZZ4",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJC7ZZ4",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjc4q19",
+   "namn": "SUNLU Silk PLA+ Dual Color Svart/Grön",
+   "material": "Silk PLA+",
+   "farg": "Duo: Svart/Grön",
+   "kombo": "Duo: Svart/Grön",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#2e9e4f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkesfilament PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande, 1,75 mm, silkestextur, 360°-spinn, avslöjar olika färger, måttnoggrannhet +/- 0,02 mm, spole på 1 kg, silke, svart, grön",
+   "bild": "images/filament/az-b0cjjc4q19.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJC4Q19",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJC4Q19",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjb9bnf",
+   "namn": "SUNLU Silk PLA+ Dual Color Svart/Guld",
+   "material": "Silk PLA+",
+   "farg": "Duo: Svart/Guld",
+   "kombo": "Duo: Svart/Guld",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#d4af37"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkes-PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande filament, 1,75 mm, silkesstruktur, 360°-spinn, avslöjar olika färger, dimensionell noggrannhet +/- 0,02 mm, spole på 1 kg, svart, guld",
+   "bild": "images/filament/az-b0cjjb9bnf.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJB9BNF",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJB9BNF",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cjjbnqv9",
+   "namn": "SUNLU Silk PLA+ Tri Color Röd/Gul/Grön",
+   "material": "Silk PLA+",
+   "farg": "Tri: Röd/Gul/Grön",
+   "kombo": "Tri: Röd/Gul/Grön",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200",
+    "#2e9e4f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silkes-PLA Plus, 3D-skrivarfilament, dubbel färg, glänsande, 1,75 mm, silkesstruktur, 360°-spinn, avslöjar olika färger, dimensionell noggrannhet +/- 0,02 mm, spole på 1 kg, röd, gul, grön",
+   "bild": "images/filament/az-b0cjjbnqv9.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CJJBNQV9",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CJJBNQV9",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d9ldg6lc",
+   "namn": "SUNLU Silk PLA+ Dual Color Teal",
+   "material": "Silk PLA+",
+   "farg": "Duo: Teal",
+   "kombo": "Duo: Teal",
+   "farg_hex": "#169c9c",
+   "farg_hexar": [
+    "#169c9c",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgval enligt Amazon.se-varianten för detta ASIN; synlig färg ändras när strängen vrids.",
+   "amazon_titel": "SUNLU Silk Dual Color PLA PLUS Filament, Shiny Pla+ Filament 1,75 Mm, Shiny Silk Texture, 360° Spin Avslöjar Olika Färger, 1 KG Spole(2,2Lbs), Silk Dual Color (Blågrön)",
+   "bild": "images/filament/az-b0d9ldg6lc.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 266.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D9LDG6LC",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D9LDG6LC",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0ddppn1zc",
+   "namn": "SUNLU Silk Dual/Tri-paket (2 kg)",
+   "material": "Silk PLA+",
+   "farg": "Duo och tri, blandat paket",
+   "kombo": "Duo och tri, blandat paket",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#1e5bd8",
+    "#d4af37",
+    "#2e9e4f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "2 kg (flera spolar)",
+   "notering": "Paket med silk dual- och tri-color-spolar.",
+   "amazon_titel": "SUNLU 3D-Skrivar Filament Paket, Dubbelfärgad Silkefilament Flerfärgad, Trefärgad Silke Pla+ Filament, Individuellt Vakuumförpackad, Tvåfärgad Silkefilament*3, Trefärgad Silkefilament*5, Totalt 2 KG",
+   "bild": "images/filament/az-b0ddppn1zc.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 409.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DDPPN1ZC",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DDPPN1ZC",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b09ym8822d",
+   "namn": "iSANMATE Dual Silk PLA, 4 färger",
+   "material": "Silk PLA",
+   "farg": "Duo: Guld/Röd, Guld/Silver, Blå/Grön, Lila/Rosa",
+   "kombo": "Duo: Guld/Röd, Guld/Silver, Blå/Grön, Lila/Rosa",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37",
+    "#d32f2f",
+    "#c0c4cc",
+    "#1e5bd8",
+    "#2e9e4f",
+    "#8e44ad",
+    "#f06fa8"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "4 x 250 g",
+   "notering": "Fyra spolar à 250 g.",
+   "amazon_titel": "iSANMATE PLA Filament 1.75 set, Dual Colour Filament Silk PLA Gold Red/Gold Silver/Blue Green/Purple Pink 250 g spool x 4 färger 3D Printer Filament Set",
+   "bild": "images/filament/az-b09ym8822d.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 259.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B09YM8822D",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B09YM8822D",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0bhvcmhwp",
+   "namn": "iSANMATE Tri-Color Silk PLA, 4 färger",
+   "material": "Silk PLA",
+   "farg": "Tri: fyra trefärgskombinationer",
+   "kombo": "Tri: fyra trefärgskombinationer",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37",
+    "#d32f2f",
+    "#8e44ad",
+    "#1e5bd8",
+    "#f2c200",
+    "#f57c00",
+    "#2e9e4f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "4 x 250 g",
+   "notering": "Fyra spolar à 250 g.",
+   "amazon_titel": "ISANMATE Tri-color Silk filament 1,75 PLA, coextrusion silke, regnbåge, PLA-filament 1,75, silkmetall, 3D-skrivare, filamentset, 4 x 250 g, mått 0,02 mm",
+   "bild": "images/filament/az-b0bhvcmhwp.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 259.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0BHVCMHWP",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0BHVCMHWP",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0btgm58wb",
+   "namn": "iSANMATE Gradient Silk PLA Guld/Röd (regnbåge)",
+   "material": "Silk PLA",
+   "farg": "Gradient: Guld till Röd",
+   "kombo": "Gradient: Guld till Röd",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37",
+    "#d32f2f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Färgen glider längs strängen (gradient), inte co-extruderad.",
+   "amazon_titel": "iSANMATE PLA 3D-skrivarfilament, PLA-filament 1,75 mm +/- 0,02 mm, gradient glänsande silke PLA 1 kg, guld/röd regnbågsfilament",
+   "bild": "images/filament/az-b0btgm58wb.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 189.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0BTGM58WB",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0BTGM58WB",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0dszdrbxp",
+   "namn": "Inslogic Silk Tri Color PLA Röd/Gul/Blå",
+   "material": "Silk PLA",
+   "farg": "Tri: Röd/Gul/Blå",
+   "kombo": "Tri: Röd/Gul/Blå",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "Inslogic Silk PLA Filament 1.75mm, 3D-skrivarfilament Silk Tri Color PLA 1kg spole, silkeslen finish och hög precision, passar de flesta FDM 3D-skrivare (röd+gul+blå)",
+   "bild": "images/filament/az-b0dszdrbxp.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 194.82,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DSZDRBXP",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DSZDRBXP",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cmh68h17",
+   "namn": "CC3D Silk Tri-Color PLA Svart/Röd/Guld",
+   "material": "Silk PLA",
+   "farg": "Tri: Svart/Röd/Guld",
+   "kombo": "Tri: Svart/Röd/Guld",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#d32f2f",
+    "#d4af37"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "CC3D Silke trefärgad PLA-filament svart/röd/guld 1,75 mm 1 kg 3D-skrivartråd koextrudering glänsande metalliskt 3D-tryckmaterial multi färg filament",
+   "bild": "images/filament/az-b0cmh68h17.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 265,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CMH68H17",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CMH68H17",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0c38b5k7r",
+   "namn": "Sovol Tri Color Silk PLA Brons/Lila/Grön",
+   "material": "Silk PLA",
+   "farg": "Tri: Brons/Lila/Grön",
+   "kombo": "Tri: Brons/Lila/Grön",
+   "farg_hex": "#a8743a",
+   "farg_hexar": [
+    "#a8743a",
+    "#8e44ad",
+    "#2e9e4f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "Sovol Tri Color silkesfilament PLA, 1,75 mm, 3D-skrivarfilament, 1 kg, trefärgad sidenbrons/lila/grön, coextruderande PLA filament +/-0,03 mm",
+   "bild": "images/filament/az-b0c38b5k7r.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 220.31,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0C38B5K7R",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0C38B5K7R",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0c38bn16d",
+   "namn": "Sovol Tri Color Silk PLA Rosa/Blå/Gul",
+   "material": "Silk PLA",
+   "farg": "Tri: Rosa/Blå/Gul",
+   "kombo": "Tri: Rosa/Blå/Gul",
+   "farg_hex": "#f06fa8",
+   "farg_hexar": [
+    "#f06fa8",
+    "#1e5bd8",
+    "#f2c200"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "Sovol Tri Color Silk PLA filament 1,75 mm, 3D-skrivare silkesfilament 1 kg (2,2 lb), sidenrosa/blå/gul trefärgad coextrusion PLA Shiny filament +/-0,03 mm",
+   "bild": "images/filament/az-b0c38bn16d.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 299,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0C38BN16D",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0C38BN16D",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0dy171h7s",
+   "namn": "Sovol Tri Color Silk PLA Blå/Grön/Orange",
+   "material": "Silk PLA",
+   "farg": "Tri: Blå/Grön/Orange",
+   "kombo": "Tri: Blå/Grön/Orange",
+   "farg_hex": "#1e5bd8",
+   "farg_hexar": [
+    "#1e5bd8",
+    "#2e9e4f",
+    "#f57c00"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "Sovol PLA-filament silke trefärgad co-extrudering 1,75 mm, 3D-skrivarfilament 1 kg / 2,2 lbs, glänsande siden blå grön orange 3 i 1 koextrudering PLA-material +/-0,03 mm",
+   "bild": "images/filament/az-b0dy171h7s.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 220.31,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DY171H7S",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DY171H7S",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7c46db",
+   "namn": "ERYONE Tri Color Silk PLA Turkos/Rödorange/Guld",
+   "material": "Silk PLA",
+   "farg": "Tri: Turkos/Rödorange/Guld",
+   "kombo": "Tri: Turkos/Rödorange/Guld",
+   "farg_hex": "#1fbfb8",
+   "farg_hexar": [
+    "#1fbfb8",
+    "#f57c00",
+    "#d4af37"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ERYONE Tri Color Silk PLA Filament 1.75mm, 3D Printer Filament PLA +/-0.03mm 1KG/Spool, Tri Color Turquosie, Reddish Orange and Gold",
+   "bild": "images/filament/az-b0cd7c46db.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 159.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7C46DB",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7C46DB",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cppd93k5",
+   "namn": "ERYONE Matt Tvåfärgad PLA, 4 x 250 g",
+   "material": "PLA Matte (dual color)",
+   "farg": "Duo: svart/vit, röd/lila, grön/rosa, rosa/blå (4 spolar)",
+   "kombo": "Duo: svart/vit, röd/lila, grön/rosa, rosa/blå (4 spolar)",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#f4f4f2",
+    "#d32f2f",
+    "#8e44ad",
+    "#2e9e4f",
+    "#f06fa8",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "4 x 250 g",
+   "notering": "Färgparen enligt säljarens titel.",
+   "amazon_titel": "ERYONE PLA filament 1,75 mm, 3D-skrivare filamentpaket, flerfärgad 3D-skrivarfilament PLA +/-0,03 mm, 4 x 250 g/paket, matt tvåfärgad PLA-filament, svart vit och röd lila grön och rosa blå lila",
+   "bild": "images/filament/az-b0cppd93k5.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 0,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CPPD93K5",
+     "kollat": "2026-10-15",
+     "anm": "pris oläsbart"
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CPPD93K5",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0b8vj1y3r",
+   "namn": "ERYONE Matt Gradient Regnbåge PLA",
+   "material": "PLA Matte (gradient)",
+   "farg": "Gradient: regnbåge (matt)",
+   "kombo": "Gradient: regnbåge (matt)",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200",
+    "#2e9e4f",
+    "#1e5bd8",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "Pris visades orimligt vid kontroll och är därför utelämnat. Se länken.",
+   "amazon_titel": "ERYONE Matt PLA 3D-skrivare, filament 1,75 mm, matt lutning regnbåge PLA, mått +/- 0,03 mm, 1 kg 1 spole, matt, flerfärgad PLA, matt färggradient fossil",
+   "bild": "images/filament/az-b0b8vj1y3r.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 0,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0B8VJ1Y3R",
+     "kollat": "2026-10-15",
+     "anm": "pris oläsbart"
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0B8VJ1Y3R",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07pydnqxs",
+   "namn": "CC3D Silk Rainbow PLA (färgbyte)",
+   "material": "Silk PLA",
+   "farg": "Regnbåge: byter färg längs strängen",
+   "kombo": "Regnbåge: byter färg längs strängen",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200",
+    "#2e9e4f",
+    "#1e5bd8",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "3D-Tryck Silke Regnbåge PLA Filament, 1,75 mm, 1 kg, Metallisk Missfärgning för 3D-Skrivare - CC3D",
+   "bild": "images/filament/az-b07pydnqxs.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 186.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07PYDNQXS",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07PYDNQXS",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0b185qkfq",
+   "namn": "CC3D Silk Gradient Rainbow PLA",
+   "material": "Silk PLA",
+   "farg": "Gradient/regnbåge, snabba färgbyten",
+   "kombo": "Gradient/regnbåge, snabba färgbyten",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200",
+    "#2e9e4f",
+    "#1e5bd8",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "CC3D Silke glänsande snabbt ändra färg toning förändring regnbåge flerfärgad 3D-skrivare PLA-filament 1,75 mm 1 kg 3D-tryckmaterial allmänt kompatibelt för FDM 3D-skrivare -filament",
+   "bild": "images/filament/az-b0b185qkfq.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 159.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0B185QKFQ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0B185QKFQ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0f133qzrr",
+   "namn": "ZIRO Matt Regnbåge PLA",
+   "material": "PLA Matte (gradient)",
+   "farg": "Gradient/regnbåge (matt)",
+   "kombo": "Gradient/regnbåge (matt)",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f",
+    "#f2c200",
+    "#2e9e4f",
+    "#1e5bd8",
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "duo-tri"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ZIRO Matt PLA Filament 1.75mm, Matt Regnbågsfärgat 3D-Skrivarfilament",
+   "bild": "images/filament/az-b0f133qzrr.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 235.55,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0F133QZRR",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0F133QZRR",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0dh29hwvj",
+   "namn": "ELEGOO Silk PLA Blå/Grön (dual)",
+   "material": "Silk PLA",
+   "farg": "Duo: Blå/Grön",
+   "kombo": "Duo: Blå/Grön",
+   "farg_hex": "#1e5bd8",
+   "farg_hexar": [
+    "#1e5bd8",
+    "#2e9e4f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Amazon.se-titel: \"Seta PLA Filament Blå, Grön\".",
+   "amazon_titel": "ELEGOO Seta PLA Filament 1,75mm Blå, Grön 1KG 3D-skrivare",
+   "bild": "images/filament/az-b0dh29hwvj.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DH29HWVJ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DH29HWVJ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0dh2946w2",
+   "namn": "ELEGOO Silk PLA Svart/Röd (dual)",
+   "material": "Silk PLA",
+   "farg": "Duo: Svart/Röd",
+   "kombo": "Duo: Svart/Röd",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a",
+    "#d32f2f"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ELEGOO Silke PLA-filament 1,75 mm svart röd 1 kg, glänsande flerfärgat 3D-skrivarfilament PLA med hög dimensionell stabilitet, 1 kg spole för de flesta 3D-skrivare",
+   "bild": "images/filament/az-b0dh2946w2.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DH2946W2",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DH2946W2",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0f8q5hwql",
+   "namn": "ELEGOO Silk Tri-Color PLA, 4 x 250 g",
+   "material": "Silk PLA",
+   "farg": "Tri: fyra trefärgsspolar",
+   "kombo": "Tri: fyra trefärgsspolar",
+   "farg_hex": "#1e5bd8",
+   "farg_hexar": [
+    "#1e5bd8",
+    "#8e44ad",
+    "#1a1a1a",
+    "#2e9e4f",
+    "#f57c00"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "4 x 250 g",
+   "notering": "",
+   "amazon_titel": "ELEGOO Förpackning med 4 spolar av trefärgat siden PLA 4 x 250 g 1,75 mm",
+   "bild": "images/filament/az-b0f8q5hwql.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 281.73,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0F8Q5HWQL",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0F8Q5HWQL",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0f8q5l7p5",
+   "namn": "ELEGOO Silk PLA, 4 x 250 g (flerfärg)",
+   "material": "Silk PLA",
+   "farg": "Fyra silk-färger, 4 x 250 g",
+   "kombo": "Fyra silk-färger, 4 x 250 g",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37",
+    "#c0c4cc",
+    "#d32f2f",
+    "#1e5bd8"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "4 x 250 g",
+   "notering": "Titeln nämner inte färgerna; se Amazon.se-sidan.",
+   "amazon_titel": "ELEGOO PLA Silk filament 1,75 4 x 250 g spolar",
+   "bild": "images/filament/az-b0f8q5l7p5.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 281.73,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0F8Q5L7P5",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0F8Q5L7P5",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cm68zs9c",
+   "namn": "ELEGOO Silk PLA Guld",
+   "material": "Silk PLA",
+   "farg": "Silk Guld",
+   "kombo": "Silk Guld",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37"
+   ],
+   "sektioner": [
+    "karaktar",
+    "silk"
+   ],
+   "grupper": [
+    "har"
+   ],
+   "vikt": "1 kg",
+   "notering": "Glansigt blont/guldigt hår.",
+   "amazon_titel": "ELEGOO Silk PLA-filament 1,75 mm, guld, 1 kg",
+   "bild": "images/filament/az-b0cm68zs9c.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CM68ZS9C",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CM68ZS9C",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd77kqqn",
+   "namn": "ELEGOO Silk PLA Silver",
+   "material": "Silk PLA",
+   "farg": "Silk Silver",
+   "kombo": "Silk Silver",
+   "farg_hex": "#c0c4cc",
+   "farg_hexar": [
+    "#c0c4cc"
+   ],
+   "sektioner": [
+    "karaktar",
+    "silk"
+   ],
+   "grupper": [
+    "har"
+   ],
+   "vikt": "1 kg",
+   "notering": "Glansigt silver till äldre/fantasihår.",
+   "amazon_titel": "ELEGOO PLA-filament i silke, 1,75 mm, silver, 1 kg, glänsande 3D-filament",
+   "bild": "images/filament/az-b0cd77kqqn.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD77KQQN",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD77KQQN",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d5yn9dzq",
+   "namn": "ELEGOO Silk PLA Mintgrön",
+   "material": "Silk PLA",
+   "farg": "Silk Mintgrön",
+   "kombo": "Silk Mintgrön",
+   "farg_hex": "#8fd9b6",
+   "farg_hexar": [
+    "#8fd9b6"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ELEGOO Silk PLA filament 1,75 mm mintgrön 1 kg",
+   "bild": "images/filament/az-b0d5yn9dzq.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D5YN9DZQ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D5YN9DZQ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d5yjvf23",
+   "namn": "ELEGOO Silk PLA Korallrosa",
+   "material": "Silk PLA",
+   "farg": "Silk Korallrosa",
+   "kombo": "Silk Korallrosa",
+   "farg_hex": "#f4837d",
+   "farg_hexar": [
+    "#f4837d"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ELEGOO Silk PLA filament 1,75 mm korallrosa 1 kg",
+   "bild": "images/filament/az-b0d5yjvf23.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D5YJVF23",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D5YJVF23",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d5ymtvkg",
+   "namn": "ELEGOO Silk PLA Stechpalmgrön",
+   "material": "Silk PLA",
+   "farg": "Silk Mörkgrön",
+   "kombo": "Silk Mörkgrön",
+   "farg_hex": "#1f6b3a",
+   "farg_hexar": [
+    "#1f6b3a"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ELEGOO Silk PLA-filament 1,75 mm, stechpalme grön, 1 kg",
+   "bild": "images/filament/az-b0d5ymtvkg.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D5YMTVKG",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D5YMTVKG",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0fpc8ljfs",
+   "namn": "ELEGOO Silk PLA Äkta röd",
+   "material": "Silk PLA",
+   "farg": "Silk Röd",
+   "kombo": "Silk Röd",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "ELEGOO Silke PLA-filament 1,75 mm äkta röd 1 kg, glänsande 3D-filament dimensionell noggrannhet +/- 0,02 mm, 1 kg spole (2,2 pund) 3D-utskriftsfilament passar för de flesta FDM 3D-skrivare",
+   "bild": "images/filament/az-b0fpc8ljfs.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0FPC8LJFS",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0FPC8LJFS",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0f48gqv5h",
+   "namn": "ELEGOO PLA kopparfyllt (metall)",
+   "material": "PLA med metallpulver",
+   "farg": "Metallic: koppar",
+   "kombo": "Metallic: koppar",
+   "farg_hex": "#b87333",
+   "farg_hexar": [
+    "#b87333"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Metallfyllt PLA, inte Silk, men metallisk yta.",
+   "amazon_titel": "ELEGOO PLA-filament 1,75 mm kopparfyllt 1 kg",
+   "bild": "images/filament/az-b0f48gqv5h.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 270.89,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0F48GQV5H",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0F48GQV5H",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07d72413h",
+   "namn": "GEEETECH Silk PLA Silver",
+   "material": "Silk PLA",
+   "farg": "Silk Silver",
+   "kombo": "Silk Silver",
+   "farg_hex": "#c0c4cc",
+   "farg_hexar": [
+    "#c0c4cc"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "GEEETECH PLA Filament, 1,75 mm, Silk Silver, 3D-skrivare Filament PLA, 1kg Spool",
+   "bild": "images/filament/az-b07d72413h.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 296.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07D72413H",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07D72413H",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0dkp1f39z",
+   "namn": "GEEETECH Silk PLA Silver (nyare listning)",
+   "material": "Silk PLA",
+   "farg": "Silk Silver",
+   "kombo": "Silk Silver",
+   "farg_hex": "#c0c4cc",
+   "farg_hexar": [
+    "#c0c4cc"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "GEEETECH PLA Filament 1,75mm Silk Silver, 3D-skrivarfilament PLA 1kg Spool, Silkefilament med silkesydd utskriftsyta, Dimensioner +/-0,02mm",
+   "bild": "images/filament/az-b0dkp1f39z.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 191.08,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DKP1F39Z",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DKP1F39Z",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07r4m6fmq",
+   "namn": "GEEETECH Silk PLA Guld",
+   "material": "Silk PLA",
+   "farg": "Silk Guld",
+   "kombo": "Silk Guld",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "GEEETECH PLA-filament, 1,75 mm, för 3D-skrivare, 1 kg spole, silkesguld",
+   "bild": "images/filament/az-b07r4m6fmq.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 189.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07R4M6FMQ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07R4M6FMQ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0dknxj2yq",
+   "namn": "GEEETECH Silk PLA Guld (nyare listning)",
+   "material": "Silk PLA",
+   "farg": "Silk Guld",
+   "kombo": "Silk Guld",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "GEEETECH PLA Filament 1,75 mm Silk Gold, 3D-skrivare Filament 1,75 PLA 1kg Spool",
+   "bild": "images/filament/az-b0dknxj2yq.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 296.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0DKNXJ2YQ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0DKNXJ2YQ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07r4cnlb4",
+   "namn": "GEEETECH Silk PLA Svart",
+   "material": "Silk PLA",
+   "farg": "Silk Svart",
+   "kombo": "Silk Svart",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "GEEETECH PLA filament 1,75 mm silke svart, 3D-filament PLA för 3D-skrivare, 1 kg spole",
+   "bild": "images/filament/az-b07r4cnlb4.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 299,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07R4CNLB4",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07R4CNLB4",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07v2lwvw7",
+   "namn": "SUNLU Silk PLA+ Ljusguld",
+   "material": "Silk PLA+",
+   "farg": "Silk Ljusguld",
+   "kombo": "Silk Ljusguld",
+   "farg_hex": "#e6c35c",
+   "farg_hexar": [
+    "#e6c35c"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "SUNLU Silk PLA PLUS Filament, Shiny Silk PLA+ filament 1,75 mm, slät silkeslen yta, dimensionsnoggrannhet +/- 0,02 mm, 1 kg spole, SILK Ljust Guld",
+   "bild": "images/filament/az-b07v2lwvw7.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 239.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07V2LWVW7",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07V2LWVW7",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07w58zm8r",
+   "namn": "SUNLU Silk PLA+ Svart",
+   "material": "Silk PLA+",
+   "farg": "Silk Svart",
+   "kombo": "Silk Svart",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "SUNLU Silk PLA PLUS Filament, Shiny Silk PLA+ filament 1,75 mm, slät silkeslen yta, dimensionsnoggrannhet +/- 0,02 mm, 1 kg spole, SILK Svart",
+   "bild": "images/filament/az-b07w58zm8r.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 159.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07W58ZM8R",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07W58ZM8R",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0fgqfkzfm",
+   "namn": "SUNLU Silk PLA+ Mässing",
+   "material": "Silk PLA+",
+   "farg": "Silk Metallic: Mässing",
+   "kombo": "Silk Metallic: Mässing",
+   "farg_hex": "#b5a642",
+   "farg_hexar": [
+    "#b5a642"
+   ],
+   "sektioner": [
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "",
+   "amazon_titel": "SUNLU Silke PLA+ filament, glänsande metalliskt siden 3D-filament 1,75 mm",
+   "bild": "images/filament/az-b0fgqfkzfm.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 236.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0FGQFKZFM",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0FGQFKZFM",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7c7bnl",
+   "namn": "ELEGOO PLA Beige",
+   "material": "PLA",
+   "farg": "Beige (ljus hud)",
+   "kombo": "Beige (ljus hud)",
+   "farg_hex": "#e8cfa8",
+   "farg_hexar": [
+    "#e8cfa8"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "hud"
+   ],
+   "vikt": "1 kg",
+   "notering": "Ljusaste hudtonen i Elegoos vanliga PLA-serie.",
+   "amazon_titel": "ELEGOO PLA Filament 1,75 mm, beige, 1 kg, 3D-skrivarfilament, dimensionell noggrannhet +/- 0,02 mm, filament för de flesta 3D-skrivare",
+   "bild": "images/filament/az-b0cd7c7bnl.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7C7BNL",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7C7BNL",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cnlrf7lv",
+   "namn": "ELEGOO PLA Brun",
+   "material": "PLA",
+   "farg": "Brun (mörk hud / brunt hår)",
+   "kombo": "Brun (mörk hud / brunt hår)",
+   "farg_hex": "#6b4423",
+   "farg_hexar": [
+    "#6b4423"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "hud",
+    "har"
+   ],
+   "vikt": "1 kg",
+   "notering": "Mörk hudton och brunt hår.",
+   "amazon_titel": "ELEGOO PLA-filament, 1,75 mm, 3D-skrivarfilament, PLA, brun, 1 kg",
+   "bild": "images/filament/az-b0cnlrf7lv.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CNLRF7LV",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CNLRF7LV",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7btn37",
+   "namn": "ELEGOO PLA Svart",
+   "material": "PLA",
+   "farg": "Svart",
+   "kombo": "Svart",
+   "farg_hex": "#1a1a1a",
+   "farg_hexar": [
+    "#1a1a1a"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader",
+    "ogon"
+   ],
+   "vikt": "1 kg",
+   "notering": "Svart hår, kläder och ögonens pupill.",
+   "amazon_titel": "ELEGOO PLA-filament 1,75 mm svart 1 kg, 3D-filament Dimensionell noggrannhet +/- 0,02 mm, 1 kg kartongspole (2,2 lbs) 3D-utskriftsfilament passar för de flesta FDM 3D-skrivare",
+   "bild": "images/filament/az-b0cd7btn37.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 173.33,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7BTN37",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7BTN37",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7blcj4",
+   "namn": "ELEGOO PLA Röd",
+   "material": "PLA",
+   "farg": "Röd (rött hår / kläder)",
+   "kombo": "Röd (rött hår / kläder)",
+   "farg_hex": "#d32f2f",
+   "farg_hexar": [
+    "#d32f2f"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Rött hår (för mer naturligt rött: blanda med Orange) och klädfärg.",
+   "amazon_titel": "ELEGOO Filament PLA 1.75 1KG röd",
+   "bild": "images/filament/az-b0cd7blcj4.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7BLCJ4",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7BLCJ4",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7q7mth",
+   "namn": "ELEGOO PLA Orange",
+   "material": "PLA",
+   "farg": "Orange (ingefärshår)",
+   "kombo": "Orange (ingefärshår)",
+   "farg_hex": "#f57c00",
+   "farg_hexar": [
+    "#f57c00"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Ingefärsröd/orange ton.",
+   "amazon_titel": "ELEGOO PLA-filament, 1,75 mm orange, 1 kg, 3D-filament, dimensionell",
+   "bild": "images/filament/az-b0cd7q7mth.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7Q7MTH",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7Q7MTH",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd77vhbz",
+   "namn": "ELEGOO PLA Grå",
+   "material": "PLA",
+   "farg": "Grå (grått hår, kläder)",
+   "kombo": "Grå (grått hår, kläder)",
+   "farg_hex": "#8b8f96",
+   "farg_hexar": [
+    "#8b8f96"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Grått hår och stenfärger.",
+   "amazon_titel": "ELEGOO PLA-filament, 1,75 mm, 3D-skrivarfilament, grått 1 kg",
+   "bild": "images/filament/az-b0cd77vhbz.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD77VHBZ",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD77VHBZ",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7b7zkk",
+   "namn": "ELEGOO PLA Vit",
+   "material": "PLA",
+   "farg": "Vit",
+   "kombo": "Vit",
+   "farg_hex": "#f4f4f2",
+   "farg_hexar": [
+    "#f4f4f2"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader",
+    "ogon"
+   ],
+   "vikt": "1 kg",
+   "notering": "Vitt hår, kläder och ögonvitan.",
+   "amazon_titel": "ELEGOO PLA-filament, 1,75 mm, 3D-skrivarfilament, PLA, vitt, 1 kg",
+   "bild": "images/filament/az-b0cd7b7zkk.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 173.33,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7B7ZKK",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7B7ZKK",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7c12lw",
+   "namn": "ELEGOO PLA Mörkblå",
+   "material": "PLA",
+   "farg": "Mörkblå (kläder)",
+   "kombo": "Mörkblå (kläder)",
+   "farg_hex": "#14307a",
+   "farg_hexar": [
+    "#14307a"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Jeans, uniform, kappor.",
+   "amazon_titel": "ELEGOO PLA Filament 1,75 mm, mörkblå, 1 kg, 3D-skrivarfilament, dimensionell noggrannhet +/- 0,02 mm, filament för de flesta 3D-skrivare",
+   "bild": "images/filament/az-b0cd7c12lw.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7C12LW",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7C12LW",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7q9yx6",
+   "namn": "ELEGOO PLA Ljusgrön",
+   "material": "PLA",
+   "farg": "Ljusgrön (kläder)",
+   "kombo": "Ljusgrön (kläder)",
+   "farg_hex": "#8bd36b",
+   "farg_hexar": [
+    "#8bd36b"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Lätt grön ton för tröjor och accessoarer.",
+   "amazon_titel": "ELEGOO PLA-filament, 1,75 mm, 3D-skrivarfilament, ljusgrönt, 1 kg",
+   "bild": "images/filament/az-b0cd7q9yx6.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7Q9YX6",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7Q9YX6",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cm69l9rt",
+   "namn": "ELEGOO Silk PLA Blå/Magenta",
+   "material": "Silk PLA",
+   "farg": "Duo: Blå/Magenta",
+   "kombo": "Duo: Blå/Magenta",
+   "farg_hex": "#1e5bd8",
+   "farg_hexar": [
+    "#1e5bd8",
+    "#c2185b"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "1 kg",
+   "notering": "Variantnamn \"Blå Magenta\" på Amazon.se.",
+   "amazon_titel": "ELEGOO PLA-filament 1,75 mm silke, blå magenta 1 kg, 3D-skrivarfilament, dimensionell noggrannhet +/- 0,05 mm, plastspole 1 kg (2,2 lbs), 3D-utskriftsmaterial, lämplig för de flesta",
+   "bild": "images/filament/az-b0cm69l9rt.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 227.53,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CM69L9RT",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CM69L9RT",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d5yk48hy",
+   "namn": "ELEGOO Silk PLA Guld/Silver (2 kg)",
+   "material": "Silk PLA",
+   "farg": "Duo: Guld/Silver",
+   "kombo": "Duo: Guld/Silver",
+   "farg_hex": "#d4af37",
+   "farg_hexar": [
+    "#d4af37",
+    "#c0c4cc"
+   ],
+   "sektioner": [
+    "duo-tri",
+    "silk"
+   ],
+   "vikt": "2 kg (2 spolar)",
+   "notering": "",
+   "amazon_titel": "ELEGOO Silke PLA filament 1,75 mm siden guld/silver 2 kg",
+   "bild": "images/filament/az-b0d5yk48hy.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 357.61,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D5YK48HY",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D5YK48HY",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cnlrnz15",
+   "namn": "ELEGOO PLA Ros",
+   "material": "PLA",
+   "farg": "Ros (mycket ljus/rosig hud, tecknad)",
+   "kombo": "Ros (mycket ljus/rosig hud, tecknad)",
+   "farg_hex": "#f2b6c0",
+   "farg_hexar": [
+    "#f2b6c0"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "hud",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Rosig ton för ljus, tecknad hud; även klädfärg.",
+   "amazon_titel": "ELEGOO PLA-filament 1,75 mm 1 kg för 3D-skrivare, Dimensionell noggrannhet +/- 0,02 mm kartongrulle 3D-utskriftsfilament lämplig för de flesta FDM 3D-skrivare rosa",
+   "bild": "images/filament/az-b0cnlrnz15.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CNLRNZ15",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CNLRNZ15",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7qn9m2",
+   "namn": "ELEGOO PLA Trä (vedfärg)",
+   "material": "PLA",
+   "farg": "Vedfärg (medelbrun hud)",
+   "kombo": "Vedfärg (medelbrun hud)",
+   "farg_hex": "#c19a6b",
+   "farg_hexar": [
+    "#c19a6b"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "hud"
+   ],
+   "vikt": "1 kg",
+   "notering": "Varm medelbrun, funkar som tan/solbränd hud.",
+   "amazon_titel": "ELEGOO PLA-filament 1,75 mm trä 1 kg, måttnoggrannhet +/- 0,02 mm",
+   "bild": "images/filament/az-b0cd7qn9m2.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7QN9M2",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7QN9M2",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd79t1jt",
+   "namn": "ELEGOO PLA Gul",
+   "material": "PLA",
+   "farg": "Gul (blont hår)",
+   "kombo": "Gul (blont hår)",
+   "farg_hex": "#f2c200",
+   "farg_hexar": [
+    "#f2c200"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Blont hår (gult är mer mättat än naturligt blont), även kläder.",
+   "amazon_titel": "Elegoo PLA-filament, 1,75 mm, gult, 1 kg, 3D-skrivarfilament, måttnoggrannhet +/- 0,02 mm, 1 kg pappspole (2,2 pund) Filament-3D-utskriftsmaterial Passar för de flesta 3D-skrivare",
+   "bild": "images/filament/az-b0cd79t1jt.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD79T1JT",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD79T1JT",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7qhy8g",
+   "namn": "ELEGOO PLA Lila",
+   "material": "PLA",
+   "farg": "Lila (fantasihår/kläder)",
+   "kombo": "Lila (fantasihår/kläder)",
+   "farg_hex": "#8e44ad",
+   "farg_hexar": [
+    "#8e44ad"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Fantasi: lila hår, kläder.",
+   "amazon_titel": "Elegoo PLA-filament, 1,75 mm, lila, 3D-skrivarfilament, PLA, 1 kg",
+   "bild": "images/filament/az-b0cd7qhy8g.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7QHY8G",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7QHY8G",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd779r2v",
+   "namn": "ELEGOO PLA Himmelsblå",
+   "material": "PLA",
+   "farg": "Himmelsblå (fantasihår/kläder)",
+   "kombo": "Himmelsblå (fantasihår/kläder)",
+   "farg_hex": "#5bb3e8",
+   "farg_hexar": [
+    "#5bb3e8"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "har",
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Fantasi: blått hår, ljusblå kläder.",
+   "amazon_titel": "Elegoo PLA-filament, 1,75 mm, 3D-skrivarfilament, himmelsblått, 1 kg",
+   "bild": "images/filament/az-b0cd779r2v.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD779R2V",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD779R2V",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0cd7rj37s",
+   "namn": "ELEGOO PLA Havsgrön",
+   "material": "PLA",
+   "farg": "Havsgrön (kläder)",
+   "kombo": "Havsgrön (kläder)",
+   "farg_hex": "#2a9d8f",
+   "farg_hexar": [
+    "#2a9d8f"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Turkos/havsgrön för kläder och detaljer.",
+   "amazon_titel": "ELEGOO PLA-filament 1,75 mm havsgrön 1 kg, dimensionell 3D-filament +/- 0,02 mm, 1 kg kartong spole (2,2 pund) 3D-utskriftsfilament passar de flesta FDM 3D-skrivare",
+   "bild": "images/filament/az-b0cd7rj37s.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0CD7RJ37S",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0CD7RJ37S",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b0d5ylqz76",
+   "namn": "ELEGOO PLA+ Rymdgrå",
+   "material": "PLA+",
+   "farg": "Rymdgrå (kläder)",
+   "kombo": "Rymdgrå (kläder)",
+   "farg_hex": "#4b4f57",
+   "farg_hexar": [
+    "#4b4f57"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "klader"
+   ],
+   "vikt": "1 kg",
+   "notering": "Mörkgrå för byxor, rustning. PLA+, men samma Elegoo-färglinje.",
+   "amazon_titel": "ELEGOO PLA+ filament 1,75 mm rymdgrå 1 kg, PLA Plus 3D-skrivarfilament",
+   "bild": "images/filament/az-b0d5ylqz76.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 216.69,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B0D5YLQZ76",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B0D5YLQZ76",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
+  },
+  {
+   "id": "az-b07dhdgssd",
+   "namn": "SUNLU PLA+ Beige (annat märke)",
+   "material": "PLA+",
+   "farg": "Beige (alternativ hudton)",
+   "kombo": "Beige (alternativ hudton)",
+   "farg_hex": "#e3c9a0",
+   "farg_hexar": [
+    "#e3c9a0"
+   ],
+   "sektioner": [
+    "karaktar"
+   ],
+   "grupper": [
+    "hud"
+   ],
+   "vikt": "1 kg",
+   "notering": "Alternativ ljus hudton från SUNLU. Annat märke: matchar inte exakt Elegoos färger.",
+   "amazon_titel": "SUNLU PLA+ Filament, Filament PLA Plus 3D-skrivare 1,75 mm ± 0,02 mm, Spole 1 kg, pla+ Beige",
+   "bild": "images/filament/az-b07dhdgssd.jpg",
+   "bild_kalla": "Produktbild från Amazon.se-produktsidan (säljarens bild), nedskalad",
+   "pris": {
+    "lagsta": {
+     "belopp": 189.99,
+     "valuta": "SEK",
+     "sek_ca": null,
+     "butik": "Amazon.se",
+     "url": "https://www.amazon.se/dp/B07DHDGSSD",
+     "kollat": "2026-10-15",
+     "anm": ""
+    },
+    "butiker": [],
+    "multipack": ""
+   },
+   "produktlank": {
+    "butik": "Amazon.se",
+    "url": "https://www.amazon.se/dp/B07DHDGSSD",
+    "anm": "Ren produktlänk (ASIN), inga spårningsparametrar."
+   },
+   "printat_objekt": null,
+   "video": null
   }
- ]
+ ],
+ "sektioner_info": {
+  "duo-tri": {
+   "titel": "Duo- och tri-color på Amazon.se",
+   "text": "Flerfärgade spolar där två eller tre färger ligger i samma sträng (co-extruderade) eller glider som gradient. Synlig färg beror på hur strängen vrids och på modellen. Alla länkar går till Amazon.se (Prime); jag köper inget åt dig.",
+   "antal": "Urval funnet via sökning 2026-10-15. Amazon.se har fler; detta är inte en fullständig lista. Pris läst från produktsidan vid kontrollen och kan ändras; saknas pris står \"pris oläsbart\"."
+  },
+  "silk": {
+   "titel": "Silk-filament på Amazon.se",
+   "text": "Glansiga silk-PLA i enfärgat (guld, silver, svart m.fl.), dual/tri-color och metallfyllt. Silk skrivs ofta något varmare och långsammare än vanlig PLA; hållfastheten är lägre, så välj det för dekor och figurer.",
+   "antal": "Urval funnet via sökning 2026-10-15. Amazon.se har fler. Dual/tri-silk finns både här och under Duo- och tri-color."
+  },
+  "karaktar": {
+   "titel": "Printa karaktärer",
+   "text": "Färger för figurer i flerfärg (t.ex. med flera filament eller målning mellan lagren). Jag har helst valt Elegoos vanliga PLA så färgerna hör ihop med din Centauri Carbon 2; enstaka alternativ från andra märken är markerade.",
+   "antal": "Urval funnet via sökning 2026-10-15. Alla mörka hudtoner och riktigt naturligt blont/rött hår finns inte i Elegoos serie; blanda då Brun/Orange/Gul eller måla."
+  }
+ },
+ "karaktar_info": {
+  "hud": {
+   "titel": "Hudfärger (ljus till mörk)",
+   "text": "Från ljus till mörk: Ros/Beige för ljus hud, Trä (vedfärg) för medelbrun/tan, Brun för mörk hud. Ingen riktig \"skin\"-färg finns i Elegoos vanliga PLA, så välj den som ligger närmast."
+  },
+  "har": {
+   "titel": "Hårfärger",
+   "text": "Svart, Brun, Gul eller Silk Guld (blont), Röd/Orange (rött), Grå/Vit/Silk Silver (grått/vitt) samt Lila och Himmelsblå för fantasi. Silk ger glansigt hår."
+  },
+  "klader": {
+   "titel": "Klädfärger och annat",
+   "text": "Basfärger för tröjor, byxor och accessoarer: svart, vit, grå, röd, orange, gul, mörkblå, himmelsblå, lila, ljusgrön och havsgrön."
+  },
+  "ogon": {
+   "titel": "Ögon: vitt och svart",
+   "text": "Vitt öga (Vit) plus svart pupill (Svart) ger de \"prickade\" ögonen. Båda från Elegoo, så tonerna matchar. Printa pupillen som en egen liten färgbyteslager eller separat del."
+  }
+ }
 }

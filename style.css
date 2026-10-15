@@ -194,3 +194,13 @@ label.chk { flex-direction: row; align-items: center; gap: 6px; flex: 0 1 auto; 
 .jakt-tbl table { border-collapse: collapse; font-size: 14px; min-width: 520px; width: 100%; }
 .jakt-tbl th, .jakt-tbl td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
 @media (max-width: 700px) { .jakt-media { grid-template-columns: 1fr; } .jakt-img { width: 96px; height: 96px; } }
+/* Filamentjakt: underflikar, Amazon-kort, färgprov */
+.jakt-subtabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.jakt-subtabs button { font: inherit; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sunk); color: inherit; cursor: pointer; }
+.jakt-subtabs button[aria-selected="true"] { background: var(--ink); color: var(--ground); }
+.jakt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+.jakt-grupp { margin: 18px 0; }
+.jakt-swatch { display: inline-block; width: 28px; height: 14px; border-radius: 4px; border: 1px solid var(--rule); vertical-align: -2px; flex: 0 0 auto; }
+.jakt-az .jakt-head > .jakt-swatch { width: 96px; height: 96px; border-radius: 10px; }
+.jakt-src { font-size: 12px; margin: 4px 0 0; }
+@media (max-width: 700px) { .jakt-grid { grid-template-columns: 1fr; } .jakt-subtabs button { flex: 1 1 45%; } }
