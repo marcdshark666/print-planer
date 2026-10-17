@@ -6,6 +6,8 @@
 <title>Print-planeraren</title>
 <meta name="description" content="Planera 3D-prints från MakerWorld: bläddra, kanban, filamentlager, skrivarprofil och Etsy-/licenskoll.">
 <link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="printade.css?v=1">
+<script type="importmap">{ "imports": { "three": "./vendor/three-0.171.0/build/three.module.min.js" } }</script>
 </head>
 <body>
 <header class="top">
@@ -30,6 +32,7 @@
     <button type="button" data-tab="filament" role="tab">Filament</button>
     <button type="button" data-tab="jakt" role="tab">Filamentjakt</button>
     <button type="button" data-tab="printer" role="tab">Skrivare</button>
+    <button type="button" data-tab="printade" role="tab">Printade</button>
   </nav>
 </header>
 
@@ -243,6 +246,25 @@
       <ul class="tips" id="tipsList"></ul>
     </div>
   </section>
+  <!-- PRINTADE (bara via skrivarservern bakom Husvakt-inloggning) -->
+  <section id="tab-printade" class="tab" hidden>
+    <div class="panel">
+      <h2>Printade objekt – rangordning och säljpotential</h2>
+      <p class="count" id="prtSumma">Hämtar …</p>
+      <div class="warn bad"><strong>Etsy:</strong> sälj bara prints av egna designer eller modeller vars licens tillåter det (🟢). Att sälja prints av andras MakerWorld-modeller (Standard/Exclusive) eller NC-licenser utan designerns tillstånd är licensbrott och kan stänga Etsy-butiken. Inget listas automatiskt.</div>
+      <div id="prtStatus" role="status" aria-live="polite"></div>
+    </div>
+    <div class="filters panel">
+      <div class="catbar" id="prtChips"></div>
+      <div class="prt-verktyg">
+        <label class="prt-val">Sortera
+          <select id="prtSort"><option value="rang">Rangordning (favorit, prio)</option><option value="salj">Säljpotential</option><option value="datum">Senast printad</option></select>
+        </label>
+      </div>
+      <p class="muted">Rangordning som på hemskärmen: 💎 1 Platina, 🥇 2 Guld, 🥈 3 Silver, 🥉 4 Brons. Välj på kortet – sparas på servern.</p>
+    </div>
+    <div class="grid prt-grid" id="prtGrid"></div>
+  </section>
 </main>
 
 <dialog id="cardDlg">
@@ -283,5 +305,6 @@
 
 <script src="app.js?v=9"></script>
 <script src="filamentjakt.js?v=2"></script>
+<script type="module" src="printade.js?v=1"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ import argparse, glob, hashlib, hmac, html, http.client, json, mimetypes, os, re
 import secrets, threading, time, urllib.request
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlparse, unquote, parse_qs
+from urllib.parse import urlparse, unquote, parse_qs, quote
 
 import paho.mqtt.client as mqtt
 
@@ -533,8 +533,263 @@ def modeller_oversikt():
     return {'ts': time.time(), 'mappar': out, 'live': live_status()}
 
 
+# ---------------- Printade (las filer-privat, egen prio/saljdata i data/printer/) ----------------
+# Objekten och filerna ags av filer-privat (byggs av E:\CHAT-RTX\filer-bygge\scripts\build2.py).
+# Vi laser files.json och serverar bara filer som star i den (ingen kopia). PRIVAT: bakom inloggning.
+FILER_DATA = os.path.realpath(os.path.join(os.path.dirname(ROOT), 'filer-privat', 'data'))
+FILER_JSON = os.path.join(FILER_DATA, 'files.json')
+PRINTADE_META = os.path.join(DATA, 'printade.json')
+PRINTADE_LOCK = threading.Lock()
+ETSY_STATUS = ('ej', 'ide', 'listad')
+TRI_GRANS = 1_500_000      # over detta: bara forhandsbild (iPad orkar inte)
+NED_TYPER = {'.stl': 'model/stl', '.3mf': 'model/3mf', '.obj': 'model/obj', '.glb': 'model/gltf-binary',
+             '.zip': 'application/zip', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp'}
+# Objekt-id -> delstrang i gcode-filnamn + varumarkesvarningar: privat fil (data/printer/, gitignored),
+# eftersom objektnamnen ar personliga och repot ar publikt.
+KOPPLING = os.path.join(DATA, 'printade-koppling.json')
+
+
+def koppling():
+    return _cachad('koppling', KOPPLING, lambda: json.load(open(KOPPLING, encoding='utf-8'))) or {}
+
+
+_cache = {}
+
+
+def _cachad(nyckel, fil, fn):
+    try:
+        st = os.stat(fil)
+        sig = (st.st_mtime, st.st_size)
+    except OSError:
+        return None
+    hit = _cache.get(nyckel)
+    if hit and hit[0] == sig:
+        return hit[1]
+    try:
+        v = fn()
+    except Exception as e:                      # trasig fil far inte stoppa sidan
+        log('printade:', nyckel, type(e).__name__)
+        v = None
+    _cache[nyckel] = (sig, v)
+    return v
+
+
+def las_filer_json():
+    return _cachad('files.json', FILER_JSON, lambda: json.load(open(FILER_JSON, encoding='utf-8')))
+
+
+def filer_sokvag(rel):
+    """Sakrad sokvag under filer-privat/data, bara om rel star i files.json (bild eller fil)."""
+    d = las_filer_json() or {}
+    tillatna = set()
+    for o in d.get('objects', []):
+        if o.get('image'):
+            tillatna.add(o['image'])
+        for f in o.get('files', []):
+            tillatna.add(f.get('path'))
+    if rel not in tillatna or '..' in rel or '\\' in rel or ':' in rel:
+        return None
+    fp = os.path.realpath(os.path.join(FILER_DATA, rel))
+    try:
+        if os.path.commonpath([fp, FILER_DATA]) != FILER_DATA:
+            return None
+    except ValueError:
+        return None
+    return fp if os.path.isfile(fp) and os.path.splitext(fp)[1].lower() in NED_TYPER else None
+
+
+def glb_trianglar(fp):
+    def rakna():
+        import struct
+        with open(fp, 'rb') as fh:
+            head = fh.read(20)
+            n = struct.unpack('<I', head[12:16])[0]
+            j = json.loads(fh.read(n))
+        t = 0
+        for m in j.get('meshes', []):
+            for p in m.get('primitives', []):
+                a = p.get('indices')
+                acc = j['accessors'][a if a is not None else p['attributes']['POSITION']]
+                t += acc['count'] // 3
+        return t
+    return _cachad('tri:' + fp, fp, rakna)
+
+
+def tremf_installningar(fp):
+    """Filament/lager/infill ur 3MF:ens projektinstallningar (ingen vikt/tid finns i osliceade filer)."""
+    def las():
+        import zipfile
+        with zipfile.ZipFile(fp) as z:
+            if 'Metadata/project_settings.config' not in z.namelist():
+                return None
+            j = json.loads(z.read('Metadata/project_settings.config'))
+        ft = j.get('filament_type') or []
+        return {'filament': sorted(set(x for x in ft if isinstance(x, str)))[:4],
+                'lagerhojd': j.get('layer_height'), 'infill': j.get('sparse_infill_density'),
+                'vaggar': j.get('wall_loops'), 'stod': j.get('enable_support') in ('1', 1, True)}
+    return _cachad('3mf:' + fp, fp, las)
+
+
+def skrivar_historik():
+    """{gcode-filnamn: {'forst': ts, 'sist': ts, 'rader': n}} ur history.jsonl (bara rader med utskrift)."""
+    def las():
+        ut = {}
+        with open(HISTORY, encoding='utf-8') as fh:
+            for rad in fh:
+                try:
+                    r = json.loads(rad)
+                except ValueError:
+                    continue
+                f = r.get('filename')
+                if not f or not r.get('printing'):
+                    continue
+                e = ut.setdefault(f, {'forst': r['ts'], 'sist': r['ts'], 'rader': 0})
+                e['sist'] = r['ts']
+                e['rader'] += 1
+        return ut
+    return _cachad('historik', HISTORY, las) or {}
+
+
+GCODE_RE = re.compile(r'^ECC2_[\d.]+_(.+)_(Elegoo [^_]+?) ?_([\d.]+)_([\dhdms]+)\.gcode$')
+
+
+def skrivarjobb(oid):
+    nycklar = (koppling().get('gcode') or {}).get(oid) or []
+    ut = []
+    for namn, e in skrivar_historik().items():
+        if not any(k in namn for k in nycklar):
+            continue
+        m = GCODE_RE.match(namn)
+        ut.append({'fil': namn[:160], 'material': m.group(2) if m else None,
+                   'lagerhojd': m.group(3) if m else None, 'beraknad': m.group(4) if m else None,
+                   'start': e['forst'], 'slut': e['sist'], 'faktisk_sek': int(e['sist'] - e['forst'])})
+    ut.sort(key=lambda j: j['start'])
+    return ut
+
+
+def licensbedomning(o):
+    """(farg, kort, forklaring) - grön/gul/röd. Försiktigt: osäkert = gult, inte grönt."""
+    lic = (o.get('license') or '').lower()
+    egen = (o.get('origin') or '').lower().startswith('egen')
+    if egen:
+        return 'gron', 'Ja – egen design', 'Du äger designen och får sälja prints fritt.'
+    if 'nc' in lic.replace('-', ' ').split() or 'by-nc' in lic or 'noncommercial' in lic:
+        return 'rod', 'Nej – NC-licens', 'Icke-kommersiell licens: prints får inte säljas utan designerns tillstånd.'
+    if 'standard digital file' in lic:
+        return 'rod', 'Nej – MakerWorld Standard', 'Standard Digital File License tillåter inte försäljning av prints. Fråga designern om kommersiell licens.'
+    if 'exclusive' in lic:
+        return 'rod', 'Nej – MakerWorld Exclusive', 'Exklusiv MakerWorld-licens: ingen försäljning av prints utan designerns tillstånd.'
+    if 'cc0' in lic or 'public domain' in lic:
+        return 'gron', 'Ja – CC0', 'Fri att sälja. Snyggt att ändå nämna designern.'
+    if 'cc by-sa' in lic or 'cc-by-sa' in lic:
+        return 'gron', 'Ja – samma licens', 'CC BY-SA: får säljas med attribution, och ändrade filer måste delas under samma licens.'
+    if re.search(r'cc[ -]by\b', lic) and 'nd' not in lic.split():
+        return 'gron', 'Ja – med attribution', 'CC BY: får säljas om designern nämns (namn + länk) i annonsen.'
+    return 'gul', 'Oklart – kolla licensen', 'Licensen är okänd eller saknas i filen. Kolla källan innan något säljs.'
+
+
+def las_meta():
+    try:
+        with open(PRINTADE_META, encoding='utf-8') as fh:
+            d = json.load(fh)
+        return d if isinstance(d, dict) and isinstance(d.get('objekt'), dict) else {'objekt': {}}
+    except (OSError, ValueError):
+        return {'objekt': {}}
+
+
+def skriv_meta(d):
+    if os.path.exists(PRINTADE_META):
+        shutil.copyfile(PRINTADE_META, PRINTADE_META + '.bak')
+    tmp = PRINTADE_META + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as fh:
+        json.dump(d, fh, ensure_ascii=False, indent=1)
+    os.replace(tmp, PRINTADE_META)
+
+
+def printade_lista():
+    d = las_filer_json()
+    if not d:
+        return None
+    meta = las_meta()['objekt']
+    ut = []
+    for o in d.get('objects', []):
+        oid = o.get('id')
+        if not isinstance(oid, str):
+            continue
+        filer = []
+        glb = None
+        for f in o.get('files', []):
+            fp = filer_sokvag(f.get('path') or '')
+            if not fp:
+                continue
+            ext = os.path.splitext(fp)[1].lower()
+            post = {'typ': f.get('type'), 'url': 'printade-fil/' + f['path'], 'namn': os.path.basename(fp),
+                    'bytes': os.path.getsize(fp), 'nomad': bool(f.get('nomad'))}
+            if ext == '.glb':
+                glb = post
+                post['trianglar'] = glb_trianglar(fp)
+            if ext == '.3mf':
+                inst = tremf_installningar(fp)
+                if inst:
+                    post['installningar'] = inst
+            filer.append(post)
+        farg, kort, forkl = licensbedomning(o)
+        m = meta.get(oid) or {}
+        ut.append({
+            'id': oid, 'namn': o.get('name'), 'printad': o.get('printed') or [], 'antal': o.get('prints'),
+            'material': o.get('material'), 'kategori': o.get('category'), 'kalla': o.get('origin'),
+            'designer': o.get('designer'), 'licens': o.get('license'), 'licensUrl': o.get('licenseUrl'),
+            'kallUrl': o.get('sourceUrl'), 'kallExakt': o.get('sourceExact'), 'originalUrl': o.get('originalUrl'),
+            'favorit': o.get('favorit_rank'), 'beskrivning': o.get('description') or '', 'matt_mm': o.get('dims_mm'),
+            'bild': ('printade-fil/' + o['image']) if o.get('image') and filer_sokvag(o['image']) else None,
+            'filer': filer, 'glb': glb, 'visa3d': bool(glb and (glb.get('trianglar') or 0) <= TRI_GRANS),
+            'salj': {'farg': farg, 'kort': kort, 'forklaring': forkl, 'varumarke': (koppling().get('varumarke') or {}).get(oid)},
+            'jobb': skrivarjobb(oid),
+            'prio': m.get('prio'), 'saljpotential': m.get('salj'), 'etsy': m.get('etsy') or 'ej',
+        })
+    return {'uppdaterad': d.get('updated'), 'skrivare': d.get('printer'), 'objekt': ut}
+
+
+def spara_prio(body):
+    """Validerar {id, prio?, salj?, etsy?} och sparar atomiskt. Returnerar (kod, svar)."""
+    if not isinstance(body, dict):
+        return 400, {'error': 'ogiltig data'}
+    oid = body.get('id')
+    d = las_filer_json() or {}
+    if not isinstance(oid, str) or oid not in {o.get('id') for o in d.get('objects', [])}:
+        return 400, {'error': 'okant objekt'}
+    andr = {}
+    for k in ('prio', 'salj'):
+        if k in body:
+            v = body[k]
+            if v is not None and (not isinstance(v, int) or isinstance(v, bool) or not 1 <= v <= 4):
+                return 400, {'error': f'{k} maste vara 1-4 eller null'}
+            andr[k] = v
+    if 'etsy' in body:
+        if body['etsy'] not in ETSY_STATUS:
+            return 400, {'error': 'etsy maste vara ej/ide/listad'}
+        andr['etsy'] = body['etsy']
+    if not andr:
+        return 400, {'error': 'inget att spara'}
+    with PRINTADE_LOCK:
+        meta = las_meta()
+        post = dict(meta['objekt'].get(oid) or {})
+        post.update(andr)
+        post['andrad'] = datetime.now().isoformat(timespec='seconds')
+        meta['objekt'][oid] = post
+        meta['uppdaterad'] = post['andrad']
+        try:
+            skriv_meta(meta)
+        except OSError as e:
+            log('printade spara fel:', type(e).__name__)
+            return 500, {'error': 'kunde inte spara'}
+    return 200, {'ok': True, 'id': oid, 'post': post}
+
+
 # ---------------- HTTP ----------------
-PUBLIC_FILES = re.compile(r'^/(index\.html|app\.js|style\.css|data/[A-Za-z0-9_.-]+\.json|images/.+)?$')
+PUBLIC_FILES = re.compile(r'^/(index\.html|[a-z0-9_-]+\.(?:js|css|svg)|data/[A-Za-z0-9_.-]+\.json|images/.+|vendor/[A-Za-z0-9_./-]+\.js)?$')
+STATISKA_TYPER = {'.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
+                  '.html': 'text/html; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml'}
 
 
 class H(BaseHTTPRequestHandler):
@@ -557,10 +812,66 @@ class H(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def stream_fil(self, fp, ctype, nedladdning):
+        """Strommar fil med Range/ETag/HEAD (stora STL/GLB till iPad). nedladdning=True -> attachment."""
+        try:
+            st = os.stat(fp)
+        except OSError:
+            return self.send(404, {'error': 'saknas'})
+        etag = f'"{st.st_size:x}-{int(st.st_mtime * 1000):x}"'
+        bas = {'Content-Type': ctype, 'ETag': etag, 'Accept-Ranges': 'bytes', 'Cache-Control': 'private, no-cache',
+               'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex'}
+        if nedladdning:
+            namn = os.path.basename(fp)
+            ascii_namn = re.sub(r'[^A-Za-z0-9._-]', '_', namn)
+            bas['Content-Disposition'] = (f'attachment; filename="{ascii_namn}"; '
+                                          f"filename*=UTF-8''{quote(namn)}")
+        if self.headers.get('If-None-Match') == etag:
+            self.send_response(304)
+            for k, v in bas.items():
+                self.send_header(k, v)
+            self.end_headers()
+            return
+        start, slut, kod = 0, st.st_size - 1, 200
+        m = re.match(r'^bytes=(\d*)-(\d*)$', self.headers.get('Range') or '')
+        if m and (m.group(1) or m.group(2)):
+            if m.group(1):
+                start = int(m.group(1))
+                slut = min(int(m.group(2)), st.st_size - 1) if m.group(2) else st.st_size - 1
+            else:
+                start = max(0, st.st_size - int(m.group(2)))
+            if start >= st.st_size or slut < start:
+                self.send_response(416)
+                self.send_header('Content-Range', f'bytes */{st.st_size}')
+                self.send_header('Content-Length', '0')
+                self.end_headers()
+                return
+            kod = 206
+            bas['Content-Range'] = f'bytes {start}-{slut}/{st.st_size}'
+        self.send_response(kod)
+        for k, v in bas.items():
+            self.send_header(k, v)
+        self.send_header('Content-Length', str(slut - start + 1))
+        self.end_headers()
+        if self.command == 'HEAD':
+            return
+        try:
+            with open(fp, 'rb') as fh:
+                fh.seek(start)
+                kvar = slut - start + 1
+                while kvar > 0:
+                    bit = fh.read(min(256 * 1024, kvar))
+                    if not bit:
+                        break
+                    self.wfile.write(bit)
+                    kvar -= len(bit)
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            pass                                # klienten avbrot (vanligt vid Range pa iPad)
+
     def file(self, path, ctype=None):
         if not os.path.isfile(path):
             return self.send(404, {'error': 'saknas'})
-        ctype = ctype or mimetypes.guess_type(path)[0] or 'application/octet-stream'
+        ctype = ctype or STATISKA_TYPER.get(os.path.splitext(path)[1].lower()) or mimetypes.guess_type(path)[0] or 'application/octet-stream'
         with open(path, 'rb') as f:
             self.send(200, f.read(), ctype)
 
@@ -657,17 +968,58 @@ class H(BaseHTTPRequestHandler):
             return False
         if self._ar_lokal() or giltig_session(self._cookie()):
             return True
-        if vag.startswith('/api/') or vag.startswith(('/snap/', '/timelapse/', '/modeller-fil/')):
+        if self.command == 'POST' or vag.startswith('/api/') or vag.startswith(('/snap/', '/timelapse/', '/modeller-fil/', '/printade-fil/')):
             self.send(401, {'error': 'inloggning kravs'})
         else:
             self._redirect(prefix + '/logga-in')
         return False
 
+    def _samma_ursprung(self):
+        """CSRF-skydd utover SameSite=Strict: Origin (om den finns) maste vara var egen host."""
+        org = self.headers.get('Origin')
+        if not org:
+            return True
+        try:
+            return urlparse(org).netloc.split(':')[0].lower() == (self.headers.get('Host') or '').split(':')[0].lower()
+        except ValueError:
+            return False
+
     def do_POST(self):
         vag, prefix = self._vag()
         if not self._vakt(vag, prefix):
             return
+        if vag == '/api/prio':
+            if not self._samma_ursprung():
+                return self.send(403, {'error': 'fel ursprung'})
+            if 'application/json' not in (self.headers.get('Content-Type') or ''):
+                return self.send(415, {'error': 'skicka JSON'})
+            try:
+                n = int(self.headers.get('Content-Length') or 0)
+                if not 0 < n <= 2000:
+                    return self.send(413 if n > 2000 else 400, {'error': 'fel storlek'})
+                body = json.loads(self.rfile.read(n).decode('utf-8'))
+            except (ValueError, OSError):
+                return self.send(400, {'error': 'ogiltig JSON'})
+            kod, svar = spara_prio(body)
+            return self.send(kod, svar)
         self.send(404, {'error': 'saknas'})
+
+    def do_HEAD(self):
+        vag, prefix = self._vag()
+        if not self._vakt(vag, prefix):
+            return
+        if vag.startswith('/printade-fil/'):
+            return self._printade_fil(vag)
+        self.send(405, {'error': 'metod'})
+
+    def _printade_fil(self, vag):
+        rel = vag[len('/printade-fil/'):]
+        fp = filer_sokvag(rel)
+        if not fp:
+            return self.send(404, {'error': 'saknas'})
+        ext = os.path.splitext(fp)[1].lower()
+        ned = ext in ('.stl', '.3mf', '.obj', '.glb', '.zip')
+        return self.stream_fil(fp, NED_TYPER[ext], ned)
 
     def do_GET(self):
         vag, prefix = self._vag()
@@ -694,6 +1046,13 @@ class H(BaseHTTPRequestHandler):
             return self.send(200, [json.loads(r) for r in rows if r])
         if p == '/api/modeller':
             return self.send(200, modeller_oversikt())
+        if p == '/api/printade':
+            lista = printade_lista()
+            return self.send(200, lista) if lista else self.send(503, {'error': 'filer-privat/data/files.json saknas'})
+        if p == '/api/prio':
+            return self.send(200, las_meta())
+        if p.startswith('/printade-fil/'):
+            return self._printade_fil(p)
         if p.startswith('/modeller-fil/'):
             fp = modeller_sokvag(p[len('/modeller-fil/'):])
             if not fp:

@@ -1,0 +1,39 @@
+/* Fliken Printade (printade.js). Använder färgtokens från style.css. */
+.prt-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); align-items: start; }
+.prt-kort { min-width: 0; }
+.prt-kort.prt-fav { border-color: var(--mid); box-shadow: 0 0 0 2px var(--mid-soft), var(--shadow); }
+.prt-media { position: relative; aspect-ratio: 4 / 3; background: var(--sunk); overflow: hidden; }
+.prt-bild { width: 100%; height: 100%; object-fit: contain; display: block; background: #f7f7f5; }
+.prt-tom { display: flex; align-items: center; justify-content: center; color: var(--ink-3); }
+.prt-3d-knapp { position: absolute; right: 10px; bottom: 10px; min-height: 44px; font-weight: 600; }
+.prt-3d-knapp span { font-weight: 400; opacity: .85; font-size: 12px; }
+.prt-3d-info { position: absolute; left: 8px; right: 8px; bottom: 8px; font-size: 12px; background: rgba(0,0,0,.6); color: #fff; padding: 4px 8px; border-radius: 6px; }
+.prt-3d { position: absolute; inset: 0; background: #20242c; }
+.prt-3d canvas { width: 100% !important; height: 100% !important; display: block; touch-action: none; }
+.prt-3d-txt { position: absolute; left: 8px; right: 110px; top: 8px; margin: 0; color: #e8eaee; font-size: 13px; pointer-events: none; }
+.prt-3d-txt.prt-3d-hjalp { top: auto; bottom: 8px; right: 8px; opacity: .8; font-size: 12px; }
+.prt-3d-stang { position: absolute; top: 8px; right: 8px; min-height: 36px; }
+.prt-topp { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.prt-badge { font-size: 13px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.prt-favbadge { background: var(--mid-soft); color: var(--mid); }
+.prt-kat { font-size: 12px; color: var(--ink-3); margin-left: auto; }
+.prt-val-rad { display: flex; flex-wrap: wrap; gap: 8px; }
+.prt-val { flex: 1 1 140px; }
+.prt-val span { font-size: 12px; }
+.prt-val select { min-height: 44px; font-size: 16px; width: 100%; }
+.prt-salj { font-size: 13px; }
+.prt-dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 10px; margin: 0; font-size: 13px; }
+.prt-dl dt { color: var(--ink-3); }
+.prt-dl dd { margin: 0; overflow-wrap: anywhere; }
+.prt-det summary { cursor: pointer; font-size: 14px; padding: 4px 0; }
+.prt-det p, .prt-jobb { font-size: 13px; overflow-wrap: anywhere; }
+.prt-jobb { margin: 4px 0; padding-left: 18px; }
+.prt-filer { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+.prt-dl-btn { flex-direction: column; align-items: flex-start; gap: 0; min-height: 56px; padding: 8px 12px; justify-content: center; }
+.prt-dl-btn strong { font-size: 16px; }
+.prt-dl-btn span { font-size: 12px; color: var(--ink-2); }
+.prt-ipad { font-size: 12px; }
+.prt-saljchip[aria-pressed="true"] { background: var(--ok) !important; border-color: var(--ok) !important; }
+#prtChips button { min-height: 40px; }
+.prt-verktyg { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.prt-verktyg select { min-height: 40px; }

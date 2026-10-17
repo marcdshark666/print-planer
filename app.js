@@ -1056,6 +1056,8 @@
     await loadFavorites();
     await Promise.all([loadData(), seedInbox(), loadVideos(), loadPersonal(), loadSetup()]);
     seedPersonal();
+    const h = (location.hash || '').slice(1);              // djuplänk, t.ex. /skrivare/#printade
+    if (/^[a-z]+$/.test(h) && document.getElementById(`tab-${h}`)) state.ui.tab = h;
     setTab(state.ui.tab);
   }
   init().catch((e) => { console.error('Init misslyckades', e); toast('Något gick fel vid start'); });
