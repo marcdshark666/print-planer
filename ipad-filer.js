@@ -1,8 +1,8 @@
 // Fliken "iPad-filer": ladda upp filer från iPaden till datorn. API: api/ipad-filer (POST rå ström, GET lista, DELETE).
 const MAX = 500 * 1024 * 1024;
-const OK_EXT = ['stl', '3mf', 'obj', 'step', 'stp', 'gcode', 'zip', 'png', 'jpg', 'jpeg', 'pdf'];
+const OK_EXT = ['stl', '3mf', 'obj', 'step', 'stp', 'gcode', 'bgcode', 'nom', 'blend', 'fbx', 'glb', 'gltf', 'ply', 'amf', 'scad', 'f3d', 'dxf', 'svg', 'zip', 'rar', '7z', 'png', 'jpg', 'jpeg', 'heic', 'webp', 'pdf', 'json', 'txt'];
 const $ = (id) => document.getElementById(id);
-const drop = $('ipdDrop'), input = $('ipdInput'), upp = $('ipdUpp'), summa = $('ipdSumma'), lista = $('ipdLista');
+const drop = $('ipdDrop'), input = $('ipdInput'), input2 = $('ipdInput2'), upp = $('ipdUpp'), summa = $('ipdSumma'), lista = $('ipdLista');
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const storlek = (b) => (b >= 1048576 ? `${(b / 1048576).toLocaleString('sv-SE', { maximumFractionDigits: 1 })} MB` : `${Math.max(1, Math.round(b / 1024))} kB`);
 const tid = (t) => { try { return new Date(t).toLocaleString('sv-SE', { dateStyle: 'short', timeStyle: 'short' }); } catch { return t || ''; } };
@@ -10,7 +10,7 @@ const ext = (n) => (String(n).split('.').pop() || '').toLowerCase();
 
 function ikon(f) {
   const e = ext(f.namn);
-  if (['png', 'jpg', 'jpeg'].includes(e)) return `<img loading="lazy" alt="" src="ipad-filer-fil/${encodeURIComponent(f.namn)}?visa=1">`;
+  if (['png', 'jpg', 'jpeg', 'webp'].includes(e)) return `<img loading="lazy" alt="" src="ipad-filer-fil/${encodeURIComponent(f.namn)}?visa=1">`;
   return esc(e.toUpperCase());
 }
 
@@ -69,11 +69,12 @@ async function skicka(filer) {
     await skickaEn(f, rad);
   }
   pagar = false;
-  input.value = '';
+  input.value = ''; input2.value = '';
   ladda();
 }
 
 input.addEventListener('change', () => skicka(input.files));
+input2.addEventListener('change', () => skicka(input2.files));
 ['dragenter', 'dragover'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add('over'); }));
 ['dragleave', 'drop'].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove('over'); }));
 drop.addEventListener('drop', (e) => skicka(e.dataTransfer?.files));
