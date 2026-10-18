@@ -2890,5 +2890,29 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DeMrf50MEFS",
+  "url": "https://www.instagram.com/reel/DeMrf50MEFS/",
+  "creator": "@vladislavchoporov",
+  "thumb": "images/videos/DeMrf50MEFS.jpg",
+  "titel_sv": "Vladislav Choporov – 3D-printat projekt",
+  "handlar_om": "Instagram-inlägg från vladislavchoporov publicerat 7 oktober 2026. Beskrivningen innehåller ingen text om själva projektet, bara likes och kommentarer.",
+  "forslag": "Titta på videon och bedöm om modellen går att printa i Elegoo PLA svart/vit på Centauri Carbon 2; börja med en liten testprint.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dek4MDpps_9",
+  "url": "https://www.instagram.com/reel/Dek4MDpps_9/",
+  "creator": "@birdanatta",
+  "thumb": "images/videos/Dek4MDpps_9.jpg",
+  "titel_sv": "Skrivbordsorganisation med utbytbara moduler",
+  "handlar_om": "BIRD ANATTA visar ett skrivbordsupplägg med utbytbara moduler och dold förvaring, med en plats för varje liten pryl. Frågar om det är användbart eller överkonstruerat. Taggar nämner 3D-printing och MakerWorld.",
+  "forslag": "Printa modulerna i Elegoo PLA Basic svart med vita detaljer i PLA vit; PLA Silk silvergrå för synliga paneler. Testa en enkel modul först och kolla passformen.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
