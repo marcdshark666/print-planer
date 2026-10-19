@@ -2914,5 +2914,29 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DenGJ37tVrm",
+  "url": "https://www.instagram.com/reel/DenGJ37tVrm/",
+  "creator": "@cal.mcs",
+  "thumb": "images/videos/DenGJ37tVrm.jpg",
+  "titel_sv": "Diabetes-sensorsmycke i Venom-stil",
+  "handlar_om": "Designern cal.mcs visar ett smycke/skal i form av en rustning för diabetessensor, inspirerat av symbioten Venom. Designat för @vital.veil.",
+  "forslag": "Printa ett sensorskal i svart PLA Basic eller TPU 95A svart (mjukt mot huden) med silkessilver som detaljfärg i 4-färg på Centauri Carbon 2. Testa passform mot egen sensor.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DeokzbRPupF",
+  "url": "https://www.instagram.com/reel/DeokzbRPupF/",
+  "creator": "NEO YOKAI NIGHT",
+  "thumb": "images/videos/DeokzbRPupF.jpg",
+  "titel_sv": "Handmålade lysande lågor på figur (blacklight)",
+  "handlar_om": "NEO YOKAI NIGHT visar hur lågor handmålas på en figur i serien BLACK PARADE med fluorescerande färg under blacklight.",
+  "forslag": "Printa en figur i vit PLA (bra bas för fluorescerande färg) och måla lågor med UV-färg; testa även svart PLA Basic som mörk bakgrund.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
