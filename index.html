@@ -31,6 +31,7 @@
     <button type="button" data-tab="inbox" role="tab">Inkorg</button>
     <button type="button" data-tab="filament" role="tab">Filament</button>
     <button type="button" data-tab="jakt" role="tab">Filamentjakt</button>
+    <button type="button" data-tab="canvas" role="tab">Filament i skrivaren</button>
     <button type="button" data-tab="printer" role="tab">Skrivare</button>
     <button type="button" data-tab="printade" role="tab">Printade</button>
   </nav>
@@ -182,6 +183,16 @@
       <div class="prn-main">
         <img id="prnCam" class="prn-cam" alt="Live-kamera från skrivaren">
   <!-- FILAMENTJAKT -->
+  <section id="tab-canvas" class="tab" hidden>
+    <div class="panel">
+      <h2>Filament i skrivaren (Canvas)</h2>
+      <p class="muted">Var filamenten ligger i Centauri Carbon 2:s Canvas. Data i <code>data/canvas.json</code>.</p>
+      <p id="canvasDatum"><strong></strong></p>
+      <figure><img id="canvasBild" alt="Foto av skrivarens Canvas-skärm med filamentslotar" style="max-width:100%;height:auto" loading="lazy"></figure>
+      <div class="jakt-tbl"><table><thead><tr><th>Slot</th><th>Färg</th><th>Typ</th><th>Anm.</th></tr></thead><tbody id="canvasRader"></tbody></table></div>
+      <p class="muted" id="canvasNot"></p>
+    </div>
+  </section>
   <section id="tab-jakt" class="tab" hidden>
     <div class="panel">
       <h2>Filamentjakt – Centauri Carbon 2</h2>
@@ -305,6 +316,7 @@
 
 <script src="app.js?v=9"></script>
 <script src="filamentjakt.js?v=2"></script>
+<script src="canvas.js?v=1"></script>
 <script type="module" src="printade.js?v=1"></script>
 </body>
 </html>

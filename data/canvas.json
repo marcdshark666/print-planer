@@ -1,0 +1,11 @@
+{
+ "bild": "images/canvas-filament.jpg",
+ "bild_uppdaterad": "2026-10-23",
+ "notering": "De två svarta (slot 2 och 3) används som reserv åt varandra (auto refill). Uppdatera bild_uppdaterad och slots när du byter bild.",
+ "slots": [
+  { "slot": 1, "farg": "Vit", "hex": "#f4f4f2", "typ": "PLA", "anm": "" },
+  { "slot": 2, "farg": "Svart", "hex": "#111111", "typ": "PLA", "anm": "Aktiv/laddad" },
+  { "slot": 3, "farg": "Svart", "hex": "#111111", "typ": "PLA", "anm": "Reserv till slot 2" },
+  { "slot": 4, "farg": "Vit/ljus", "hex": "#e8e8e4", "typ": "PLA", "anm": "" }
+ ]
+}
