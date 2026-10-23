@@ -3034,5 +3034,65 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DexijWhCDIe",
+  "url": "https://www.instagram.com/reel/DexijWhCDIe/",
+  "creator": "@brushknight",
+  "thumb": "images/videos/DexijWhCDIe.jpg",
+  "titel_sv": "Agent-deck med ESP32-skärm",
+  "handlar_om": "Ett projekt där en 'agents deck' kopplats till en ESP32-skärm, med stöd för olika agent-ramverk som herdr, cmux och orca. Skaparen delar källor och projektdetaljer via kommentar.",
+  "forslag": "Bygg ett enkelt ESP32-skal i PLA Basic svart med frontram i vit PLA; testa snäppfästen för skärmen.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DdJr0WCsAjO",
+  "url": "https://www.instagram.com/reel/DdJr0WCsAjO/",
+  "creator": "@rf3dbaski",
+  "thumb": "images/videos/DdJr0WCsAjO.jpg",
+  "titel_sv": "Test av ren PLA – effektiv",
+  "handlar_om": "Kort klipp där skaparen frågar om du provat och nämner att ren (saf) PLA också fungerar effektivt. Beskrivningen ger inga fler detaljer.",
+  "forslag": "Jämför Elegoo PLA vit mot PLA Basic svart i samma modell för att se skillnad i yta och styrka.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DeuCcRbujmO",
+  "url": "https://www.instagram.com/reel/DeuCcRbujmO/",
+  "creator": "@capiau3d",
+  "thumb": "images/videos/DeuCcRbujmO.jpg",
+  "titel_sv": "Magnetiskt anatomiskt kranium",
+  "handlar_om": "Ett anatomiskt kranium med 22 färgkodade ben och 108 neodymmagneter som gör att det kan tas isär och sättas ihop. Riktat till studenter, vårdpersonal och lärare.",
+  "forslag": "Printa ben i PLA vit med Silk silvergrå för detaljer; planera magnetfickor och pausa för att lägga i magneter.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Degkr6ktee_",
+  "url": "https://www.instagram.com/reel/Degkr6ktee_/",
+  "creator": "@senntia.jewelry",
+  "thumb": "images/videos/Degkr6ktee_.jpg",
+  "titel_sv": "Blomdesign för diabetessensor",
+  "handlar_om": "Första blomdesignerna för sensor-smycken/dekorationer, taggat diabetes och diabetic jewelry. Skaparen säljer designerna som litet företag.",
+  "forslag": "Testa en tunn blomplatta i TPU 95A svart som sensorskydd, eller PLA Silk silvergrå för en smyckeskänsla.",
+  "tag": "affär",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DepDgWkyE6_",
+  "url": "https://www.instagram.com/reel/DepDgWkyE6_/",
+  "creator": "@katelynn_yunxiu",
+  "thumb": "images/videos/DepDgWkyE6_.jpg",
+  "titel_sv": "Designa en hjärtlampa",
+  "handlar_om": "Skaparen visar designprocessen för en hjärtformad lampa, taggat lampa, hjärta och resinhantverk.",
+  "forslag": "Printa hjärtat i vit PLA för ljusspridning och en sockel i PLA Basic svart; testa tunna väggar.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
