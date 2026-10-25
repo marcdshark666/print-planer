@@ -3094,5 +3094,17 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Ddi9qKLgXb6",
+  "url": "https://www.instagram.com/reel/Ddi9qKLgXb6/",
+  "creator": "@dmainsos",
+  "thumb": "images/videos/Ddi9qKLgXb6.jpg",
+  "titel_sv": "Selfie blir spelbar 3D-karaktär med Tripo",
+  "handlar_om": "Skaparen gjorde sig själv till en spelbar spelkaraktär med Tripo och byggde ett GTA-liknande spel med ChatGPT. Videon visar hur han går runt i en värld byggd från en selfie och styr karaktären med tangentbordet. Beskrivningen nämner en rabattkod för Tripo.",
+  "forslag": "Testa att göra en 3D-modell från ett foto (Tripo eller liknande) och printa den som figur i Elegoo PLA vit med svarta detaljer eller PLA Basic svart; kolla att meshen är vattentät innan ElegooSlicer.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
