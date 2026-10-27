@@ -3106,5 +3106,29 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "De6Hg8_oTaq",
+  "url": "https://www.instagram.com/reel/De6Hg8_oTaq/",
+  "creator": "@darkforge.sculpt",
+  "thumb": "images/videos/De6Hg8_oTaq.jpg",
+  "titel_sv": "Alien Chestbuster – STL-figur",
+  "handlar_om": "En STL-modell av en Alien Chestbuster-staty för 3D-print, skapad av darkforge.sculpt. Modellen laddas ned via länken i kontots beskrivning eller via DM. Taggar: alien, stl, statue, figure.",
+  "forslag": "Printa i Elegoo PLA vit (eller PLA Basic svart) i ElegooSlicer; testa lagerhöjd 0,12 mm och träd-support. Måla gärna detaljerna efteråt.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dez0Y0iyv3x",
+  "url": "https://www.instagram.com/reel/Dez0Y0iyv3x/",
+  "creator": "@creativelyange",
+  "thumb": "images/videos/Dez0Y0iyv3x.jpg",
+  "titel_sv": "Bygg ditt eget kretskort – verktyg",
+  "handlar_om": "Instagram-klipp om ett verktyg där man kan bygga sitt eget kretskort eller lära sig hur. Skaparen skickar länken till den som kommenterar \"circuit\". Taggar: circuitboard, hardware, aiagents.",
+  "forslag": "Printa ett enkelt kretskortshölje i PLA Basic svart; testa snap-fit-passform med 0,2 mm tolerans. Tillför TPU 95A svart för tätning/fötter.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
