@@ -3154,5 +3154,17 @@
   "tag": "affär",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfHb8n4x8cm",
+  "url": "https://www.instagram.com/reel/DfHb8n4x8cm/",
+  "creator": "@julia.dziu",
+  "thumb": "images/videos/DfHb8n4x8cm.jpg",
+  "titel_sv": "Nytt öronsmycke (earpiece) av @yacine.hamdani",
+  "handlar_om": "Julia Dziubina visar ett nytt earpiece-smycke av @yacine.hamdani. Den nya modellen är billigare än versionen i massivt silver, lättare och mer lämpad för daglig användning.",
+  "forslag": "Inspiration för små smycken/detaljer: printa en liten öronclip-prototyp i PLA Silk silvergrå för att testa form och passform, eller i PLA vit/svart för en skiss. TPU 95A svart kan ge en mjuk, bekväm kant.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
