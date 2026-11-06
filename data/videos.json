@@ -3262,5 +3262,17 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfASDh7K_NA",
+  "url": "https://www.instagram.com/reel/DfASDh7K_NA/",
+  "creator": "@iixvyn",
+  "thumb": "images/videos/DfASDh7K_NA.jpg",
+  "titel_sv": "Jätte-PEZ i 26 tum på Bambu A2L",
+  "handlar_om": "Konstnären Carolina printade en 26 tum hög PEZ-konstleksak i full färg på en Bambu Lab A2L med AMS Lite. De två handskarna kom av plattan på 10 timmar. Inlägget är ett samarbete med Bambu Lab och visas på DesignerCon 13–15 november.",
+  "forslag": "Skala upp en egen figur och dela den i delar som ryms på plattan. Printa i Elegoo PLA vit/svart på Centauri Carbon 2 Combo, med PLA Silk silvergrå som accentdel. Testa flerfärg med 4-färgsfunktionen i ElegooSlicer.",
+  "tag": "koncept",
+  "reklam": true,
+  "anteckning": "Messenger: 3d print"
  }
 ]
