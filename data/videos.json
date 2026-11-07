@@ -3274,5 +3274,41 @@
   "tag": "koncept",
   "reklam": true,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfZmcNRTqV0",
+  "url": "https://www.instagram.com/reel/DfZmcNRTqV0/",
+  "creator": "spilt3mf",
+  "thumb": "images/videos/DfZmcNRTqV0.jpg",
+  "titel_sv": "Split3MF: uppdatering om nya funktioner",
+  "handlar_om": "Inlägg från @split3mf om att följa kontot för nya funktioner i Split3MF, taggat #3dprinting. Beskrivningen säger inget mer om vad verktyget gör.",
+  "forslag": "Kolla om Split3MF fungerar med ElegooSlicer-projekt; testa att dela en flerfärgsmodell på PLA svart/vit.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfYRzkOoU1s",
+  "url": "https://www.instagram.com/reel/DfYRzkOoU1s/",
+  "creator": "Kevin",
+  "thumb": "images/videos/DfYRzkOoU1s.jpg",
+  "titel_sv": "Kevin: du frågade, kanske igen",
+  "handlar_om": "Kort inlägg från @atkevinsplace med texten \"You asked! Maybe again\". Beskrivningen ger inga detaljer om själva printen.",
+  "forslag": "Titta på videon för modellen; en enkel testprint i PLA Basic svart kan visa om den är värd att göra.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfVL8ONyQ98",
+  "url": "https://www.instagram.com/reel/DfVL8ONyQ98/",
+  "creator": "@wickedwinks",
+  "thumb": "images/videos/DfVL8ONyQ98.jpg",
+  "titel_sv": "Söt baby-Grinch med digitala ögon",
+  "handlar_om": "Wicked Winks visar en baby-Grinch. Filen är designad av @dlp_3d och de digitala ögonen kommer från Nabaili3D. Taggad #asmr #3dprinting.",
+  "forslag": "Printa i PLA Silk silvergrå eller PLA vit med svarta detaljer; 4-färgsläget ger ögon och ansikte.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
