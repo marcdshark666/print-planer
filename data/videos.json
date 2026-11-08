@@ -3310,5 +3310,89 @@
   "tag": "koncept",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfUisxUB39w",
+  "url": "https://www.instagram.com/reel/DfUisxUB39w/",
+  "creator": "@capiau3d",
+  "thumb": "images/videos/DfUisxUB39w.jpg",
+  "titel_sv": "Serieproduktion av anatomiska kranier",
+  "handlar_om": "Capiau Impressões 3D visar produktion av anatomiska kranier i 3D-skrivare, avsedda för studenter och hälsoyrkesverksamma. De tar beställningar.",
+  "forslag": "Skriv ut i PLA vit eller Silk silvergrå; testa ett kranium i liten skala med stödstruktur på käke/tänder.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfYS81jSWnY",
+  "url": "https://www.instagram.com/reel/DfYS81jSWnY/",
+  "creator": "@sunburntfabrications",
+  "thumb": "images/videos/DfYS81jSWnY.jpg",
+  "titel_sv": "Sunburnt Fabrications tar emot idéer",
+  "handlar_om": "Kanalen uppmanar följare att skicka in egna idéer och designer via länk i bion. Taggar: 3dprint, engineer, 3ddesign.",
+  "forslag": "Inspiration för eget projekt: skriv ut en egen idé i PLA Basic svart och dokumentera processen.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfLK2bStEoW",
+  "url": "https://www.instagram.com/reel/DfLK2bStEoW/",
+  "creator": "@nickbokar",
+  "thumb": "images/videos/DfLK2bStEoW.jpg",
+  "titel_sv": "Hoodie-print med gratis STL",
+  "handlar_om": "Nick delar en STL-fil av en utskriven hoodie; man kommenterar '3DNICK' för att få filen.",
+  "forslag": "Prova i TPU 95A svart för flexibilitet eller PLA svart/vit; kommentera för att få STL:en.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dem8YJktP6f",
+  "url": "https://www.instagram.com/reel/Dem8YJktP6f/",
+  "creator": "@nickbokar",
+  "thumb": "images/videos/Dem8YJktP6f.jpg",
+  "titel_sv": "Fladdermushårspänne till Halloween",
+  "handlar_om": "Nick gjorde ett fladdermusformat hårspänne till Halloween och frågar om nästa ska vara pumpa.",
+  "forslag": "Skriv ut i PLA Basic svart eller TPU 95A svart för ett böjligt spänne; testa liten storlek först.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "De14fgJIWvm",
+  "url": "https://www.instagram.com/reel/De14fgJIWvm/",
+  "creator": "@tyke.create",
+  "thumb": "images/videos/De14fgJIWvm.jpg",
+  "titel_sv": "Monitor-dekoration 'aura maxing'",
+  "handlar_om": "Tyke visar en dekoration att ha på bildskärmen, kallad 'Aura maxing monitor decoration'. Beskrivningen ger inga fler detaljer.",
+  "forslag": "Skriv ut i PLA Silk silvergrå för blanketfekt, eller svart/vit i flera färger med 4-färgssystemet.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfWte6kyZc0",
+  "url": "https://www.instagram.com/reel/DfWte6kyZc0/",
+  "creator": "@itsellagonzales",
+  "thumb": "images/videos/DfWte6kyZc0.jpg",
+  "titel_sv": "Börja med elektronik: ESP32 och skärm",
+  "handlar_om": "Ella visar första steget i att lära sig elektronik: en ESP32 som visar något på en skärm. Del 2 utlovas.",
+  "forslag": "Skriv ut ett litet hölje till ESP32 + skärm i PLA Basic svart.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfcPa0JCoao",
+  "url": "https://www.instagram.com/reel/DfcPa0JCoao/",
+  "creator": "@snapmakerinc",
+  "thumb": "images/videos/DfcPa0JCoao.jpg",
+  "titel_sv": "HueForge-löv i TPU med daggdroppar",
+  "handlar_om": "Snapmaker visar HueForge-löv i TPU 95 HF som ser ut som riktiga blad med dagg. Snapmaker U1, 5h 54m, lagerhöjd 0,08 mm; modell av Squish3D (MakerWorld).",
+  "forslag": "Prova HueForge-liknande färgskiktning med Elegoo TPU 95A och 4 färger i ElegooSlicer, lagerhöjd 0,08 mm.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
