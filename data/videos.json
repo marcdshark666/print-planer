@@ -3394,5 +3394,65 @@
   "tag": "teknik",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DdCF01ljhzC",
+  "url": "https://www.instagram.com/reel/DdCF01ljhzC/",
+  "creator": "@creality_innovation",
+  "thumb": "images/videos/DdCF01ljhzC.jpg",
+  "titel_sv": "Creality M1 gör eget filament av printskrot",
+  "handlar_om": "Creality visar vad maskinen M1 kan: den förvandlar printavfall till nytt filament. De har testat gång på gång och tagit fram alla möjliga färger längs vägen. Uppmaningen är att göra sitt eget specialfilament.",
+  "forslag": "Spara misslyckade PLA-utskrifter och purge-rester från Centauri Carbon 2 i en burk; sortera svart/vit PLA separat så ett framtida återvunnet filament får jämn färg. Testa inte blanda in TPU 95A, det förstör sådana extrudrar.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DehVlHEMhdP",
+  "url": "https://www.instagram.com/reel/DehVlHEMhdP/",
+  "creator": "3DPANY",
+  "thumb": "images/videos/DehVlHEMhdP.jpg",
+  "titel_sv": "3DPANY-BLE: skredder gör printskrot till filament",
+  "handlar_om": "3DPANY-BLE förvandlar gamla printrester till återanvändbart filament. Videon visar vägen skrot till filament till nya utskrifter. Skredder-paketet BLE+ säljs för 579 dollar i early bird (ordinarie 689) med leverans från början av november.",
+  "forslag": "Samma idé som Creality M1-tipset: samla PLA-skrot (Elegoo PLA svart/vit, PLA Basic svart) sorterat per färg i väntan på eventuell återvinning. Köp inget utan att jämföra med Creality M1-priset.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "De-uAz6l4Q3",
+  "url": "https://www.instagram.com/reel/De-uAz6l4Q3/",
+  "creator": "@fstudio3d",
+  "thumb": "images/videos/De-uAz6l4Q3.jpg",
+  "titel_sv": "Medicinskt samlarkit i 3D: hjärta, hjärna, lungor",
+  "handlar_om": "Félix studio 3D säljer ett medicinskt samlarset för läkare, studenter och vårdpersonal. Setet har anatomiskt hjärta i röd PLA, hjärna i rosa PLA, lungor i beige PLA och ett hårt etui i mörkblå PLA med vit caduceus i relief på locket. Tänkt som examens- eller kollegapresent, nyckelring eller skrivbordsprydnad.",
+  "forslag": "Perfekt Etsy-/kollegagåva för Marc: printa små anatomiska organ i PLA Silk silvergrå med 4-färgsenheten för detaljer, och ett etui i PLA Basic svart med vit Elegoo PLA för reliefsymbolen. Lägg till ett nyckelringshål i modellen.",
+  "tag": "affär",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfSll61D0hL",
+  "url": "https://www.instagram.com/reel/DfSll61D0hL/",
+  "creator": "@katelynn_yunxiu",
+  "thumb": "images/videos/DfSll61D0hL.jpg",
+  "titel_sv": "Y3K-designade AirPods Max-fodral",
+  "handlar_om": "Katelynn_yunxiu visar ett par AirPods Max-fodral i Y3K-stil som hon designade förra året. Modeinriktad 3D-printdesign.",
+  "forslag": "Testa ett hörlursfodral i TPU 95A svart för grepp och stöttålighet, alternativt PLA Silk silvergrå för Y3K-krom-looken. Mät kåporna noga; printa en testring först för passform.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DdPCGvjxRS1",
+  "url": "https://www.instagram.com/reel/DdPCGvjxRS1/",
+  "creator": "NoodyBums",
+  "thumb": "images/videos/DdPCGvjxRS1.jpg",
+  "titel_sv": "Kromögon på printad sfinx-alien med nagellack",
+  "handlar_om": "NoodyBums visar en 3D-printad sfinx-alien och berättar hur kromögonen gjordes: med topplack för naglar blandat med kameleontpigment i stället för bara glansigt svart lack. Nästa projekt är en jättesfinx där samma effekt kanske används på rustningen.",
+  "forslag": "Printa en figurin i PLA Basic svart och testa kameleontpigment i nagellackstopplack på ögon eller detaljer. Svart underlag ger starkast kromskimmer; jämför med PLA Silk silvergrå som bas.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
