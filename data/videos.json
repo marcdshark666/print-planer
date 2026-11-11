@@ -3454,5 +3454,29 @@
   "tag": "teknik",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfiKNHQRoji",
+  "url": "https://www.instagram.com/reel/DfiKNHQRoji/",
+  "creator": "@zyuzina",
+  "thumb": "images/videos/DfiKNHQRoji.jpg",
+  "titel_sv": "Vinthund (levretka) som 3D-printad galge",
+  "handlar_om": "Skaparen visar en galge formad som en italiensk vinthund. Det är ett testexemplar som ännu inte säljs; hennes övriga alster säljs via @polyadoma.art. Hon har gjort 3D-modellen själv och STL-filen säljs inte.",
+  "forslag": "Filen går inte att få tag på, så använd den som inspiration: rita en egen djurformad galge och printa i Elegoo PLA svart eller vit, liggande platt med 4–5 väggar så kroken tål vikten av ett plagg. PLA Silk silvergrå ger en snygg dekorvariant.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dfh4p69y2et",
+  "url": "https://www.instagram.com/reel/Dfh4p69y2et/",
+  "creator": "@katelynn_yunxiu",
+  "thumb": "images/videos/Dfh4p69y2et.jpg",
+  "titel_sv": "Sphynxkatt-galge, fri fil på MakerWorld",
+  "handlar_om": "Designern visar en galge formad som en sphynxkatt som fått 27 000 gilla-markeringar. Modellen är öppen källkod på MW (MakerWorld), så man kan printa en egen.",
+  "forslag": "Sök upp modellen på MakerWorld och printa i Elegoo PLA svart, liggande platt med 4–5 väggar och 25–30 % infill för hållfasthet. Testa en tvåfärgsvariant i Combon med vita detaljer (ögon/öron) eller PLA Silk silvergrå för hårlös-katt-looken.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
