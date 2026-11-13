@@ -3658,5 +3658,53 @@
   "tag": "verktyg",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfnRHLFBi6O",
+  "url": "https://www.instagram.com/reel/DfnRHLFBi6O/",
+  "creator": "Avid_Loong",
+  "thumb": "images/videos/DfnRHLFBi6O.jpg",
+  "titel_sv": "3D-printat mobilskal med iris-motiv",
+  "handlar_om": "Avid_Loong visar ett 3D-printat mobilskal med iris-motiv. Inlägget är taggat mode, mobilskal och accessoarer.",
+  "forslag": "Testa ett mobilskal i TPU 95A svart för flexibel passform, eller PLA Silk silvergrå för en blank yta med relief. Börja med ett litet provtryck av motivet innan hela skalet.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dfnnpkxxqv9",
+  "url": "https://www.instagram.com/reel/Dfnnpkxxqv9/",
+  "creator": "Impressão Criativa 👻",
+  "thumb": "images/videos/Dfnnpkxxqv9.jpg",
+  "titel_sv": "Katt som rökelsehållare (meme-katt)",
+  "handlar_om": "Impressão Criativa visar en rökelsehållare formad som en katt. Den är printad i Elegoo PLA på en Bambu Lab P1S.",
+  "forslag": "Printa i Elegoo PLA svart med detaljer i vitt via 4-färgsbytet. Tänk på att PLA mjuknar av värme: låt glöden och askan hamna i en metall- eller keramikskål, inte direkt mot plasten.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dfmp57DMCXo",
+  "url": "https://www.instagram.com/reel/Dfmp57DMCXo/",
+  "creator": "@maremel.lab3d",
+  "thumb": "images/videos/Dfmp57DMCXo.jpg",
+  "titel_sv": "Personligt designad Alexa-hållare till kund",
+  "handlar_om": "maremel.lab3d visar en helt personligt anpassad hållare för en Alexa-högtalare, gjord åt en kund.",
+  "forslag": "Kundanpassade högtalarhållare är en möjlig beställningsprodukt. Printa stommen i PLA Basic svart och lägg namn eller dekor i vitt eller Silk silvergrå med flerfärgsbyte.",
+  "tag": "affär",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfmZLsIo_97",
+  "url": "https://www.instagram.com/reel/DfmZLsIo_97/",
+  "creator": "НЕ РОВНО рельефные украшения",
+  "thumb": "images/videos/DfmZLsIo_97.jpg",
+  "titel_sv": "Ringar och hängen med jordens relief",
+  "handlar_om": "Smyckesmärket NE ROVNO gör ringar och hängen med relief av jordens terräng. Man kan skapa sitt eget smycke på deras webbplats, länkad i profilen.",
+  "forslag": "Testa idén i liten skala: printa ett hänge med terrängrelief i PLA Silk silvergrå med 0,08–0,12 mm lagerhöjd för att få fram höjdkurvorna. Fungerar som koncept för personliga smycken av en egen plats.",
+  "tag": "affär",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
