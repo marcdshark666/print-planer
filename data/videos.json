@@ -3706,5 +3706,53 @@
   "tag": "affär",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "Dfry0taMVIm",
+  "url": "https://www.instagram.com/reel/Dfry0taMVIm/",
+  "creator": "@xurxocarreno",
+  "thumb": "images/videos/Dfry0taMVIm.jpg",
+  "titel_sv": "Tower Stack-spelet – vem vinner?",
+  "handlar_om": "Xurxo Carreño spelar Tower Stack från Just Play Products x Relatable med vänner och frågar vem som vinner. Fler videor finns hos de taggade kontona. Inlägget är märkt #Publi (reklam).",
+  "forslag": "Inget 3D-printinnehåll i beskrivningen, men ett eget staplingsspel går att printa: enkla klossar i Elegoo PLA svart och vit (två lag), 0,2 mm lager, 15 % infill. Testa en liten sats först och kontrollera att bitarna staplas stabilt.",
+  "tag": "koncept",
+  "reklam": true,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfuQ2caMOpM",
+  "url": "https://www.instagram.com/reel/DfuQ2caMOpM/",
+  "creator": "@ashley_lifestory",
+  "thumb": "images/videos/DfuQ2caMOpM.jpg",
+  "titel_sv": "Så undviker du munstycksrepor i printen",
+  "handlar_om": "ashley_lifestory visar hur man förhindrar repor från munstycket vid 3D-printning. Hon anger sina verktyg: Meshy för 3D-modeller, Bambu Lab-skrivare, Polymaker-filament samt CapCut och Tapnow för video.",
+  "forslag": "Testa i ElegooSlicer på en platt toppyta i PLA Basic svart: slå på Z-hop vid retraktion (ca 0,4 mm) och \"undvik att korsa väggar\", och jämför med en print utan. Repor syns tydligast på PLA Silk silvergrå, så kör slutprovet där.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfsIHoggXTB",
+  "url": "https://www.instagram.com/reel/DfsIHoggXTB/",
+  "creator": "Mirdain Systems",
+  "thumb": "images/videos/DfsIHoggXTB.jpg",
+  "titel_sv": "\"Kommentera om du hatar Bambu Studio\"",
+  "handlar_om": "Mirdain Systems ber tittarna kommentera om de hatar Bambu Studio. Beskrivningen innehåller i övrigt bara hashtaggar om 3D-printning, teknik och tillverkning.",
+  "forslag": "Inget att printa här. Marc kör ElegooSlicer (samma Orca-släkt) till Centauri Carbon 2 Combo – spara hellre egna profiler för Elegoo PLA svart/vit och TPU 95A så att slicern inte blir ett irritationsmoment.",
+  "tag": "verktyg",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "De6jXjbKV-c",
+  "url": "https://www.instagram.com/reel/De6jXjbKV-c/",
+  "creator": "3D Drucker kaufen | 3D Druck",
+  "thumb": "images/videos/De6jXjbKV-c.jpg",
+  "titel_sv": "Så får du slätare 3D-printar",
+  "handlar_om": "Kontot 3D Drucker kaufen visar hur man gör sin 3D-print slätare. Beskrivningen innehåller bara hashtaggar om 3D-skrivare, Bambu Lab, nybörjare och filament.",
+  "forslag": "Printa samma lilla testbit två gånger i PLA Silk silvergrå i ElegooSlicer: en standard och en med strykning (ironing) av toppytan, 0,12–0,16 mm lager och lägre hastighet på ytterväggen. Jämför ytan och spara den bästa profilen.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
