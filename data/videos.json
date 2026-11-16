@@ -3754,5 +3754,41 @@
   "tag": "teknik",
   "reklam": false,
   "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfNLDcZK3PA",
+  "url": "https://www.instagram.com/reel/DfNLDcZK3PA/",
+  "creator": "@3ddruckerkaufen",
+  "thumb": "images/videos/DfNLDcZK3PA.jpg",
+  "titel_sv": "Så får du en slät och blank print",
+  "handlar_om": "Kontot 3D Drucker kaufen visar hur man får en helt slät och blank 3D-print. Beskrivningen innehåller i övrigt bara hashtaggar om 3D-skrivare, Bambu Lab och nybörjare.",
+  "forslag": "Testa på en liten bit i PLA Silk silvergrå i ElegooSlicer: sänk hastigheten på ytterväggen och höj munstyckstemperaturen ett par steg (silk blir blankare långsamt och varmt), och jämför med en standardprint i Elegoo PLA svart.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfsomuSsusr",
+  "url": "https://www.instagram.com/reel/DfsomuSsusr/",
+  "creator": "@3d_maisternya_if",
+  "thumb": "images/videos/DfsomuSsusr.jpg",
+  "titel_sv": "Patina på 3D-printad figur",
+  "handlar_om": "Kontot 3d_maisternya_if har provat att lägga patina på en 3D-print och tycker att det första resultatet blev intressant. Hashtaggarna nämner 3D-leksaker och guldpatina.",
+  "forslag": "Printa en liten figur i Elegoo PLA svart med 0,12–0,16 mm lager och prova efterbehandling med guld-/metallvax eller torrborstning på de upphöjda detaljerna. Svart PLA ger bra kontrast som grund.",
+  "tag": "teknik",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
+ },
+ {
+  "id": "DfxPP7tOQAk",
+  "url": "https://www.instagram.com/reel/DfxPP7tOQAk/",
+  "creator": "@piodeer.stl",
+  "thumb": "images/videos/DfxPP7tOQAk.jpg",
+  "titel_sv": "Skämtjulklapp att 3D-printa",
+  "handlar_om": "PIODEER (piodeer.stl) visar en modell som beskrivs som den bästa skämtjulklappen. STL-filen fås genom att kommentera STL på inlägget.",
+  "forslag": "Idé för julklappar: printa i Elegoo PLA svart/vit, gärna flerfärgat med 4-färgsenheten om modellen har detaljer. Kolla först om modellen finns att ladda ner och vilken licens som gäller innan något säljs.",
+  "tag": "koncept",
+  "reklam": false,
+  "anteckning": "Messenger: 3d print"
  }
 ]
